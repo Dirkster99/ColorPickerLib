@@ -1,2 +1,96 @@
 # ColorPickerLib
 A WPF/MVVM implementation of a themeable color picker control.
+
+# Project Description
+
+This project implements a Color Picker control using MVVM/Windows Presentation Foundation (WPF) pattern and technology. that can be themed and localized.
+
+You can test these controls with the demo application provided in this repository or in a sample application:
+
+* [Locult](http://locult.codeplex.com/)
+* [SettingsModel](http://settingsmodel.codeplex.com/documentation)
+
+# Features
+
+This version of the control implements:
+
+* a few bug fixes (eg.: you cannot enter letters or more than 3 digits in a channel input element).
+* supports localization for:
+⋅⋅* Chinese (Simplified) and Chinese (Traditional)
+⋅⋅* Dutch
+⋅⋅* English
+⋅⋅* French
+⋅⋅* German
+⋅⋅* Hindi
+⋅⋅* Indonesian
+⋅⋅* Italian
+⋅⋅* Japanese
+⋅⋅* Spanish
+
+These 4 styles have to be included to avoid a transparent background in the pop-up control:
+
+```XAML
+    <!-- Popup Background -->
+    <SolidColorBrush x:Key="PopupBackgroundBrush"  Color="#FF252526" />
+    
+    <!-- Popup Border -->
+    <SolidColorBrush x:Key="PopupDarkBorderBrush" Color="#FFABADB3" />
+    
+    <!-- =============================================================================== -->
+    <!-- ColorCanvas, ColorPicker                                                        -->
+    <!-- =============================================================================== -->
+    
+    <DrawingBrush  x:Key="CheckerBrush" Viewport="0,0,10,10" ViewportUnits="Absolute" TileMode="Tile">
+        <DrawingBrush.Drawing>
+            <DrawingGroup>
+                <GeometryDrawing Brush="White">
+                    <GeometryDrawing.Geometry>
+                        <RectangleGeometry Rect="0,0 100,100" />
+                    </GeometryDrawing.Geometry>
+                </GeometryDrawing>
+                <GeometryDrawing Brush="LightGray">
+                    <GeometryDrawing.Geometry>
+                        <GeometryGroup>
+                            <RectangleGeometry Rect="0,0 50,50" />
+                            <RectangleGeometry Rect="50,50 50,50" />
+                        </GeometryGroup>
+                    </GeometryDrawing.Geometry>
+                </GeometryDrawing>
+            </DrawingGroup>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+    
+    <SolidColorBrush x:Key="ColorPickerDarkBorderBrush" Color="Black" />
+```
+
+## Theming
+
+Load *Light* or *Dark* brush resources in you resource dictionary to take advantage of existing definitions.
+
+```XAML
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/ColorPickerLib;component/Themes/DarkBrushs.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+```
+
+```XAML
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/ColorPickerLib;component/Themes/LightBrushs.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+```
+
+These definitions do not theme all controls used within this library. You should use a standard theming library, such as:
+- [MahApps.Metro](https://github.com/MahApps/MahApps.Metro),
+- [MLib](https://github.com/Dirkster99/MLib), or
+- [MUI](https://github.com/firstfloorsoftware/mui)
+
+to also theme standard elements, such as, button and textblock etc.
+
+# References
+
+This project implements a WPF Color Picker control.
+
+The project is based on:
+* The color picker control contained in the Extended WPF Toolkit™ Community Edition: https://wpftoolkit.codeplex.com/ from Xceed
+
+* See also [WPF Color Picker Control](https://wpfcolorpickercontrol.codeplex.com/) on [Codeplex](https://codeplex.com/).
