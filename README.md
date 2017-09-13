@@ -15,17 +15,18 @@ You can test these controls with the demo application provided in this repositor
 This version of the control implements:
 
 * a few bug fixes (eg.: you cannot enter letters or more than 3 digits in a channel input element).
-* supports localization for:
-⋅⋅* Chinese (Simplified) and Chinese (Traditional)
-⋅⋅* Dutch
-⋅⋅* English
-⋅⋅* French
-⋅⋅* German
-⋅⋅* Hindi
-⋅⋅* Indonesian
-⋅⋅* Italian
-⋅⋅* Japanese
-⋅⋅* Spanish
+
+Supports localization for:
+* Chinese (Simplified) and Chinese (Traditional)
+* Dutch
+* English
+* French
+* German
+* Hindi
+* Indonesian
+* Italian
+* Japanese
+* Spanish
 
 These 4 styles have to be included to avoid a transparent background in the pop-up control:
 
@@ -91,6 +92,6 @@ to also theme standard elements, such as, button and textblock etc.
 This project implements a WPF Color Picker control.
 
 The project is based on:
-* The color picker control contained in the Extended WPF Toolkit™ Community Edition: https://wpftoolkit.codeplex.com/ from Xceed
+* The color picker control contained in the Extended WPF Toolkit™ Community Edition: https://github.com/xceedsoftware/wpftoolkit from Xceed
 
 * See also [WPF Color Picker Control](https://wpfcolorpickercontrol.codeplex.com/) on [Codeplex](https://codeplex.com/).
