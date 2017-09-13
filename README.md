@@ -1,5 +1,6 @@
 [![Build status](https://ci.appveyor.com/api/projects/status/0e19uif3f40tsppi?svg=true)](https://ci.appveyor.com/project/Dirkster99/colorpickerlib)
 [![Release](https://img.shields.io/github/release/Dirkster99/colorpickerlib.svg)](https://github.com/Dirkster99/colorpickerlib/releases/latest)
+[![NuGet](https://img.shields.io/nuget/dt/Dirkster.colorpickerlib.svg)](http://nuget.org/packages/Dirkster.colorpickerlib)
 # ColorPickerLib
 A WPF/MVVM implementation of a themeable color picker control.
 
