@@ -17,3 +17,4 @@ tmp/
 *.sou
 *.suo
 *.sqlite
+/source/.vs/ColorPickerDemo/v15
