@@ -1,61 +1,71 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:options="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options"
-                    xmlns:themes="clr-namespace:ColorPickerLib.Themes">
+                    xmlns:reskeys="clr-namespace:ColorPickerLib.Themes">
 
-    <SolidColorBrush x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type themes:ResourceKeys}, ResourceId=PanelBackgroundBrushKey}"
+    <!-- Accent Color Brush Definition
+       - Look for references on ControlAccentBrushKey to find where this is being set in code -->
+    <Color x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type reskeys:ResourceKeys},
+           ResourceId=ControlAccentColorKey}">#1ba1e2</Color>
+
+    <SolidColorBrush x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type reskeys:ResourceKeys},
+                     ResourceId=ControlAccentBrushKey}"
+                     Color="{DynamicResource {x:Static reskeys:ResourceKeys.ControlAccentColorKey}}"
+                    options:Freeze="true" />
+
+    <SolidColorBrush x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type reskeys:ResourceKeys}, ResourceId=PanelBackgroundBrushKey}"
                     Color="#FF252526"
                     options:Freeze="true" />
 
-    <SolidColorBrush x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type themes:ResourceKeys}, ResourceId=ControlNormalBackgroundKey}"
+    <SolidColorBrush x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type reskeys:ResourceKeys}, ResourceId=ControlNormalBackgroundKey}"
                     Color="#FF333333"
                     options:Freeze="true" />
     
-   <SolidColorBrush x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type themes:ResourceKeys}, ResourceId=ControlDisabledBackgroundKey}"
+   <SolidColorBrush x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type reskeys:ResourceKeys}, ResourceId=ControlDisabledBackgroundKey}"
                     Color="#FF666666"
                     options:Freeze="true" />
 
-    <SolidColorBrush x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type themes:ResourceKeys}, ResourceId=ControlNormalBorderKey}"
+    <SolidColorBrush x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type reskeys:ResourceKeys}, ResourceId=ControlNormalBorderKey}"
                     Color="#FF282828"
                     options:Freeze="true" />
     
-    <SolidColorBrush x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type themes:ResourceKeys}, ResourceId=ControlMouseOverBorderKey}"
+    <SolidColorBrush x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type reskeys:ResourceKeys}, ResourceId=ControlMouseOverBorderKey}"
                      options:Freeze="true"
                      Color="#3e3e42"
                      />
 
-    <SolidColorBrush x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type themes:ResourceKeys}, ResourceId=ControlFocusedBorderKey}"
+    <SolidColorBrush x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type reskeys:ResourceKeys}, ResourceId=ControlFocusedBorderKey}"
                     Color="#FF989898"
                     options:Freeze="true" />
 
-   <SolidColorBrush x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type themes:ResourceKeys}, ResourceId=ButtonNormalOuterBorderKey}"
+   <SolidColorBrush x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type reskeys:ResourceKeys}, ResourceId=ButtonNormalOuterBorderKey}"
                     Color="#FF333333"
                     options:Freeze="true" />
 
-    <SolidColorBrush x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type themes:ResourceKeys}, ResourceId=ButtonNormalInnerBorderKey}"
+    <SolidColorBrush x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type reskeys:ResourceKeys}, ResourceId=ButtonNormalInnerBorderKey}"
                     Color="#FF222222"
                     options:Freeze="true" />
 
     <SolidColorBrush options:Freeze="true"
-                     x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type themes:ResourceKeys}, ResourceId=ButtonNormalBackgroundKey}"
+                     x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type reskeys:ResourceKeys}, ResourceId=ButtonNormalBackgroundKey}"
                      Color="#444444" />
 
-    <SolidColorBrush x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type themes:ResourceKeys}, ResourceId=ControlSelectedBorderKey}"
+    <SolidColorBrush x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type reskeys:ResourceKeys}, ResourceId=ControlSelectedBorderKey}"
                     Color="#FF569DE5"
                     options:Freeze="true" />
 
     <SolidColorBrush options:Freeze="true"
-                    x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type themes:ResourceKeys}, ResourceId=ButtonMouseOverOuterBorderKey}"
+                    x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type reskeys:ResourceKeys}, ResourceId=ButtonMouseOverOuterBorderKey}"
                     Color="#777777" /><!-- Should be AccentColor -->
 
     <SolidColorBrush options:Freeze="true"
-                     x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type themes:ResourceKeys}, ResourceId=ButtonMouseOverInnerBorderKey}"
+                     x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type reskeys:ResourceKeys}, ResourceId=ButtonMouseOverInnerBorderKey}"
                      Color="#3e3e42"
     />
 
     <!-- Based on ButtonBackgroundHover -->
     <SolidColorBrush options:Freeze="true" Color="#3e3e42"
-                     x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type themes:ResourceKeys}, ResourceId=ButtonMouseOverBackgroundKey}"/>
+                     x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type reskeys:ResourceKeys}, ResourceId=ButtonMouseOverBackgroundKey}"/>
     
    <!-- LinearGradientBrush options:Freeze="true"
                         
@@ -76,10 +86,10 @@
    </LinearGradientBrush -->
 
    <SolidColorBrush options:Freeze="true"
-                    x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type themes:ResourceKeys}, ResourceId=ButtonPressedOuterBorderKey}"
+                    x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type reskeys:ResourceKeys}, ResourceId=ButtonPressedOuterBorderKey}"
                     Color="#2C628B" />
    <LinearGradientBrush options:Freeze="true"
-                        x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type themes:ResourceKeys}, ResourceId=ButtonPressedInnerBorderKey}"
+                        x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type reskeys:ResourceKeys}, ResourceId=ButtonPressedInnerBorderKey}"
                         StartPoint="0,0"
                         EndPoint="0,1">
       <LinearGradientBrush.GradientStops>
@@ -94,7 +104,7 @@
 
     <!-- Based on ButtonBackgroundHover -->
     <SolidColorBrush options:Freeze="true"
-                        x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type themes:ResourceKeys}, ResourceId=ButtonPressedBackgroundKey}"
+                        x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type reskeys:ResourceKeys}, ResourceId=ButtonPressedBackgroundKey}"
                         Color="#3e3e42"
                      />
     
@@ -112,13 +122,13 @@
       </LinearGradientBrush.GradientStops>
    </LinearGradientBrush -->
 
-   <SolidColorBrush x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type themes:ResourceKeys}, ResourceId=ButtonFocusedOuterBorderKey}"
+   <SolidColorBrush x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type reskeys:ResourceKeys}, ResourceId=ButtonFocusedOuterBorderKey}"
                     Color="#FF707070"
                     options:Freeze="true" />
-   <SolidColorBrush x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type themes:ResourceKeys}, ResourceId=ButtonFocusedInnerBorderKey}"
+   <SolidColorBrush x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type reskeys:ResourceKeys}, ResourceId=ButtonFocusedInnerBorderKey}"
                     Color="#F900CCFF"
                     options:Freeze="true" />
-   <LinearGradientBrush x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type themes:ResourceKeys}, ResourceId=ButtonFocusedBackgroundKey}"
+   <LinearGradientBrush x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type reskeys:ResourceKeys}, ResourceId=ButtonFocusedBackgroundKey}"
                         EndPoint="0,1"
                         StartPoint="0,0"
                         options:Freeze="true">
@@ -132,22 +142,23 @@
                     Offset="1" />
    </LinearGradientBrush>
 
-   <SolidColorBrush x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type themes:ResourceKeys}, ResourceId=ButtonDisabledOuterBorderKey}"
+   <SolidColorBrush x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type reskeys:ResourceKeys}, ResourceId=ButtonDisabledOuterBorderKey}"
                     Color="Transparent"
                     options:Freeze="true" />
 
-    <SolidColorBrush x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type themes:ResourceKeys}, ResourceId=ButtonInnerBorderDisabledKey}"
+    <SolidColorBrush x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type reskeys:ResourceKeys}, ResourceId=ButtonInnerBorderDisabledKey}"
                     Color="Transparent" />
 
     <SolidColorBrush options:Freeze="true"
-                    x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type themes:ResourceKeys}, ResourceId=GlyphNormalForegroundKey}"
+                    x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type reskeys:ResourceKeys}, ResourceId=GlyphNormalForegroundKey}"
                     Color="#ffffff" />
     
    <SolidColorBrush options:Freeze="true"
-                    x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type themes:ResourceKeys}, ResourceId=GlyphDisabledForegroundKey}"
+                    x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type reskeys:ResourceKeys}, ResourceId=GlyphDisabledForegroundKey}"
                     Color="#888888" />
 
-   <CornerRadius x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type themes:ResourceKeys}, ResourceId=SpinButtonCornerRadiusKey}"
+   <CornerRadius x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type reskeys:ResourceKeys},
+                 ResourceId=SpinButtonCornerRadiusKey}"
                  TopLeft="0"
                  TopRight="0"
                  BottomRight="0"
@@ -158,7 +169,10 @@
     <SolidColorBrush x:Key="PopupBackgroundBrush"  Color="#FF252526" />
 
     <!-- Popup Border -->
-    <SolidColorBrush x:Key="PopupDarkBorderBrush" Color="#FFABADB3" />
+    <SolidColorBrush x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type reskeys:ResourceKeys},
+                            ResourceId=PopUpOpenBorderBrushKey}"
+                     Color="{DynamicResource {x:Static reskeys:ResourceKeys.ControlAccentColorKey}}"
+    />
 
     <!-- =============================================================================== -->
     <!-- ColorCanvas, ColorPicker                                                        -->
@@ -185,5 +199,10 @@
     </DrawingBrush>
 
     <SolidColorBrush x:Key="ColorPickerDarkBorderBrush" Color="#FF282828" />
+
+    <SolidColorBrush x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type reskeys:ResourceKeys},
+                            ResourceId=VerticalSLideThumbMouseOverBrushKey}"
+                     Color="{DynamicResource {x:Static reskeys:ResourceKeys.ControlAccentColorKey}}"
+    />
 
 </ResourceDictionary>

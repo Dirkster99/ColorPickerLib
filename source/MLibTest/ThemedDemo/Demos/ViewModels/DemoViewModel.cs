@@ -2,6 +2,9 @@
 {
     using System.Windows.Media;
 
+    /// <summary>
+    /// This viewmodel controls all aspects of the themed control demo in this test application.
+    /// </summary>
     public class DemoViewModel : ThemedDemo.ViewModels.Base.ViewModelBase
     {
         #region private fields

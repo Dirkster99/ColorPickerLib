@@ -101,7 +101,10 @@
     </LinearGradientBrush>
 
     <!-- Popup Border -->
-    <SolidColorBrush x:Key="PopupDarkBorderBrush" Color="#FFABADB3" />
+    <SolidColorBrush x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type themes:ResourceKeys},
+                     ResourceId=PopUpOpenBorderBrushKey}"
+                     Color="#FFABADB3"
+    />
 
 
     <!-- =============================================================================== -->

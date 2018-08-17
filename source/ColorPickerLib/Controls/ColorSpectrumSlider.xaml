@@ -19,15 +19,14 @@
                     BorderThickness="{TemplateBinding BorderThickness}"
                     Background="Transparent"
                     Margin="0,0,0,0">
-                <Border x:Name="PART_TrackBackground" Width="25">
+                <Border x:Name="PART_TrackBackground" MinWidth="24">
                     <Rectangle x:Name="PART_SpectrumDisplay"
                                Stretch="Fill"
                                VerticalAlignment="Stretch" />
                 </Border>
             </Border>
 
-            <Track Name="PART_Track"
-                   >
+            <Track Name="PART_Track">
                 <Track.DecreaseRepeatButton>
                     <RepeatButton Style="{StaticResource SliderRepeatButtonStyle}"
                                   Command="Slider.DecreaseLarge" />

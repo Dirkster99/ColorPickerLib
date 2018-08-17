@@ -197,9 +197,10 @@
                                Focusable="False"
                                HorizontalOffset="0" VerticalOffset="3" PopupAnimation="None"
                                >
-                            <Border BorderThickness="1"
+                            <Border BorderThickness="1" x:Name="PopUpBorder"
                                     Background="{DynamicResource PopupBackgroundBrush}"
-                                    BorderBrush="{DynamicResource ColorPickerDarkBorderBrush}" Padding="3">
+                                    BorderBrush="{DynamicResource ColorPickerDarkBorderBrush}"
+                                    Padding="3">
                                 <Grid>
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="Auto" />
@@ -310,6 +311,7 @@
                         </Trigger>
                         <Trigger Property="IsOpen" Value="True">
                             <Setter TargetName="PART_ColorPickerToggleButton" Property="BorderBrush" Value="{DynamicResource {x:Static themes:ResourceKeys.ButtonPressedInnerBorderKey}}" />
+                            <Setter TargetName="PopUpBorder" Property="BorderBrush" Value="{DynamicResource {x:Static themes:ResourceKeys.PopUpOpenBorderBrushKey}}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

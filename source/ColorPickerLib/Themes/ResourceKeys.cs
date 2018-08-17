@@ -4,6 +4,20 @@
 
     public static class ResourceKeys
     {
+        #region Accent Keys
+        /// <summary>
+        /// Accent Color Key - This Color key is used to accent elements in the UI
+        /// (e.g.: Color of Activated Normal Window Frame, ResizeGrip, Focus or MouseOver input elements)
+        /// </summary>
+        public static readonly ComponentResourceKey ControlAccentColorKey = new ComponentResourceKey(typeof(ResourceKeys), "ControlAccentColorKey");
+
+        /// <summary>
+        /// Accent Brush Key - This Brush key is used to accent elements in the UI
+        /// (e.g.: Color of Activated Normal Window Frame, ResizeGrip, Focus or MouseOver input elements)
+        /// </summary>
+        public static readonly ComponentResourceKey ControlAccentBrushKey = new ComponentResourceKey(typeof(ResourceKeys), "ControlAccentBrushKey");
+        #endregion Accent Keys
+
         #region Brush Keys
 
         public static readonly ComponentResourceKey ControlNormalBackgroundKey = new ComponentResourceKey(typeof(ResourceKeys), "ControlNormalBackgroundKey");
@@ -42,5 +56,15 @@
         public static readonly ComponentResourceKey SpinButtonCornerRadiusKey = new ComponentResourceKey(typeof(ResourceKeys), "SpinButtonCornerRadiusKey");
 
         public static readonly ComponentResourceKey SpinnerButtonStyleKey = new ComponentResourceKey(typeof(ResourceKeys), "SpinnerButtonStyleKey");
+
+        /// <summary>
+        /// Styles the border of a PopUp Control when it is open.
+        /// </summary>
+        public static readonly ComponentResourceKey PopUpOpenBorderBrushKey = new ComponentResourceKey(typeof(ResourceKeys), "PopUpOpenBorderBrushKey");
+
+        /// <summary>
+        /// Styles the border of a PopUp Control when it is open.
+        /// </summary>
+        public static readonly ComponentResourceKey VerticalSLideThumbMouseOverBrushKey = new ComponentResourceKey(typeof(ResourceKeys), "VerticalSLideThumbMouseOverBrushKey");
     }
 }

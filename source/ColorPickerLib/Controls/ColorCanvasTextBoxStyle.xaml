@@ -5,19 +5,14 @@
     <!-- ColorCanvasTextBox (Style)                                                      -->
     <!-- =============================================================================== -->
 
-    <Style x:Key="ColorCanvasTextBoxStyle"
+    <!-- Style x:Key="ColorCanvasTextBoxStyle"
            TargetType="TextBox" BasedOn="{StaticResource {x:Type TextBox}}">
-        <Setter Property="Background" Value="Transparent" />
         <Setter Property="FontFamily" Value="Courier New" />
         <Setter Property="AcceptsReturn" Value="False" />
         <Setter Property="TextWrapping" Value="NoWrap" />
         <Setter Property="HorizontalAlignment" Value="Stretch" />
-        <Style.Triggers>
-            <Trigger Property="IsFocused" Value="False">
-                <Setter Property="BorderBrush" Value="Transparent" />
-            </Trigger>
-        </Style.Triggers>
-    </Style>
+        <Setter Property="VerticalAlignment" Value="Center" />
+    </Style -->
 
     <Style x:Key="ColorCanvasTextBlockStyle"
            TargetType="TextBlock" BasedOn="{StaticResource {x:Type TextBlock}}">

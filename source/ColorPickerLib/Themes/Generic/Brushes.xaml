@@ -223,7 +223,10 @@
     </LinearGradientBrush>
 
     <!-- Popup Border -->
-    <SolidColorBrush x:Key="PopupDarkBorderBrush" Color="#FFABADB3" />
+    <SolidColorBrush x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type themes:ResourceKeys},
+                            ResourceId=PopUpOpenBorderBrushKey}"
+                     Color="#FFABADB3"
+    />
 
     <!-- =============================================================================== -->
     <!-- ColorCanvas, ColorPicker                                                        -->
@@ -258,5 +261,10 @@
         <GradientStop Color="#FF718597" Offset="0.375" />
         <GradientStop Color="#FF617584" Offset="1" />
     </LinearGradientBrush>
+
+    <SolidColorBrush x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type themes:ResourceKeys},
+                            ResourceId=VerticalSLideThumbMouseOverBrushKey}"
+                     Color="Gray"
+    />
 
 </ResourceDictionary>
