@@ -229,7 +229,10 @@
     <!-- ColorCanvas, ColorPicker                                                        -->
     <!-- =============================================================================== -->
 
-    <DrawingBrush  x:Key="CheckerBrush" Viewport="0,0,10,10" ViewportUnits="Absolute" TileMode="Tile">
+    <DrawingBrush  x:Key="CheckerBrush"
+                   Viewport="0,0,10,10"
+                   ViewportUnits="Absolute"
+                   TileMode="Tile">
         <DrawingBrush.Drawing>
             <DrawingGroup>
                 <GeometryDrawing Brush="White">

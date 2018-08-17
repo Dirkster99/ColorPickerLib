@@ -154,7 +154,7 @@
                             </Grid.RowDefinitions>
                             <Grid>
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
                                     <ColumnDefinition Width="Auto" />
                                     <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
@@ -164,21 +164,31 @@
                                 </Grid.RowDefinitions>
 
                                 <Border BorderThickness="1"
-                                        Margin="3"
+                                        Margin="0"
                                         BorderBrush="DarkGray"
-                                        ClipToBounds="True" Background="{StaticResource CheckerBrush}">
-                                    <Canvas x:Name="PART_ColorShadingCanvas"
-                                           Width="300"
-                                           Height="150"
-                                           HorizontalAlignment="Left"
-                                           VerticalAlignment="Top">
+                                        ClipToBounds="True"
+                                        Background="{StaticResource CheckerBrush}"
+                                        HorizontalAlignment="Stretch"
+                                        VerticalAlignment="Stretch"
+                                        />
+                                <Canvas x:Name="PART_ColorShadingCanvas"
+                                            Margin="0"
+                                            Width="300"
+                                            Height="150"
+                                            HorizontalAlignment="Stretch"
+                                            VerticalAlignment="Stretch"
+                                            >
                                         <Rectangle x:Name="ColorShadingRectangle"
-                                                 Height="{Binding ElementName=PART_ColorShadingCanvas, Path=Height}"
-                                                 Width="{Binding ElementName=PART_ColorShadingCanvas, Path=Width}"
-                                                 Fill="{Binding SelectedColor, ElementName=PART_SpectrumSlider, Converter={StaticResource ColorToSolidColorBrushConverter}}" />
+                                                   VerticalAlignment="Stretch"
+                                                   HorizontalAlignment="Stretch"
+                                                   Height="{Binding ElementName=PART_ColorShadingCanvas, Path=Height,UpdateSourceTrigger=PropertyChanged,Mode=OneWay}"
+                                                   Width="{Binding ElementName=PART_ColorShadingCanvas, Path=Width,UpdateSourceTrigger=PropertyChanged,Mode=OneWay}"
+                                                   Fill="{Binding SelectedColor, ElementName=PART_SpectrumSlider, Converter={StaticResource ColorToSolidColorBrushConverter}}" />
                                         <Rectangle x:Name="WhiteGradient"
-                                                 Width="{Binding ElementName=PART_ColorShadingCanvas,Path=Width}"
-                                                 Height="{Binding ElementName=PART_ColorShadingCanvas,Path=Height}">
+                                                   VerticalAlignment="Stretch"
+                                                   HorizontalAlignment="Stretch"
+                                                   Width="{Binding ElementName=PART_ColorShadingCanvas,Path=Width,UpdateSourceTrigger=PropertyChanged,Mode=OneWay}"
+                                                   Height="{Binding ElementName=PART_ColorShadingCanvas,Path=Height,UpdateSourceTrigger=PropertyChanged,Mode=OneWay}">
                                             <Rectangle.Fill>
                                                 <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
                                                     <GradientStop Offset="0" Color="#ffffffff" />
@@ -187,8 +197,10 @@
                                             </Rectangle.Fill>
                                         </Rectangle>
                                         <Rectangle x:Name="BlackGradient"
-                                                 Width="{Binding ElementName=PART_ColorShadingCanvas,Path=Width}"
-                                                 Height="{Binding ElementName=PART_ColorShadingCanvas,Path=Height}">
+                                                   VerticalAlignment="Stretch"
+                                                   HorizontalAlignment="Stretch"
+                                                   Width="{Binding ElementName=PART_ColorShadingCanvas,Path=Width,UpdateSourceTrigger=PropertyChanged,Mode=OneWay}"
+                                                   Height="{Binding ElementName=PART_ColorShadingCanvas,Path=Height,UpdateSourceTrigger=PropertyChanged,Mode=OneWay}">
                                             <Rectangle.Fill>
                                                 <LinearGradientBrush StartPoint="0,1" EndPoint="0, 0">
                                                     <GradientStop Offset="0" Color="#ff000000" />
@@ -201,58 +213,75 @@
                                                 Height="10"
                                                 IsHitTestVisible="False">
                                             <Ellipse Width="10"
-                                                      Height="10"
-                                                      StrokeThickness="3"
-                                                      Stroke="#FFFFFFFF"
-                                                      IsHitTestVisible="False" />
+                                                     Height="10"
+                                                     StrokeThickness="3"
+                                                     Stroke="#FFFFFFFF"
+                                                     IsHitTestVisible="False" />
                                             <Ellipse Width="10"
-                                                      Height="10"
-                                                      StrokeThickness="1"
-                                                      Stroke="#FF000000"
-                                                      IsHitTestVisible="False" />
+                                                     Height="10"
+                                                     StrokeThickness="1"
+                                                     Stroke="#FF000000"
+                                                     IsHitTestVisible="False" />
                                         </Canvas>
                                     </Canvas>
-                                </Border>
 
-                                <Border Grid.Row="1" Margin="3">
-                                    <Grid>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="*" />
-                                            <ColumnDefinition Width="Auto" />
-                                        </Grid.ColumnDefinitions>
-                                        <Border x:Name="SelectedColorBorder"
-                                                  Background="{StaticResource CheckerBrush}"
-                                                  MinHeight="22"
-                                                  Margin="3"
-                                                  BorderThickness="1"
-                                                  BorderBrush="#FFC9CACA">
-                                            <Rectangle x:Name="SelectedColor"
-                                                        Fill="{Binding SelectedColor, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource ColorToSolidColorBrushConverter}}" />
-                                        </Border>
-                                        <!-- Provide a textbox for entering complete hexadeciaml color codes -->
-                                        <!-- behaviour allows only characters that conform to hexadecimal input -->
-                                        <TextBox x:Name="PART_HexadecimalTextBox"
-                                                   Grid.Column="1"
-                                                   Margin="3"
-                                                   VerticalAlignment="Center"
-                                                   MaxLength="8"
-                                                   Style="{StaticResource ColorCanvasTextBoxStyle}"
-                                                   behav:AllowableCharactersTextBoxBehavior.RegularExpressionProperty="^[0-9|a-f|A-F]+$"
-                                                 />
+                                <Grid Grid.Row="1" Margin="0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                        
+                                    <!-- Displays the currently selected color in a filled rectangle -->
+                                    <Border x:Name="SelectedColorBorder"
+                                            Background="{StaticResource CheckerBrush}"
+                                            MinHeight="24"
+                                            Margin="0,9,3,3"
+                                            ClipToBounds="True"
+                                            Padding="0"
+                                            BorderThickness="1"
+                                            BorderBrush="Gray"
+                                            VerticalAlignment="Stretch"
+                                            HorizontalAlignment="Stretch"
+                                            UseLayoutRounding="True"
+                                            SnapsToDevicePixels="True"
+                                            >
+                                        <Border x:Name="SelectedColor"
+                                                VerticalAlignment="Stretch"
+                                                HorizontalAlignment="Stretch"
+                                                BorderThickness="0"
+                                                Padding="0"
+                                                Margin="0,0,-0.5,-0.5"
+                                                Background="{Binding SelectedColor, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource ColorToSolidColorBrushConverter}}" />
+                                    </Border>
 
-                                        <TextBlock Grid.Column="1"
-                                                   Margin="3"
-                                                   VerticalAlignment="Center"
-                                                   Style="{StaticResource ColorCanvasTextBlockStyle}"
-                                                   Text="#XXXXXXXXX"
-                                                   Visibility="Hidden" />
-                                        <!-- Size Measuring TextBlock -->
-                                    </Grid>
-                                </Border>
+                                    <!-- Provide a textbox for entering complete hexadeciaml color codes -->
+                                    <!-- behaviour allows only characters that conform to hexadecimal input -->
+                                    <TextBox x:Name="PART_HexadecimalTextBox"
+                                             Grid.Column="1"
+                                             Margin="3"
+                                             VerticalAlignment="Center"
+                                             MaxLength="8"
+                                             Style="{StaticResource ColorCanvasTextBoxStyle}"
+                                             behav:AllowableCharactersTextBoxBehavior.RegularExpressionProperty="^[0-9|a-f|A-F]+$"
+                                             />
 
-                                <Border Grid.Column="2" Grid.RowSpan="2" Margin="3">
-                                    <controls:ColorSpectrumSlider x:Name="PART_SpectrumSlider" VerticalAlignment="Stretch" />
-                                </Border>
+                                    <TextBlock Grid.Column="1"
+                                               Margin="3"
+                                               VerticalAlignment="Center"
+                                               Style="{StaticResource ColorCanvasTextBlockStyle}"
+                                               Text="#XXXXXXXXX"
+                                               Visibility="Hidden" />
+                                    <!-- Size Measuring TextBlock -->
+                                </Grid>
+
+                                <!-- Vertical Color selection slider control -->
+                                <controls:ColorSpectrumSlider x:Name="PART_SpectrumSlider"
+                                                              Grid.Column="2" Grid.RowSpan="2"
+                                                              MinWidth="24"
+                                                              VerticalAlignment="Stretch"
+                                                              HorizontalAlignment="Stretch"
+                                                              Margin="9,0,3,3"
+                                                              />
                             </Grid>
 
                             <Border x:Name="RGBBorder"

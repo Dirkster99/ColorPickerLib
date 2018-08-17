@@ -6,22 +6,11 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300"
              
-             xmlns:xctk="clr-namespace:ColorPickerLib;assembly=ColorPickerLib"
              xmlns:controls="clr-namespace:ColorPickerLib.Controls;assembly=ColorPickerLib"
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             xmlns:numUpDown="clr-namespace:NumericUpDownLib;assembly=NumericUpDownLib"
              >
     <UserControl.Resources>
-        <Style x:Key="controlInError" TargetType="xctk:ByteUpDown">
-            <Style.Triggers>
-                <Trigger Property="Validation.HasError"
-                     Value="true">
-                    <Setter Property="ToolTip"
-                            Value="{Binding RelativeSource={x:Static RelativeSource.Self},
-                            Path=(Validation.Errors).CurrentItem.ErrorContent}" />
-                </Trigger>
-            </Style.Triggers>
-        </Style>
-
         <ObjectDataProvider x:Key="ColorModeOptions" MethodName="GetValues"
                           ObjectType="{x:Type sys:Enum}">
             <ObjectDataProvider.MethodParameters>
@@ -55,20 +44,6 @@
                        Header="ColorCanvas Features"
                        HorizontalAlignment="Stretch">
                 <Grid>
-                    <Grid.Resources>
-                        <Style x:Key="alignStyle" TargetType="{x:Type FrameworkElement}">
-                            <Setter Property="Margin" Value="5" />
-                        </Style>
-
-                        <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource alignStyle}" />
-                        <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource alignStyle}" />
-                        <Style TargetType="{x:Type CheckBox}" BasedOn="{StaticResource alignStyle}" />
-                        <Style TargetType="{x:Type xctk:IntegerUpDown}" BasedOn="{StaticResource alignStyle}">
-                            <Setter Property="Width" Value="45" />
-                            <Setter Property="Minimum" Value="0" />
-                            <Setter Property="Maximum" Value="255" />
-                        </Style>
-                    </Grid.Resources>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
@@ -85,62 +60,55 @@
                                HorizontalAlignment="Stretch"
                                Orientation="Horizontal">
                         <TextBlock Text="R:" />
-                        <xctk:ByteUpDown x:Name="_R"
-                                      Value="{Binding ElementName=_colorCanvas, Path=R, Mode=TwoWay}"
-                                      Minimum="0"
-                                      Maximum="255"
-                                      ParsingNumberStyle="Integer"
-                                      Style="{StaticResource controlInError}" />
+                        <numUpDown:NumericUpDown x:Name="_R"
+                                                 Value="{Binding ElementName=_colorCanvas, Path=R, Mode=TwoWay}"
+                                                 MinValue="0"
+                                                 MaxValue="255"
+                                        />
                         <TextBlock Text="G:" Margin="5" />
-                        <xctk:ByteUpDown x:Name="_G"
+                        <numUpDown:NumericUpDown x:Name="_G"
                                       Value="{Binding ElementName=_colorCanvas, Path=G, Mode=TwoWay}"
-                                      Minimum="0"
-                                      Maximum="255"
-                                      ParsingNumberStyle="Integer"
-                                      Style="{StaticResource controlInError}" />
+                                      MinValue="0"
+                                      MaxValue="255" />
                         <TextBlock Text="B:"
                              Margin="5" />
-                        <xctk:ByteUpDown x:Name="_B"
+                        <numUpDown:NumericUpDown x:Name="_B"
                                       Value="{Binding ElementName=_colorCanvas, Path=B, Mode=TwoWay}"
-                                      Minimum="0"
-                                      Maximum="255"
-                                      ParsingNumberStyle="Integer"
-                                      Style="{StaticResource controlInError}" />
+                                      MinValue="0"
+                                      MaxValue="255" />
                         <TextBlock Text="A:"
                              Margin="5" />
-                        <xctk:ByteUpDown x:Name="_A"
+                        <numUpDown:NumericUpDown x:Name="_A"
                                       Value="{Binding ElementName=_colorCanvas, Path=A, Mode=TwoWay}"
-                                      Minimum="0"
-                                      Maximum="255"
-                                      ParsingNumberStyle="Integer"
-                                      Style="{StaticResource controlInError}" />
+                                      MinValue="0"
+                                      MaxValue="255" />
                     </StackPanel>
 
                     <TextBlock Grid.Column="0"
-                          Grid.Row="1"
-                          Text="UsingAlphaChannel: " />
+                               Grid.Row="1"
+                               Text="UsingAlphaChannel: " />
                     <CheckBox Grid.Column="1"
                          Grid.Row="1"
                          x:Name="_usingAlphaChannel"
                          IsChecked="{Binding ElementName=_colorCanvas, Path=UsingAlphaChannel, Mode=TwoWay}" />
                     <TextBlock Grid.Column="0"
-                          Grid.Row="2"
-                          Text="HexadecimalString: " />
+                               Grid.Row="2"
+                               Text="HexadecimalString: " />
                     <TextBox Grid.Column="1"
-                        Grid.Row="2"
-                        IsEnabled="False"
-                        Text="{Binding ElementName=_colorCanvas, Path=HexadecimalString}" />
+                             Grid.Row="2"
+                             IsEnabled="False"
+                             Text="{Binding ElementName=_colorCanvas, Path=HexadecimalString}" />
                 </Grid>
             </GroupBox>
 
             <TextBlock Text="ColorCanvas Usage: "
-                    Grid.Row="1"
-                    Margin="0,10,0,0"
-                     />
-            <controls:ColorCanvas x:Name="_colorCanvas" SelectedColor="{Binding SelectedAccentColor}"
-                                   Grid.Row="2"
-                                   VerticalAlignment="Top"
-                                   HorizontalAlignment="Stretch" />
+                       Grid.Row="1"
+                       Margin="3" />
+            <controls:ColorCanvas x:Name="_colorCanvas"
+                                  SelectedColor="{Binding SelectedAccentColor}"
+                                  Grid.Row="2"
+                                  VerticalAlignment="Stretch"
+                                  HorizontalAlignment="Stretch" />
         </Grid>
 
         <Grid Grid.Column="1"
@@ -152,26 +120,11 @@
             </Grid.RowDefinitions>
 
             <GroupBox Grid.Column="0"
-                   Grid.Row="0"
-                   Header="ColorPicker Features"
-                   HorizontalAlignment="Stretch"
-                   Margin="10">
+                      Grid.Row="0"
+                      Header="ColorPicker Features"
+                      HorizontalAlignment="Stretch"
+                      Margin="10">
                 <Grid>
-                    <Grid.Resources>
-                        <Style TargetType="{x:Type TextBlock}">
-                            <Setter Property="Margin" Value="3" />
-                            <Setter Property="VerticalAlignment" Value="Center" />
-                        </Style>
-                        <Style TargetType="{x:Type TextBox}">
-                            <Setter Property="Margin" Value="3" />
-                        </Style>
-                        <Style TargetType="{x:Type CheckBox}">
-                            <Setter Property="Margin" Value="3" />
-                        </Style>
-                        <Style TargetType="{x:Type ComboBox}">
-                            <Setter Property="Margin" Value="3" />
-                        </Style>
-                    </Grid.Resources>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
@@ -198,10 +151,10 @@
                           Grid.Row="0"
                           Text="ColorMode:" />
                     <ComboBox Grid.Column="1"
-                         Grid.Row="0"
-                         ItemsSource="{Binding Source={StaticResource ColorModeOptions}}"
-                         SelectedItem="{Binding ElementName=_colorPicker, Path=ColorMode, Mode=TwoWay}"
-                         Height="22"/>
+                              Grid.Row="0"
+                              ItemsSource="{Binding Source={StaticResource ColorModeOptions}}"
+                              SelectedItem="{Binding ElementName=_colorPicker, Path=ColorMode, Mode=TwoWay}"
+                              />
                     <TextBlock Grid.Column="0"
                           Grid.Row="1"
                           Text="AvailableColorsHeader:" />

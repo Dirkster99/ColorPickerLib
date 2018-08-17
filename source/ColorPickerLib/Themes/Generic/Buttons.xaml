@@ -3,6 +3,7 @@
                     xmlns:themes="clr-namespace:ColorPickerLib.Themes"
                     xmlns:chrome="clr-namespace:ColorPickerLib.Chromes">
 
+    <!--
    <Style x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type themes:ResourceKeys}, ResourceId=SpinnerButtonStyleKey}" 
           TargetType="RepeatButton">
       <Setter Property="BorderThickness" Value="1" />
@@ -29,5 +30,5 @@
          </Setter.Value>
       </Setter>
    </Style>
-
+-->
 </ResourceDictionary>

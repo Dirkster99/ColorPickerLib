@@ -1,11 +1,13 @@
 ﻿<Window x:Class="ColorPickerDemo.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="650" Width="625"
+        Title="MainWindow" Height="650" Width="735"
         
         xmlns:views="clr-namespace:ColorPickerDemoLib.Views;assembly=ColorPickerDemoLib"
         >
     <Grid>
-        <views:ColorSelectionView DataContext="{Binding }" />
+        <ScrollViewer>
+            <views:ColorSelectionView DataContext="{Binding }" />
+        </ScrollViewer>
     </Grid>
 </Window>

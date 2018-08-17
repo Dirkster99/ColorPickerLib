@@ -10,23 +10,31 @@
     <!-- =============================================================================== -->
     <!-- ColorSpectrumSlider (Template and Style)                                        -->
     <!-- =============================================================================== -->
-
-    <ControlTemplate x:Key="ColorSpectrumSliderTemplate" TargetType="{x:Type controls:ColorSpectrumSlider}">
-        <Grid>
+    <ControlTemplate x:Key="ColorSpectrumSliderTemplate"
+                     TargetType="{x:Type controls:ColorSpectrumSlider}">
+        <Grid VerticalAlignment="{TemplateBinding VerticalAlignment}"
+              HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+            >
             <Border BorderBrush="{TemplateBinding BorderBrush}"
-                     BorderThickness="{TemplateBinding BorderThickness}"
-                     Margin="0,0,0,0">
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    Background="Transparent"
+                    Margin="0,0,0,0">
                 <Border x:Name="PART_TrackBackground" Width="25">
-                    <Rectangle x:Name="PART_SpectrumDisplay" Stretch="Fill" VerticalAlignment="Stretch" />
+                    <Rectangle x:Name="PART_SpectrumDisplay"
+                               Stretch="Fill"
+                               VerticalAlignment="Stretch" />
                 </Border>
             </Border>
 
-            <Track Name="PART_Track">
+            <Track Name="PART_Track"
+                   >
                 <Track.DecreaseRepeatButton>
-                    <RepeatButton Style="{StaticResource SliderRepeatButtonStyle}" Command="Slider.DecreaseLarge" />
+                    <RepeatButton Style="{StaticResource SliderRepeatButtonStyle}"
+                                  Command="Slider.DecreaseLarge" />
                 </Track.DecreaseRepeatButton>
                 <Track.IncreaseRepeatButton>
-                    <RepeatButton Style="{StaticResource SliderRepeatButtonStyle}" Command="Slider.IncreaseLarge" />
+                    <RepeatButton Style="{StaticResource SliderRepeatButtonStyle}"
+                                  Command="Slider.IncreaseLarge" />
                 </Track.IncreaseRepeatButton>
                 <Track.Thumb>
                     <Thumb Style="{StaticResource VerticalSlideThumbStyle}" />
@@ -47,6 +55,8 @@
         <Setter Property="IsSnapToTickEnabled" Value="True" />
         <Setter Property="IsDirectionReversed" Value="False" />
         <Setter Property="IsMoveToPointEnabled" Value="True" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="UseLayoutRounding" Value="True" />
         <Setter Property="Value" Value="0" />
         <Setter Property="Template" Value="{StaticResource ColorSpectrumSliderTemplate}" />
     </Style>

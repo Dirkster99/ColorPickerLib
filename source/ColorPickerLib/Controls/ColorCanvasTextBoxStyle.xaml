@@ -5,7 +5,8 @@
     <!-- ColorCanvasTextBox (Style)                                                      -->
     <!-- =============================================================================== -->
 
-    <Style x:Key="ColorCanvasTextBoxStyle" TargetType="TextBox" BasedOn="{StaticResource {x:Type TextBox}}">
+    <Style x:Key="ColorCanvasTextBoxStyle"
+           TargetType="TextBox" BasedOn="{StaticResource {x:Type TextBox}}">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="FontFamily" Value="Courier New" />
         <Setter Property="AcceptsReturn" Value="False" />
@@ -18,7 +19,8 @@
         </Style.Triggers>
     </Style>
 
-    <Style x:Key="ColorCanvasTextBlockStyle" TargetType="TextBlock" BasedOn="{StaticResource {x:Type TextBlock}}">
+    <Style x:Key="ColorCanvasTextBlockStyle"
+           TargetType="TextBlock" BasedOn="{StaticResource {x:Type TextBlock}}">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="FontFamily" Value="Courier New" />
         <Setter Property="TextWrapping" Value="NoWrap" />
