@@ -1,8 +1,8 @@
-﻿using System.Windows.Media;
-
-namespace ColorPickerDemo.ViewModels
+﻿namespace ColorPickerDemo.ViewModels
 {
-    public class AppViewModel : Base.ViewModelBase
+    using System.Windows.Media;
+
+    internal class AppViewModel : Base.ViewModelBase
     {
         #region fields
         private Color _SelectedAccentColor;
@@ -14,7 +14,8 @@ namespace ColorPickerDemo.ViewModels
         /// </summary>
         public AppViewModel()
         {
-            _SelectedAccentColor = Color.FromRgb(180, 0, 0);
+            // Explicit use of opacity is recommended here to initialize all components as expected
+            _SelectedAccentColor = Color.FromArgb(128, 180, 0, 0);
         }
         #endregion ctors
 

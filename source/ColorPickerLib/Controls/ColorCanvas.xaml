@@ -4,7 +4,7 @@
                     xmlns:localiz="clr-namespace:ColorPickerLib.Localized"
                     xmlns:themes="clr-namespace:ColorPickerLib.Themes"
                     xmlns:controls="clr-namespace:ColorPickerLib.Controls"
-                    xmlns:numupdown="clr-namespace:ColorPickerLib"
+                    xmlns:numupdown="clr-namespace:NumericUpDownLib;assembly=NumericUpDownLib"
                     xmlns:conv="clr-namespace:ColorPickerLib.Converters"
                     xmlns:behav="clr-namespace:ColorPickerLib.Behaviours"
                     >
@@ -291,17 +291,6 @@
                                     ClipToBounds="True"
                                      Margin="3,12,3,12">
                                 <Grid>
-                                    <Grid.Resources>
-                                        <Style x:Key="controlInError" TargetType="numupdown:ByteUpDown">
-                                            <Style.Triggers>
-                                                <Trigger Property="Validation.HasError" Value="true">
-                                                    <Setter Property="ToolTip"
-                                                            Value="{Binding RelativeSource={x:Static RelativeSource.Self},
-                                                            Path=(Validation.Errors).CurrentItem.ErrorContent}" />
-                                                </Trigger>
-                                            </Style.Triggers>
-                                        </Style>
-                                    </Grid.Resources>
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="Auto" />
                                         <RowDefinition Height="Auto" />
@@ -333,16 +322,11 @@
                                            Value="{Binding R, RelativeSource={RelativeSource TemplatedParent}}"
                                            VerticalAlignment="Center" />
 
-                                    <numupdown:ByteUpDown Grid.Row="1" Grid.Column="1"
-                                            Value="{Binding Value, ElementName=PART_RSlider}"
+                                    <numupdown:NumericUpDown Grid.Row="1" Grid.Column="1"
+                                            Value="{Binding R, RelativeSource={RelativeSource TemplatedParent},Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                                             VerticalAlignment="Center" HorizontalAlignment="Stretch"
-                                            Minimum="0" Maximum="255"
-                                            ParsingNumberStyle="Integer"
-                                            DefaultValue="128"
-                                            DisplayDefaultValueOnEmptyText="True"
-                                            
-                                                          
-                                            Style="{StaticResource controlInError}" />
+                                            MinValue="0"
+                                            MaxValue="255" />
                                     <TextBlock Grid.Row="1" Grid.Column="1"
                                                 VerticalAlignment="Center"
                                                 Style="{StaticResource ColorCanvasTextBlockStyle}"
@@ -352,9 +336,9 @@
 
                                     <TextBlock Grid.Row="2"
                                                Grid.Column="0" Grid.ColumnSpan="2"
-                                              Text="{Binding Source={x:Static localiz:Strings.STR_GREEN_LABEL}, StringFormat={}{0}:}"
-                                              VerticalAlignment="Center"
-                                              Margin="0,6,0,0"
+                                               Text="{Binding Source={x:Static localiz:Strings.STR_GREEN_LABEL}, StringFormat={}{0}:}"
+                                               VerticalAlignment="Center"
+                                               Margin="0,6,0,0"
                                                />
 
                                     <Slider x:Name="PART_GSlider" Grid.Row="3" Grid.Column="0"
@@ -365,14 +349,11 @@
                                            Margin="3,6,3,6"
                                            Value="{Binding G, RelativeSource={RelativeSource TemplatedParent}}"
                                            VerticalAlignment="Center" />
-                                    <numupdown:ByteUpDown Grid.Row="3" Grid.Column="1"
-                                            Value="{Binding Value, ElementName=PART_GSlider}"
+                                    <numupdown:NumericUpDown Grid.Row="3" Grid.Column="1"
+                                            Value="{Binding G, RelativeSource={RelativeSource TemplatedParent},Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                                             VerticalAlignment="Center"  HorizontalAlignment="Stretch"
-                                            Minimum="0" Maximum="255"
-                                            ParsingNumberStyle="Integer"
-                                            DefaultValue="128"
-                                            DisplayDefaultValueOnEmptyText="True"
-                                            Style="{StaticResource controlInError}" />
+                                            MinValue="0"
+                                            MaxValue="255" />
 
                                     <TextBlock Grid.Row="4" Grid.Column="0"
                                               Text="{Binding Source={x:Static localiz:Strings.STR_BLUE_LABEL}, StringFormat={}{0}:}"
@@ -387,37 +368,32 @@
                                             Margin="3,6,3,6"
                                             Value="{Binding B, RelativeSource={RelativeSource TemplatedParent}}"
                                             VerticalAlignment="Center" />
-                                    <numupdown:ByteUpDown Grid.Row="5" Grid.Column="1"
-                                            Value="{Binding Value, ElementName=PART_BSlider}"
+                                    <numupdown:NumericUpDown Grid.Row="5" Grid.Column="1"
+                                            Value="{Binding B, RelativeSource={RelativeSource TemplatedParent},Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                                             VerticalAlignment="Center" HorizontalAlignment="Stretch"
-                                            Minimum="0" Maximum="255"
-                                            ParsingNumberStyle="Integer"
-                                            DefaultValue="128"
-                                            DisplayDefaultValueOnEmptyText="True"
-                                            Style="{StaticResource controlInError}" />
+                                            MinValue="0"
+                                            MaxValue="255" />
 
                                     <TextBlock Grid.Row="6" Grid.Column="0"
                                               Text="{Binding Source={x:Static localiz:Strings.STR_ALPHA_LABEL}, StringFormat={}{0}:}"
                                               VerticalAlignment="Center"
                                               Visibility="{Binding Path=UsingAlphaChannel, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource BooleanToVisibilityConverter}}"
-                                               Margin="0,12,0,0"
+                                              Margin="0,12,0,0"
                                                />
                                     <Slider x:Name="PART_OpacitySlider" Grid.Row="7" Grid.Column="0"
-                                           Maximum="255"
-                                           SmallChange="1"
-                                           LargeChange="10"
-                                           Margin="3,6,3,6"
-                                           Value="{Binding Path=A, RelativeSource={RelativeSource TemplatedParent}}"
-                                           VerticalAlignment="Center"
-                                           Visibility="{Binding Path=UsingAlphaChannel, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource BooleanToVisibilityConverter}}"/>
-                                    <numupdown:ByteUpDown Grid.Row="7" Grid.Column="1"
-                                            Value="{Binding Value, ElementName=PART_OpacitySlider}"
+                                            Minimum="0"
+                                            Maximum="255"
+                                            SmallChange="1"
+                                            LargeChange="10"
+                                            Margin="3,6,3,6"
+                                            Value="{Binding Path=A, RelativeSource={RelativeSource TemplatedParent}}"
+                                            VerticalAlignment="Center"
+                                            Visibility="{Binding Path=UsingAlphaChannel, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+                                    <numupdown:NumericUpDown Grid.Row="7" Grid.Column="1"
+                                            Value="{Binding Path=A, RelativeSource={RelativeSource TemplatedParent},Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                                             VerticalAlignment="Center" HorizontalAlignment="Stretch"
-                                            Minimum="0" Maximum="255"
-                                            ParsingNumberStyle="Integer"
-                                            DefaultValue="255"
-                                            DisplayDefaultValueOnEmptyText="True"
-                                            Style="{StaticResource controlInError}"
+                                            MinValue="0"
+                                            MaxValue="255"
                                             Visibility="{Binding Path=UsingAlphaChannel, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource BooleanToVisibilityConverter}}"
                                     />
                                 </Grid>

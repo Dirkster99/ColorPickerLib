@@ -14,7 +14,8 @@
         /// </summary>
         public DemoViewModel()
         {
-            _SelectedAccentColor = Color.FromRgb(180, 0, 0);
+            // Explicit use of opacity is recommended here to initialize all components as expected
+            _SelectedAccentColor = Color.FromArgb(128, 180, 0, 0);
         }
         #endregion constructors
 

@@ -8,7 +8,6 @@
              
              xmlns:controls="clr-namespace:ColorPickerLib.Controls;assembly=ColorPickerLib"
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
-             xmlns:numUpDown="clr-namespace:NumericUpDownLib;assembly=NumericUpDownLib"
              >
     <UserControl.Resources>
         <ObjectDataProvider x:Key="ColorModeOptions" MethodName="GetValues"
@@ -32,17 +31,33 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
+        <!-- Left Main Column -->
         <Grid Grid.Column="0" Margin="5">
             <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <!-- Sample Usage/Test driving Color Canvas Control -->
+            <controls:ColorCanvas x:Name="_colorCanvas"
+                                  SelectedColor="{Binding SelectedAccentColor}"
+                                  Grid.Row="0"
+                                  VerticalAlignment="Stretch"
+                                  HorizontalAlignment="Stretch" />
+        </Grid>
+
+        <!-- Right Main Column -->
+        <Grid Grid.Column="1"
+            Margin="5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
-            <GroupBox Grid.Column="0"
-                       Grid.Row="0"
-                       Header="ColorCanvas Features"
-                       HorizontalAlignment="Stretch">
+            <GroupBox Grid.Row="0"
+                      Header="ColorCanvas Features"
+                      HorizontalAlignment="Stretch">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
@@ -54,35 +69,52 @@
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
 
-                    <StackPanel Grid.Row="0"
+                    <!-- StackPanel Grid.Row="0"
                                Grid.Column="0"
                                Grid.ColumnSpan="2"
                                HorizontalAlignment="Stretch"
-                               Orientation="Horizontal">
-                        <TextBlock Text="R:" />
-                        <numUpDown:NumericUpDown x:Name="_R"
-                                                 Value="{Binding ElementName=_colorCanvas, Path=R, Mode=TwoWay}"
-                                                 MinValue="0"
-                                                 MaxValue="255"
-                                        />
-                        <TextBlock Text="G:" Margin="5" />
-                        <numUpDown:NumericUpDown x:Name="_G"
-                                      Value="{Binding ElementName=_colorCanvas, Path=G, Mode=TwoWay}"
-                                      MinValue="0"
-                                      MaxValue="255" />
-                        <TextBlock Text="B:"
-                             Margin="5" />
-                        <numUpDown:NumericUpDown x:Name="_B"
-                                      Value="{Binding ElementName=_colorCanvas, Path=B, Mode=TwoWay}"
-                                      MinValue="0"
-                                      MaxValue="255" />
-                        <TextBlock Text="A:"
-                             Margin="5" />
-                        <numUpDown:NumericUpDown x:Name="_A"
-                                      Value="{Binding ElementName=_colorCanvas, Path=A, Mode=TwoWay}"
-                                      MinValue="0"
-                                      MaxValue="255" />
-                    </StackPanel>
+                               Orientation="Horizontal"
+                               xmlns:numUpDown="clr-namespace:NumericUpDownLib;assembly=NumericUpDownLib"
+                    >
+                        <TextBlock Text="R:"
+                                   VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        <numUpDown:NumericUpDown
+                            x:Name="_R"
+                            Value="{Binding ElementName=_colorCanvas, Path=R, Mode=TwoWay}"
+                            MinValue="0"
+                            MaxValue="255"
+                            VerticalAlignment="Center" HorizontalAlignment="Center"
+                        />
+
+                        <TextBlock Text="G:" Margin="6"
+                                   VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        <numUpDown:NumericUpDown
+                            x:Name="_G"
+                            Value="{Binding ElementName=_colorCanvas, Path=G, Mode=TwoWay}"
+                            MinValue="0"
+                            MaxValue="255"
+                            VerticalAlignment="Center" HorizontalAlignment="Center"
+                        />
+
+                        <TextBlock Text="B:" Margin="6"
+                                   VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        <numUpDown:NumericUpDown
+                            x:Name="_B"
+                            Value="{Binding ElementName=_colorCanvas, Path=B, Mode=TwoWay}"
+                            MinValue="0"
+                            MaxValue="255"
+                            VerticalAlignment="Center" HorizontalAlignment="Center"
+                        />
+                        
+                        <TextBlock Text="A:" Margin="6"
+                                   VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        <numUpDown:NumericUpDown
+                            x:Name="_A"
+                            Value="{Binding ElementName=_colorCanvas, Path=A, Mode=TwoWay}"
+                            MinValue="0"
+                            MaxValue="255"
+                            VerticalAlignment="Center" HorizontalAlignment="Center" />
+                    </StackPanel -->
 
                     <TextBlock Grid.Column="0"
                                Grid.Row="1"
@@ -101,26 +133,7 @@
                 </Grid>
             </GroupBox>
 
-            <TextBlock Text="ColorCanvas Usage: "
-                       Grid.Row="1"
-                       Margin="3" />
-            <controls:ColorCanvas x:Name="_colorCanvas"
-                                  SelectedColor="{Binding SelectedAccentColor}"
-                                  Grid.Row="2"
-                                  VerticalAlignment="Stretch"
-                                  HorizontalAlignment="Stretch" />
-        </Grid>
-
-        <Grid Grid.Column="1"
-            Margin="5">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
-
-            <GroupBox Grid.Column="0"
-                      Grid.Row="0"
+            <GroupBox Grid.Row="1"
                       Header="ColorPicker Features"
                       HorizontalAlignment="Stretch"
                       Margin="10">
@@ -240,12 +253,12 @@
             </GroupBox>
 
             <TextBlock Text="ColorPicker Usage: "
-                    Grid.Row="1"
+                    Grid.Row="2"
                      />
-            <!-- Style="{StaticResource Header}" -->
+
             <controls:ColorPicker x:Name="_colorPicker"
                                   ShowRecentColors="True"
-                                   Grid.Row="2"
+                                   Grid.Row="3"
                                    VerticalAlignment="Top" />
         </Grid>
 
