@@ -1,3 +1,6 @@
+/source/.vs/
+source/packages/
+packages/
 00_Release/
 01_Nuget/
 debug/
@@ -17,4 +20,4 @@ tmp/
 *.sou
 *.suo
 *.sqlite
-/source/.vs/ColorPickerDemo/v15
+
