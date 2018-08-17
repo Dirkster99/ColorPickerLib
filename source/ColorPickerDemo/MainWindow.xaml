@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="MainWindow" Height="650" Width="625"
         
-        xmlns:views="clr-namespace:ColorPickerDemo.Views"
+        xmlns:views="clr-namespace:ColorPickerDemoLib.Views;assembly=ColorPickerDemoLib"
         >
     <Grid>
         <views:ColorSelectionView DataContext="{Binding }" />

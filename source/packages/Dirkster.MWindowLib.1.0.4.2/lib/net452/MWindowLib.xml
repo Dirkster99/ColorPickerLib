@@ -1,0 +1,1354 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MWindowLib</name>
+    </assembly>
+    <members>
+        <member name="T:MWindowLib.Converters.InverseBooleanConverter">
+            <summary>
+            Class implements a boolean inversion converter
+            (false to true and vice versa).
+            </summary>
+        </member>
+        <member name="M:MWindowLib.Converters.InverseBooleanConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            Converts false to true and vice versa.
+            </summary>
+            <param name="value"></param>
+            <param name="targetType"></param>
+            <param name="parameter"></param>
+            <param name="culture"></param>
+            <returns>the inverted value</returns>
+        </member>
+        <member name="M:MWindowLib.Converters.InverseBooleanConverter.ConvertBack(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            Converts false to true and vice versa.
+            </summary>
+            <param name="value"></param>
+            <param name="targetType"></param>
+            <param name="parameter"></param>
+            <param name="culture"></param>
+            <returns>the inverted value</returns>
+        </member>
+        <member name="T:MWindowLib.Internal.MetroWindowServiceImpl">
+            <summary>
+            Implements the service component according to the interface
+            defintion in <see cref="T:MWindowInterfacesLib.Interfaces.IMetroWindowService"/>.
+            
+            This service component creates instances of Metro Windows
+            and supports utillity functions ...
+            </summary>
+        </member>
+        <member name="M:MWindowLib.Internal.MetroWindowServiceImpl.CreateExternalWindow(System.Boolean,System.Boolean,System.Boolean,System.Windows.ResizeMode,System.Windows.WindowStyle,System.Windows.WindowStartupLocation,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            Creates another metro window instance with the given (default) parameters.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:MWindowLib.SimpleMetroWindow">
+            <summary>
+            The <seealso cref="T:MWindowLib.SimpleMetroWindow"/> class is a CustonControl that inherites from Window.
+            
+            Remarks:
+            CustomControl Window is based on this source:
+            http://stackoverflow.com/questions/13592326/making-wpf-applications-look-metro-styled-even-in-windows-7-window-chrome-t
+            
+            and of course MahApps.Metro http://mahapps.com/
+            </summary>
+        </member>
+        <member name="M:MWindowLib.SimpleMetroWindow.#cctor">
+            <summary>
+            Static constructor
+            </summary>
+        </member>
+        <member name="M:MWindowLib.SimpleMetroWindow.#ctor">
+            <summary>
+            Class constructor
+            </summary>
+        </member>
+        <member name="P:MWindowLib.SimpleMetroWindow.ShowIcon">
+            <summary>
+            Gets/sets if the close button is visible.
+            </summary>
+        </member>
+        <member name="P:MWindowLib.SimpleMetroWindow.ShowTitle">
+            <summary>
+            Gets/sets if the close button is visible.
+            </summary>
+        </member>
+        <member name="P:MWindowLib.SimpleMetroWindow.ShowMinButton">
+            <summary>
+            Gets/sets if the close button is visible.
+            </summary>
+        </member>
+        <member name="P:MWindowLib.SimpleMetroWindow.ShowMaxButton">
+            <summary>
+            Gets/sets if the close button is visible.
+            </summary>
+        </member>
+        <member name="P:MWindowLib.SimpleMetroWindow.ShowCloseButton">
+            <summary>
+            Gets/sets if the close button is visible.
+            </summary>
+        </member>
+        <member name="P:MWindowLib.SimpleMetroWindow.ShowTitleBar">
+            <summary>
+            Gets/sets whether the TitleBar is visible or not.
+            </summary>
+        </member>
+        <member name="P:MWindowLib.SimpleMetroWindow.UseNoneWindowStyle">
+            <summary>
+            Gets/sets whether the WindowStyle is None or not.
+            Setting UseNoneWindowStyle="True" on a <seealso cref="T:MWindowLib.SimpleMetroWindow"/>
+            is equivalent to not showing the titlebar of the window.
+            </summary>
+        </member>
+        <member name="P:MWindowLib.SimpleMetroWindow.ShowDialogsOverTitleBar">
+            <summary>
+            Get/sets whether dialogs show over the title bar.
+            </summary>
+        </member>
+        <member name="P:MWindowLib.SimpleMetroWindow.IsWindowDraggable">
+            <summary>
+            Get/sets whether an external window can be dragged off the initial position or not.
+            </summary>
+        </member>
+        <member name="P:MWindowLib.SimpleMetroWindow.ShowSystemMenuOnRightClick">
+            <summary>
+            Gets/sets if the the system menu should popup on right click.
+            </summary>
+        </member>
+        <member name="M:MWindowLib.SimpleMetroWindow.OnApplyTemplate">
+            <summary>
+            Standard method that is invoked by the WPF framework upon initializing the registered XAML.
+            </summary>
+        </member>
+        <member name="M:MWindowLib.SimpleMetroWindow.StoreFocus(System.Windows.IInputElement)">
+            <summary>
+            Stores the given element, or the last focused element via FocusManager, for restoring the focus after closing a dialog.
+            See also RestoreFocus, ResetStoredFocus method.
+            </summary>
+            <param name="thisElement">The element which will be focused again.</param>
+        </member>
+        <member name="M:MWindowLib.SimpleMetroWindow.RestoreFocus">
+            <summary>
+            Restores a previously saved keyboard focus back to the last focused element.
+            See also StoreFocus, ResetStoredFocus method.
+            </summary>
+        </member>
+        <member name="M:MWindowLib.SimpleMetroWindow.ResetStoredFocus">
+            <summary>
+            Clears the stored element which would get the focus after closing a dialog.
+            See also StoreFocus, RestoreFocus method.
+            </summary>
+        </member>
+        <member name="M:MWindowLib.SimpleMetroWindow.SetWindowEvents(System.Windows.Controls.Primitives.Thumb)">
+            <summary>
+            Method connects the <see cref="T:System.Windows.Controls.Primitives.Thumb"/> object on the window chrome
+            with the correct drag events to let user drag the window on the screen.
+            </summary>
+            <param name="windowTitleThumb"></param>
+        </member>
+        <member name="M:MWindowLib.SimpleMetroWindow.GetPart``1(System.String)">
+            <summary>
+            Gets the template child with the given name.
+            </summary>
+            <typeparam name="T">The interface type inheirted from DependencyObject.</typeparam>
+            <param name="name">The name of the template child.</param>
+        </member>
+        <member name="M:MWindowLib.SimpleMetroWindow.GetPart(System.String)">
+            <summary>
+            Gets the template child with the given name.
+            </summary>
+            <param name="name">The name of the template child.</param>
+        </member>
+        <member name="P:MWindowLib.SimpleMetroWindow.CriticalHandle">
+            <summary>
+            Gets a handle that is required to send Win32 messages to the underlying window.
+            </summary>
+        </member>
+        <member name="T:MWindowLib.Util.WindowSizing">
+             <summary>
+             Source: https://codekong.wordpress.com/2010/11/10/custom-window-style-and-accounting-for-the-taskbar/
+            
+             We have to add some code to a window, with WindowStyle set to None, to make our
+             new window accommodate for the taskbar. One thing we must be especially aware of
+             is accommodating for the taskbar when it is set to auto-hide. When the taskbar is
+             auto-hidden, you have to leave 2 pixels available for the bar on the docked edge
+             so the user can mouse over that area to restore the hidden taskbar.
+             
+             This public static WindowSizing class that should handle the bar correctly.
+             
+             http://blog.opennetcf.com/ayakhnin/content/binary/OfficeStyleWindow.zip
+             </summary>
+        </member>
+        <member name="F:MWindowLib.Util.WindowSizing.MONITOR_DEFAULTTONEAREST">
+            <summary>
+            Determines the default monitor for a window whos taskbar is to be taken into account.
+            (tasbars can be configured to dock different on multiple displays).
+            </summary>
+        </member>
+        <member name="M:MWindowLib.Util.WindowSizing.AdjustWorkingAreaForAutoHide(System.IntPtr,MWindowLib.Util.WindowSizing.MINMAXINFO)">
+            <summary>
+            Adjust Window Size for the case when
+            - window is maximized and
+            - taskbar is set to autohide
+            </summary>
+            <param name="monitorContainingApplication"></param>
+            <param name="mmi"></param>
+            <returns></returns>
+        </member>
+        <member name="T:MWindowLib.Util.InvokeExtensions">
+            <summary>
+            Class provides extension methods for execution on the dispatcher (UI) thread.
+            These methods should be interesting for manipulating collections that are bound
+            to a view element (UI) and cannot be changed from any other thread than the one
+            that created them (usually the UI dispatcher thread).
+            </summary>
+        </member>
+        <member name="M:MWindowLib.Util.InvokeExtensions.Invoke``1(System.Windows.Threading.DispatcherObject,System.Func{``0})">
+            <summary> 
+            Executes the specified function synchronously with the
+            DispatcherPriority.Background on the thread that the Dispatcher was created on.
+            </summary>
+            <param name="dispatcherObject">The dispatcher object where the action runs.</param>
+            <param name="func">Function to be executed on dispatcher thread.</param>
+            <returns>T via the invoked function T</returns>
+        </member>
+        <member name="M:MWindowLib.Util.InvokeExtensions.Invoke(System.Windows.Threading.DispatcherObject,System.Action)">
+            <summary> 
+            Executes the specified Action synchronously with the
+            DispatcherPriority.Background on the thread that the Dispatcher was created on.
+            </summary>
+            <param name="dispatcherObject">The dispatcher object where the action runs.</param>
+            <param name="invokeAction">An action that takes no parameters.</param>
+        </member>
+        <member name="M:MWindowLib.Util.InvokeExtensions.BeginInvoke(System.Windows.Threading.DispatcherObject,System.Action,System.Windows.Threading.DispatcherPriority)">
+            <summary> 
+            Executes the specified action asynchronously (this call returns BEFORE action completes)
+            with the DispatcherPriority.Background on the thread that the Dispatcher was created on.
+            </summary>
+            <param name="dispatcherObject">The dispatcher object where the action runs.</param>
+            <param name="invokeAction">An action that takes no parameters.</param>
+            <param name="priority">The dispatcher priority.</param>
+        </member>
+        <member name="T:MWindowLib.Behaviours.BorderlessWindowBehavior">
+            <summary>
+            This class supports custom window styles while removing the normal
+            Windows version dependent border of a Window.
+            http://mahapps.com/guides/advanced-guide.html
+            </summary>
+        </member>
+        <member name="M:MWindowLib.Behaviours.BorderlessWindowBehavior.OnAttached">
+             <summary>
+             Initializes a new instance of the System.Windows.Interactivity.Behavior class.
+            
+             Hooks any necessary handlers to the AssociatedObject.
+             </summary>
+        </member>
+        <member name="M:MWindowLib.Behaviours.BorderlessWindowBehavior.OnDetaching">
+            <summary>
+            Unhooks any necessary handlers from the AssociatedObject.
+            </summary>
+        </member>
+        <member name="T:MWindowLib.Behaviours.StylizedBehaviorCollection">
+            <summary>
+            Class implements a freezable collection to keep track of behaviors
+            in the <seealso cref="T:MWindowLib.Behaviours.StylizedBehaviors"/> attached property.
+            </summary>
+        </member>
+        <member name="M:MWindowLib.Behaviours.StylizedBehaviorCollection.CreateInstanceCore">
+            <summary>
+            Class constructor.
+            </summary>
+        </member>
+        <member name="T:MWindowLib.Behaviours.StylizedBehaviors">
+            <summary>
+            This class implements an attached property that can be attached
+            to a window style to hold a collection of behaviors that in turn can manipulate
+            the appearance of a window (e.g.: make it borderless).
+            </summary>
+        </member>
+        <member name="F:MWindowLib.Behaviours.StylizedBehaviors.BehaviorsProperty">
+            <summary>
+            Backing store of the Behaviors dependency property which implements
+            a collection of behaviors that can be applied to a style (of a window).
+            </summary>
+        </member>
+        <member name="M:MWindowLib.Behaviours.StylizedBehaviors.GetBehaviors(System.Windows.DependencyObject)">
+            <summary>
+            Gets the Behaviors dependency property which implements
+            a collection of behaviors that can be applied to a style (of a window).
+            </summary>
+            <param name="uie"></param>
+            <returns>the collection of style behaviors</returns>
+        </member>
+        <member name="M:MWindowLib.Behaviours.StylizedBehaviors.SetBehaviors(System.Windows.DependencyObject,MWindowLib.Behaviours.StylizedBehaviorCollection)">
+            <summary>
+            Sets the Behaviors dependency property which implements
+            a collection of behaviors that can be applied to a style (of a window).
+            </summary>
+            <param name="uie"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:MWindowLib.Behaviours.StylizedBehaviors.OnPropertyChanged(System.Windows.DependencyObject,System.Windows.DependencyPropertyChangedEventArgs)">
+            <summary>
+            Method is invoked when the Behaviors dependency property is changed (on attach/detach).
+            </summary>
+            <param name="dpo">The FrameworkElement where this behavior is attached.</param>
+            <param name="e">A collection of a <seealso cref="T:MWindowLib.Behaviours.StylizedBehaviorCollection"/>
+            to keep track of in this behaviors collection.</param>
+        </member>
+        <member name="T:MWindowLib.Controls.MetroThumb">
+            <summary>
+            Implements an extended thumb control for the metro framework.
+            </summary>
+        </member>
+        <member name="M:MWindowLib.Controls.MetroThumb.OnPreviewTouchDown(System.Windows.Input.TouchEventArgs)">
+            <summary>
+            Method is executed when thumb is dragged.
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="M:MWindowLib.Controls.MetroThumb.OnPreviewTouchUp(System.Windows.Input.TouchEventArgs)">
+            <summary>
+            Method is executed when thumb is no longer dragged.
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="M:MWindowLib.Controls.MetroThumb.OnLostTouchCapture(System.Windows.Input.TouchEventArgs)">
+            <summary>
+            Method is executed when thumb is no longer touched.
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="T:MWindowLib.Controls.MetroWindowHelpers">
+            <summary>
+            This class eats little children.
+            </summary>
+        </member>
+        <member name="M:MWindowLib.Controls.MetroWindowHelpers.SetIsHitTestVisibleInChromeProperty``1(MWindowLib.MetroWindow,System.String,System.Boolean)">
+            <summary>
+            Sets the IsHitTestVisibleInChromeProperty to a MetroWindow template child
+            </summary>
+            <param name="window">The MetroWindow.</param>
+            <param name="name">The name of the template child.</param>
+            <param name="hitTestVisible"></param>
+        </member>
+        <member name="M:MWindowLib.Controls.MetroWindowHelpers.SetWindowChromeResizeGripDirection(MWindowLib.MetroWindow,System.String,System.Windows.Shell.ResizeGripDirection)">
+            <summary>
+            Sets the WindowChrome ResizeGripDirection to a MetroWindow template child.
+            </summary>
+            <param name="window">The MetroWindow.</param>
+            <param name="name">The name of the template child.</param>
+            <param name="direction">The direction.</param>
+        </member>
+        <member name="T:MWindowLib.Controls.PropertyChangeNotifier">
+            <summary>
+            AddValueChanged of dependency property descriptor results in memory leak as you already know.
+            So, as described here, you can create custom class PropertyChangeNotifier to listen
+            to any dependency property changes.
+            
+            This class takes advantage of the fact that bindings use weak references to manage associations
+            so the class will not root the object who property changes it is watching. It also uses a WeakReference
+            to maintain a reference to the object whose property it is watching without rooting that object.
+            In this way, you can maintain a collection of these objects so that you can unhook the property
+            change later without worrying about that collection rooting the object whose values you are watching.
+            
+            Complete implementation can be found here: http://agsmith.wordpress.com/2008/04/07/propertydescriptor-addvaluechanged-alternative/
+            </summary>
+        </member>
+        <member name="F:MWindowLib.Controls.PropertyChangeNotifier.ValueProperty">
+            <summary>
+            Identifies the <see cref="P:MWindowLib.Controls.PropertyChangeNotifier.Value"/> dependency property
+            </summary>
+        </member>
+        <member name="P:MWindowLib.Controls.PropertyChangeNotifier.Value">
+            <summary>
+            Returns/sets the value of the property
+            </summary>
+            <seealso cref="F:MWindowLib.Controls.PropertyChangeNotifier.ValueProperty"/>
+        </member>
+        <member name="T:MWindowLib.Controls.TreeHelper">
+            <summary>
+            Helper methods for UI-related tasks.
+            This class was obtained from Philip Sumi (a fellow WPF Disciples blog)
+            http://www.hardcodet.net/uploads/2009/06/UIHelper.cs
+            </summary>
+        </member>
+        <member name="M:MWindowLib.Controls.TreeHelper.TryFindParent``1(System.Windows.DependencyObject)">
+            <summary>
+            Finds a parent of a given item on the visual tree.
+            </summary>
+            <typeparam name="T">The type of the queried item.</typeparam>
+            <param name="child">A direct or indirect child of the
+            queried item.</param>
+            <returns>The first parent item that matches the submitted
+            type parameter. If not matching item can be found, a null
+            reference is being returned.</returns>
+        </member>
+        <member name="M:MWindowLib.Controls.TreeHelper.FindChild``1(System.Windows.DependencyObject,System.String)">
+            <summary>
+            Finds a Child of a given item in the visual tree. 
+            </summary>
+            <param name="parent">A direct parent of the queried item.</param>
+            <typeparam name="T">The type of the queried item.</typeparam>
+            <param name="childName">x:Name or Name of child. </param>
+            <returns>The first parent item that matches the submitted type parameter. 
+            If not matching item can be found, 
+            a null parent is being returned.</returns>
+        </member>
+        <member name="M:MWindowLib.Controls.TreeHelper.GetParentObject(System.Windows.DependencyObject)">
+            <summary>
+            This method is an alternative to WPF's
+            <see cref="M:System.Windows.Media.VisualTreeHelper.GetParent(System.Windows.DependencyObject)"/> method, which also
+            supports content elements. Keep in mind that for content element,
+            this method falls back to the logical tree of the element!
+            </summary>
+            <param name="child">The item to be processed.</param>
+            <returns>The submitted item's parent, if available. Otherwise
+            null.</returns>
+        </member>
+        <member name="M:MWindowLib.Controls.TreeHelper.FindChildren``1(System.Windows.DependencyObject,System.Boolean)">
+            <summary>
+            Analyzes both visual and logical tree in order to find all elements of a given
+            type that are descendants of the <paramref name="source"/> item.
+            </summary>
+            <typeparam name="T">The type of the queried items.</typeparam>
+            <param name="source">The root element that marks the source of the search. If the
+            source is already of the requested type, it will not be included in the result.</param>
+            <param name="forceUsingTheVisualTreeHelper">Sometimes it's better to search in the VisualTree (e.g. in tests)</param>
+            <returns>All descendants of <paramref name="source"/> that match the requested type.</returns>
+        </member>
+        <member name="M:MWindowLib.Controls.TreeHelper.GetChildObjects(System.Windows.DependencyObject,System.Boolean)">
+            <summary>
+            This method is an alternative to WPF's
+            <see cref="M:System.Windows.Media.VisualTreeHelper.GetChild(System.Windows.DependencyObject,System.Int32)"/> method, which also
+            supports content elements. Keep in mind that for content elements,
+            this method falls back to the logical tree of the element.
+            </summary>
+            <param name="parent">The item to be processed.</param>
+            <param name="forceUsingTheVisualTreeHelper">Sometimes it's better to search in the VisualTree (e.g. in tests)</param>
+            <returns>The submitted item's child elements, if available.</returns>
+        </member>
+        <member name="M:MWindowLib.Controls.TreeHelper.TryFindFromPoint``1(System.Windows.UIElement,System.Windows.Point)">
+            <summary>
+            Tries to locate a given item within the visual tree,
+            starting with the dependency object at a given position. 
+            </summary>
+            <typeparam name="T">The type of the element to be found
+            on the visual tree of the element at the given location.</typeparam>
+            <param name="reference">The main element which is used to perform
+            hit testing.</param>
+            <param name="point">The position to be evaluated on the origin.</param>
+        </member>
+        <member name="T:MWindowLib.Definition.ThemeBase">
+            <summary>
+            A theme base contains all information that is relevant to a given name.
+            Thats at least a list of resource files drawn from various modules plus
+            a displayable unique name that can be used to select/display the theme
+            in the application's UI.
+            </summary>
+        </member>
+        <member name="M:MWindowLib.Definition.ThemeBase.#ctor(System.Collections.Generic.List{System.String},System.String)">
+            <summary>
+            Parameterized constructor
+            </summary>
+        </member>
+        <member name="M:MWindowLib.Definition.ThemeBase.#ctor">
+            <summary>
+            Hidden constructor
+            </summary>
+        </member>
+        <member name="P:MWindowLib.Definition.ThemeBase.Resources">
+            <summary>
+            Get a list of Uri formatted resource strings that point to all relevant resources.
+            </summary>
+        </member>
+        <member name="P:MWindowLib.Definition.ThemeBase.WPFThemeName">
+            <summary>
+            WPF Application skin theme (e.g. Metro)
+            </summary>
+        </member>
+        <member name="T:MWindowLib.MetroWindow">
+            <summary>
+            The <seealso cref="T:MWindowLib.MetroWindow"/> class is a CustonControl that inherits from Window.
+            
+            Remarks:
+            CustomControl Window is based on this source:
+            http://stackoverflow.com/questions/13592326/making-wpf-applications-look-metro-styled-even-in-windows-7-window-chrome-t
+            
+            and of course MahApps.Metro http://mahapps.com/
+            </summary>
+        </member>
+        <member name="M:MWindowLib.MetroWindow.#cctor">
+            <summary>
+            Static constructor
+            </summary>
+        </member>
+        <member name="M:MWindowLib.MetroWindow.#ctor">
+            <summary>
+            Class constructor
+            </summary>
+        </member>
+        <member name="P:MWindowLib.MetroWindow.OverlayBox">
+            <summary>
+            Gets the overlay box that is used to display modal dialogs inside the main window.
+            </summary>
+        </member>
+        <member name="P:MWindowLib.MetroWindow.MetroActiveDialogContainer">
+            <summary>
+            Gets a collection of Active modal dialogs that are displayed inside the main window.
+            </summary>
+        </member>
+        <member name="P:MWindowLib.MetroWindow.MetroInactiveDialogContainer">
+            <summary>
+            Gets a collection of InActive modal dialogs that can be displayed inside the main window.
+            </summary>
+        </member>
+        <member name="P:MWindowLib.MetroWindow.ShowIcon">
+            <summary>
+            Gets/sets if the close button is visible.
+            </summary>
+        </member>
+        <member name="P:MWindowLib.MetroWindow.ShowTitle">
+            <summary>
+            Gets/sets if the close button is visible.
+            </summary>
+        </member>
+        <member name="P:MWindowLib.MetroWindow.ShowMinButton">
+            <summary>
+            Gets/sets if the close button is visible.
+            </summary>
+        </member>
+        <member name="P:MWindowLib.MetroWindow.ShowMaxButton">
+            <summary>
+            Gets/sets if the close button is visible.
+            </summary>
+        </member>
+        <member name="P:MWindowLib.MetroWindow.ShowCloseButton">
+            <summary>
+            Gets/sets if the close button is visible.
+            </summary>
+        </member>
+        <member name="P:MWindowLib.MetroWindow.ShowTitleBar">
+            <summary>
+            Gets/sets whether the TitleBar is visible or not.
+            </summary>
+        </member>
+        <member name="P:MWindowLib.MetroWindow.UseNoneWindowStyle">
+            <summary>
+            Gets/sets whether the WindowStyle is None or not.
+            Setting UseNoneWindowStyle="True" on a <seealso cref="T:MWindowLib.MetroWindow"/>
+            is equivalent to not showing the titlebar of the window.
+            </summary>
+        </member>
+        <member name="P:MWindowLib.MetroWindow.ShowDialogsOverTitleBar">
+            <summary>
+            Get/sets whether dialogs show over the title bar.
+            </summary>
+        </member>
+        <member name="P:MWindowLib.MetroWindow.IsWindowDraggable">
+            <summary>
+            Get/sets whether an external window can be dragged off the initial position or not.
+            </summary>
+        </member>
+        <member name="P:MWindowLib.MetroWindow.ShowSystemMenuOnRightClick">
+            <summary>
+            Gets/sets if the the system menu should popup on right click.
+            </summary>
+        </member>
+        <member name="P:MWindowLib.MetroWindow.IsContentDialogVisible">
+            <summary>
+            Determine whether a ContentDialog is currenlty shown inside the <seealso cref="T:MWindowLib.MetroWindow"/> or not.
+            </summary>
+        </member>
+        <member name="F:MWindowLib.MetroWindow.IsContentDialogVisibleProperty">
+            <summary>
+            Determine whether a ContentDialog is currenlty shown inside the <seealso cref="T:MWindowLib.MetroWindow"/> or not.
+            </summary>
+        </member>
+        <member name="M:MWindowLib.MetroWindow.OnApplyTemplate">
+            <summary>
+            Standard method that is invoked by the WPF framework upon initializing the registered XAML.
+            </summary>
+        </member>
+        <member name="M:MWindowLib.MetroWindow.ShowOverlayAsync">
+            <summary>
+            Begins to show the MetroWindow's overlay effect.
+            </summary>
+            <returns>A task representing the process.</returns>
+        </member>
+        <member name="M:MWindowLib.MetroWindow.HideOverlayAsync">
+            <summary>
+            Begins to hide the MetroWindow's overlay effect.
+            </summary>
+            <returns>A task representing the process.</returns>
+        </member>
+        <member name="M:MWindowLib.MetroWindow.IsOverlayVisible">
+            <summary>
+            Gets whether the OverlayBox is currently visible or not.
+            </summary>
+        </member>
+        <member name="M:MWindowLib.MetroWindow.ShowOverlay">
+            <summary>
+            Ensure visibility of the OverlayBox.
+            </summary>
+        </member>
+        <member name="M:MWindowLib.MetroWindow.HideOverlay">
+            <summary>
+            Ensure non-visibility of the OverlayBox.
+            </summary>
+        </member>
+        <member name="M:MWindowLib.MetroWindow.StoreFocus(System.Windows.IInputElement)">
+            <summary>
+            Stores the given element, or the last focused element via FocusManager, for restoring the focus after closing a dialog.
+            See also RestoreFocus, ResetStoredFocus method.
+            </summary>
+            <param name="thisElement">The element which will be focused again.</param>
+        </member>
+        <member name="M:MWindowLib.MetroWindow.RestoreFocus">
+            <summary>
+            Restores a previously saved keyboard focus back to the last focused element.
+            See also StoreFocus, ResetStoredFocus method.
+            </summary>
+        </member>
+        <member name="M:MWindowLib.MetroWindow.ResetStoredFocus">
+            <summary>
+            Clears the stored element which would get the focus after closing a dialog.
+            See also StoreFocus, RestoreFocus method.
+            </summary>
+        </member>
+        <member name="M:MWindowLib.MetroWindow.GetCurrentDialogAsync``1">
+            <summary>
+            Gets a task object for the currently active content dialog.
+            </summary>
+        </member>
+        <member name="M:MWindowLib.MetroWindow.SetWindowEvents(System.Windows.Controls.Primitives.Thumb)">
+            <summary>
+            Method connects the <see cref="T:System.Windows.Controls.Primitives.Thumb"/> object on the window chrome
+            with the correct drag events to let user drag the window on the screen.
+            </summary>
+            <param name="windowTitleThumb"></param>
+        </member>
+        <member name="M:MWindowLib.MetroWindow.GetPart``1(System.String)">
+            <summary>
+            Gets the template child with the given name.
+            </summary>
+            <typeparam name="T">The interface type inheirted from DependencyObject.</typeparam>
+            <param name="name">The name of the template child.</param>
+        </member>
+        <member name="M:MWindowLib.MetroWindow.GetPart(System.String)">
+            <summary>
+            Gets the template child with the given name.
+            </summary>
+            <param name="name">The name of the template child.</param>
+        </member>
+        <member name="M:MWindowLib.MetroWindow.OnClosing(System.ComponentModel.CancelEventArgs)">
+            <summary>
+            Raises the System.Windows.Window.Closing event.
+            </summary>
+            <param name="e">A System.ComponentModel.CancelEventArgs that contains the event data.</param>
+        </member>
+        <member name="P:MWindowLib.MetroWindow.CriticalHandle">
+            <summary>
+            Gets a handle that is required to send Win32 messages to the underlying window.
+            </summary>
+        </member>
+        <member name="T:MWindowLib.Microsoft.Windows.Shell.Standard.Assert">
+            <summary>A static class for verifying assumptions.</summary>
+        </member>
+        <member name="T:MWindowLib.Microsoft.Windows.Shell.Standard.Assert.EvaluateFunction">
+            <summary>A function signature for Assert.Evaluate.</summary>
+        </member>
+        <member name="T:MWindowLib.Microsoft.Windows.Shell.Standard.Assert.ImplicationFunction">
+            <summary>A function signature for Assert.Implies.</summary>
+            <returns>Returns the truth of a predicate.</returns>
+        </member>
+        <member name="M:MWindowLib.Microsoft.Windows.Shell.Standard.Assert.Evaluate(MWindowLib.Microsoft.Windows.Shell.Standard.Assert.EvaluateFunction)">
+            <summary>
+            Executes the specified argument.
+            </summary>
+            <param name="argument">The function to execute.</param>
+        </member>
+        <member name="M:MWindowLib.Microsoft.Windows.Shell.Standard.Assert.Equals``1(``0,``0)">
+            <summary>Obsolete: Use Standard.Assert.AreEqual instead of Assert.Equals</summary>
+            <typeparam name="T">The generic type to compare for equality.</typeparam>
+            <param name="expected">The first generic type data to compare.  This is is the expected value.</param>
+            <param name="actual">The second generic type data to compare.  This is the actual value.</param>
+        </member>
+        <member name="M:MWindowLib.Microsoft.Windows.Shell.Standard.Assert.AreEqual``1(``0,``0)">
+            <summary>
+            Verifies that two generic type data are equal.  The assertion fails if they are not.
+            </summary>
+            <typeparam name="T">The generic type to compare for equality.</typeparam>
+            <param name="expected">The first generic type data to compare.  This is is the expected value.</param>
+            <param name="actual">The second generic type data to compare.  This is the actual value.</param>
+            <remarks>This breaks into the debugger in the case of a failed assertion.</remarks>
+        </member>
+        <member name="M:MWindowLib.Microsoft.Windows.Shell.Standard.Assert.AreNotEqual``1(``0,``0)">
+            <summary>
+            Verifies that two generic type data are not equal.  The assertion fails if they are.
+            </summary>
+            <typeparam name="T">The generic type to compare for inequality.</typeparam>
+            <param name="notExpected">The first generic type data to compare.  This is is the value that's not expected.</param>
+            <param name="actual">The second generic type data to compare.  This is the actual value.</param>
+            <remarks>This breaks into the debugger in the case of a failed assertion.</remarks>
+        </member>
+        <member name="M:MWindowLib.Microsoft.Windows.Shell.Standard.Assert.Implies(System.Boolean,System.Boolean)">
+            <summary>
+            Verifies that if the specified condition is true, then so is the result.
+            The assertion fails if the condition is true but the result is false.
+            </summary>
+            <param name="condition">if set to <c>true</c> [condition].</param>
+            <param name="result">
+            A second Boolean statement.  If the first was true then so must this be.
+            If the first statement was false then the value of this is ignored.
+            </param>
+            <remarks>This breaks into the debugger in the case of a failed assertion.</remarks>
+        </member>
+        <member name="M:MWindowLib.Microsoft.Windows.Shell.Standard.Assert.Implies(System.Boolean,MWindowLib.Microsoft.Windows.Shell.Standard.Assert.ImplicationFunction)">
+            <summary>
+            Lazy evaluation overload.  Verifies that if a condition is true, then so is a secondary value.
+            </summary>
+            <param name="condition">The conditional value.</param>
+            <param name="result">A function to be evaluated for truth if the condition argument is true.</param>
+            <remarks>
+            This overload only evaluates the result if the first condition is true.
+            </remarks>
+        </member>
+        <member name="M:MWindowLib.Microsoft.Windows.Shell.Standard.Assert.IsNeitherNullNorEmpty(System.String)">
+            <summary>
+            Verifies that a string has content.  I.e. it is not null and it is not empty.
+            </summary>
+            <param name="value">The string to verify.</param>
+        </member>
+        <member name="M:MWindowLib.Microsoft.Windows.Shell.Standard.Assert.IsNeitherNullNorWhitespace(System.String)">
+            <summary>
+            Verifies that a string has content.  I.e. it is not null and it is not purely whitespace.
+            </summary>
+            <param name="value">The string to verify.</param>
+        </member>
+        <member name="M:MWindowLib.Microsoft.Windows.Shell.Standard.Assert.IsNotNull``1(``0)">
+            <summary>
+            Verifies the specified value is not null.  The assertion fails if it is.
+            </summary>
+            <typeparam name="T">The generic reference type.</typeparam>
+            <param name="value">The value to check for nullness.</param>
+            <remarks>This breaks into the debugger in the case of a failed assertion.</remarks>
+        </member>
+        <member name="M:MWindowLib.Microsoft.Windows.Shell.Standard.Assert.IsFalse(System.Boolean)">
+            <summary>
+            Verifies that the specified condition is false.  The assertion fails if it is true.
+            </summary>
+            <param name="condition">The expression that should be <c>false</c>.</param>
+            <remarks>This breaks into the debugger in the case of a failed assertion.</remarks>
+        </member>
+        <member name="M:MWindowLib.Microsoft.Windows.Shell.Standard.Assert.IsFalse(System.Boolean,System.String)">
+            <summary>
+            Verifies that the specified condition is false.  The assertion fails if it is true.
+            </summary>
+            <param name="condition">The expression that should be <c>false</c>.</param>
+            <param name="message">The message to display if the condition is <c>true</c>.</param>
+            <remarks>This breaks into the debugger in the case of a failed assertion.</remarks>
+        </member>
+        <member name="M:MWindowLib.Microsoft.Windows.Shell.Standard.Assert.IsTrue(System.Boolean)">
+            <summary>
+            Verifies that the specified condition is true.  The assertion fails if it is not.
+            </summary>
+            <param name="condition">A condition that is expected to be <c>true</c>.</param>
+            <remarks>This breaks into the debugger in the case of a failed assertion.</remarks>
+        </member>
+        <member name="M:MWindowLib.Microsoft.Windows.Shell.Standard.Assert.IsTrue(System.Boolean,System.String)">
+            <summary>
+            Verifies that the specified condition is true.  The assertion fails if it is not.
+            </summary>
+            <param name="condition">A condition that is expected to be <c>true</c>.</param>
+            <param name="message">The message to write in case the condition is <c>false</c>.</param>
+            <remarks>This breaks into the debugger in the case of a failed assertion.</remarks>
+        </member>
+        <member name="M:MWindowLib.Microsoft.Windows.Shell.Standard.Assert.Fail">
+            <summary>
+            This line should never be executed.  The assertion always fails.
+            </summary>
+            <remarks>This breaks into the debugger in the case of a failed assertion.</remarks>
+        </member>
+        <member name="M:MWindowLib.Microsoft.Windows.Shell.Standard.Assert.Fail(System.String)">
+            <summary>
+            This line should never be executed.  The assertion always fails.
+            </summary>
+            <param name="message">The message to display if this function is executed.</param>
+            <remarks>This breaks into the debugger in the case of a failed assertion.</remarks>
+        </member>
+        <member name="M:MWindowLib.Microsoft.Windows.Shell.Standard.Assert.IsNull``1(``0)">
+            <summary>
+            Verifies that the specified object is null.  The assertion fails if it is not.
+            </summary>
+            <param name="item">The item to verify is null.</param>
+        </member>
+        <member name="M:MWindowLib.Microsoft.Windows.Shell.Standard.Assert.BoundedDoubleInc(System.Double,System.Double,System.Double)">
+            <summary>
+            Verifies that the specified value is within the expected range.  The assertion fails if it isn't.
+            </summary>
+            <param name="lowerBoundInclusive">The lower bound inclusive value.</param>
+            <param name="value">The value to verify.</param>
+            <param name="upperBoundInclusive">The upper bound inclusive value.</param>
+        </member>
+        <member name="M:MWindowLib.Microsoft.Windows.Shell.Standard.Assert.BoundedInteger(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Verifies that the specified value is within the expected range.  The assertion fails if it isn't.
+            </summary>
+            <param name="lowerBoundInclusive">The lower bound inclusive value.</param>
+            <param name="value">The value to verify.</param>
+            <param name="upperBoundExclusive">The upper bound exclusive value.</param>
+        </member>
+        <member name="M:MWindowLib.Microsoft.Windows.Shell.Standard.Assert.IsApartmentState(System.Threading.ApartmentState)">
+            <summary>
+            Verify the current thread's apartment state is what's expected.  The assertion fails if it isn't
+            </summary>
+            <param name="expectedState">
+            The expected apartment state for the current thread.
+            </param>
+            <remarks>This breaks into the debugger in the case of a failed assertion.</remarks>
+        </member>
+        <member name="T:MWindowLib.Microsoft.Windows.Shell.Standard.Win32Error">
+            <summary>
+            Wrapper for common Win32 status codes.
+            </summary>
+        </member>
+        <member name="F:MWindowLib.Microsoft.Windows.Shell.Standard.Win32Error.ERROR_SUCCESS">
+            <summary>The operation completed successfully.</summary>
+        </member>
+        <member name="F:MWindowLib.Microsoft.Windows.Shell.Standard.Win32Error.ERROR_INVALID_FUNCTION">
+            <summary>Incorrect function.</summary>
+        </member>
+        <member name="F:MWindowLib.Microsoft.Windows.Shell.Standard.Win32Error.ERROR_FILE_NOT_FOUND">
+            <summary>The system cannot find the file specified.</summary>
+        </member>
+        <member name="F:MWindowLib.Microsoft.Windows.Shell.Standard.Win32Error.ERROR_PATH_NOT_FOUND">
+            <summary>The system cannot find the path specified.</summary>
+        </member>
+        <member name="F:MWindowLib.Microsoft.Windows.Shell.Standard.Win32Error.ERROR_TOO_MANY_OPEN_FILES">
+            <summary>The system cannot open the file.</summary>
+        </member>
+        <member name="F:MWindowLib.Microsoft.Windows.Shell.Standard.Win32Error.ERROR_ACCESS_DENIED">
+            <summary>Access is denied.</summary>
+        </member>
+        <member name="F:MWindowLib.Microsoft.Windows.Shell.Standard.Win32Error.ERROR_INVALID_HANDLE">
+            <summary>The handle is invalid.</summary>
+        </member>
+        <member name="F:MWindowLib.Microsoft.Windows.Shell.Standard.Win32Error.ERROR_OUTOFMEMORY">
+            <summary>Not enough storage is available to complete this operation.</summary>
+        </member>
+        <member name="F:MWindowLib.Microsoft.Windows.Shell.Standard.Win32Error.ERROR_NO_MORE_FILES">
+            <summary>There are no more files.</summary>
+        </member>
+        <member name="F:MWindowLib.Microsoft.Windows.Shell.Standard.Win32Error.ERROR_SHARING_VIOLATION">
+            <summary>The process cannot access the file because it is being used by another process.</summary>
+        </member>
+        <member name="F:MWindowLib.Microsoft.Windows.Shell.Standard.Win32Error.ERROR_INVALID_PARAMETER">
+            <summary>The parameter is incorrect.</summary>
+        </member>
+        <member name="F:MWindowLib.Microsoft.Windows.Shell.Standard.Win32Error.ERROR_INSUFFICIENT_BUFFER">
+            <summary>The data area passed to a system call is too small.</summary>
+        </member>
+        <member name="F:MWindowLib.Microsoft.Windows.Shell.Standard.Win32Error.ERROR_NESTING_NOT_ALLOWED">
+            <summary>Cannot nest calls to LoadModule.</summary>
+        </member>
+        <member name="F:MWindowLib.Microsoft.Windows.Shell.Standard.Win32Error.ERROR_KEY_DELETED">
+            <summary>Illegal operation attempted on a registry key that has been marked for deletion.</summary>
+        </member>
+        <member name="F:MWindowLib.Microsoft.Windows.Shell.Standard.Win32Error.ERROR_NOT_FOUND">
+            <summary>Element not found.</summary>
+        </member>
+        <member name="F:MWindowLib.Microsoft.Windows.Shell.Standard.Win32Error.ERROR_NO_MATCH">
+            <summary>There was no match for the specified key in the index.</summary>
+        </member>
+        <member name="F:MWindowLib.Microsoft.Windows.Shell.Standard.Win32Error.ERROR_BAD_DEVICE">
+            <summary>An invalid device was specified.</summary>
+        </member>
+        <member name="F:MWindowLib.Microsoft.Windows.Shell.Standard.Win32Error.ERROR_CANCELLED">
+            <summary>The operation was canceled by the user.</summary>
+        </member>
+        <member name="F:MWindowLib.Microsoft.Windows.Shell.Standard.Win32Error.ERROR_CANNOT_FIND_WND_CLASS">
+            <summary>Cannot find window class.</summary>
+        </member>
+        <member name="F:MWindowLib.Microsoft.Windows.Shell.Standard.Win32Error.ERROR_CLASS_ALREADY_EXISTS">
+            <summary>The window class was already registered.</summary>
+        </member>
+        <member name="F:MWindowLib.Microsoft.Windows.Shell.Standard.Win32Error.ERROR_INVALID_DATATYPE">
+            <summary>The specified datatype is invalid.</summary>
+        </member>
+        <member name="M:MWindowLib.Microsoft.Windows.Shell.Standard.Win32Error.#ctor(System.Int32)">
+            <summary>
+            Create a new Win32 error.
+            </summary>
+            <param name="i">The integer value of the error.</param>
+        </member>
+        <member name="M:MWindowLib.Microsoft.Windows.Shell.Standard.Win32Error.op_Explicit(MWindowLib.Microsoft.Windows.Shell.Standard.Win32Error)~MWindowLib.Microsoft.Windows.Shell.Standard.HRESULT">
+            <summary>Performs HRESULT_FROM_WIN32 conversion.</summary>
+            <param name="error">The Win32 error being converted to an HRESULT.</param>
+            <returns>The equivilent HRESULT value.</returns>
+        </member>
+        <member name="M:MWindowLib.Microsoft.Windows.Shell.Standard.Win32Error.ToHRESULT">
+            <summary>Performs HRESULT_FROM_WIN32 conversion.</summary>
+            <returns>The equivilent HRESULT value.</returns>
+        </member>
+        <member name="M:MWindowLib.Microsoft.Windows.Shell.Standard.Win32Error.GetLastError">
+            <summary>Performs the equivalent of Win32's GetLastError()</summary>
+            <returns>A Win32Error instance with the result of the native GetLastError</returns>
+        </member>
+        <member name="M:MWindowLib.Microsoft.Windows.Shell.Standard.Win32Error.op_Equality(MWindowLib.Microsoft.Windows.Shell.Standard.Win32Error,MWindowLib.Microsoft.Windows.Shell.Standard.Win32Error)">
+            <summary>
+            Compare two Win32 error codes for equality.
+            </summary>
+            <param name="errLeft">The first error code to compare.</param>
+            <param name="errRight">The second error code to compare.</param>
+            <returns>Whether the two error codes are the same.</returns>
+        </member>
+        <member name="M:MWindowLib.Microsoft.Windows.Shell.Standard.Win32Error.op_Inequality(MWindowLib.Microsoft.Windows.Shell.Standard.Win32Error,MWindowLib.Microsoft.Windows.Shell.Standard.Win32Error)">
+            <summary>
+            Compare two Win32 error codes for inequality.
+            </summary>
+            <param name="errLeft">The first error code to compare.</param>
+            <param name="errRight">The second error code to compare.</param>
+            <returns>Whether the two error codes are not the same.</returns>
+        </member>
+        <member name="F:MWindowLib.Microsoft.Windows.Shell.Standard.Facility.Null">
+            <summary>FACILITY_NULL</summary>
+        </member>
+        <member name="F:MWindowLib.Microsoft.Windows.Shell.Standard.Facility.Rpc">
+            <summary>FACILITY_RPC</summary>
+        </member>
+        <member name="F:MWindowLib.Microsoft.Windows.Shell.Standard.Facility.Dispatch">
+            <summary>FACILITY_DISPATCH</summary>
+        </member>
+        <member name="F:MWindowLib.Microsoft.Windows.Shell.Standard.Facility.Storage">
+            <summary>FACILITY_STORAGE</summary>
+        </member>
+        <member name="F:MWindowLib.Microsoft.Windows.Shell.Standard.Facility.Itf">
+            <summary>FACILITY_ITF</summary>
+        </member>
+        <member name="F:MWindowLib.Microsoft.Windows.Shell.Standard.Facility.Win32">
+            <summary>FACILITY_WIN32</summary>
+        </member>
+        <member name="F:MWindowLib.Microsoft.Windows.Shell.Standard.Facility.Windows">
+            <summary>FACILITY_WINDOWS</summary>
+        </member>
+        <member name="F:MWindowLib.Microsoft.Windows.Shell.Standard.Facility.Control">
+            <summary>FACILITY_CONTROL</summary>
+        </member>
+        <member name="F:MWindowLib.Microsoft.Windows.Shell.Standard.Facility.Ese">
+            <summary>MSDN doced facility code for ESE errors.</summary>
+        </member>
+        <member name="F:MWindowLib.Microsoft.Windows.Shell.Standard.Facility.WinCodec">
+            <summary>FACILITY_WINCODEC (WIC)</summary>
+        </member>
+        <member name="T:MWindowLib.Microsoft.Windows.Shell.Standard.HRESULT">
+            <summary>Wrapper for HRESULT status codes.</summary>
+        </member>
+        <member name="F:MWindowLib.Microsoft.Windows.Shell.Standard.HRESULT.S_OK">
+            <summary>S_OK</summary>
+        </member>
+        <member name="F:MWindowLib.Microsoft.Windows.Shell.Standard.HRESULT.S_FALSE">
+            <summary>S_FALSE</summary>
+        </member>
+        <member name="F:MWindowLib.Microsoft.Windows.Shell.Standard.HRESULT.E_PENDING">
+            <summary>E_PENDING</summary>
+        </member>
+        <member name="F:MWindowLib.Microsoft.Windows.Shell.Standard.HRESULT.E_NOTIMPL">
+            <summary>E_NOTIMPL</summary>
+        </member>
+        <member name="F:MWindowLib.Microsoft.Windows.Shell.Standard.HRESULT.E_NOINTERFACE">
+            <summary>E_NOINTERFACE</summary>
+        </member>
+        <member name="F:MWindowLib.Microsoft.Windows.Shell.Standard.HRESULT.E_POINTER">
+            <summary>E_POINTER</summary>
+        </member>
+        <member name="F:MWindowLib.Microsoft.Windows.Shell.Standard.HRESULT.E_ABORT">
+            <summary>E_ABORT</summary>
+        </member>
+        <member name="F:MWindowLib.Microsoft.Windows.Shell.Standard.HRESULT.E_FAIL">
+            <summary>E_FAIL</summary>
+        </member>
+        <member name="F:MWindowLib.Microsoft.Windows.Shell.Standard.HRESULT.E_UNEXPECTED">
+            <summary>E_UNEXPECTED</summary>
+        </member>
+        <member name="F:MWindowLib.Microsoft.Windows.Shell.Standard.HRESULT.STG_E_INVALIDFUNCTION">
+            <summary>STG_E_INVALIDFUNCTION</summary>
+        </member>
+        <member name="F:MWindowLib.Microsoft.Windows.Shell.Standard.HRESULT.REGDB_E_CLASSNOTREG">
+            <summary>REGDB_E_CLASSNOTREG</summary>
+        </member>
+        <member name="F:MWindowLib.Microsoft.Windows.Shell.Standard.HRESULT.DESTS_E_NO_MATCHING_ASSOC_HANDLER">
+            <summary>DESTS_E_NO_MATCHING_ASSOC_HANDLER.  Win7 internal error code for Jump Lists.</summary>
+            <remarks>There is no Assoc Handler for the given item registered by the specified application.</remarks>
+        </member>
+        <member name="F:MWindowLib.Microsoft.Windows.Shell.Standard.HRESULT.DESTS_E_NORECDOCS">
+            <summary>DESTS_E_NORECDOCS.  Win7 internal error code for Jump Lists.</summary>
+            <remarks>The given item is excluded from the recent docs folder by the NoRecDocs bit on its registration.</remarks>
+        </member>
+        <member name="F:MWindowLib.Microsoft.Windows.Shell.Standard.HRESULT.DESTS_E_NOTALLCLEARED">
+            <summary>DESTS_E_NOTALLCLEARED.  Win7 internal error code for Jump Lists.</summary>
+            <remarks>Not all of the items were successfully cleared</remarks>
+        </member>
+        <member name="F:MWindowLib.Microsoft.Windows.Shell.Standard.HRESULT.E_ACCESSDENIED">
+            <summary>E_ACCESSDENIED</summary>
+            <remarks>Win32Error ERROR_ACCESS_DENIED.</remarks>
+        </member>
+        <member name="F:MWindowLib.Microsoft.Windows.Shell.Standard.HRESULT.E_OUTOFMEMORY">
+            <summary>E_OUTOFMEMORY</summary>
+            <remarks>Win32Error ERROR_OUTOFMEMORY.</remarks>
+        </member>
+        <member name="F:MWindowLib.Microsoft.Windows.Shell.Standard.HRESULT.E_INVALIDARG">
+            <summary>E_INVALIDARG</summary>
+            <remarks>Win32Error ERROR_INVALID_PARAMETER.</remarks>
+        </member>
+        <member name="F:MWindowLib.Microsoft.Windows.Shell.Standard.HRESULT.INTSAFE_E_ARITHMETIC_OVERFLOW">
+            <summary>INTSAFE_E_ARITHMETIC_OVERFLOW</summary>
+        </member>
+        <member name="F:MWindowLib.Microsoft.Windows.Shell.Standard.HRESULT.COR_E_OBJECTDISPOSED">
+            <summary>COR_E_OBJECTDISPOSED</summary>
+        </member>
+        <member name="F:MWindowLib.Microsoft.Windows.Shell.Standard.HRESULT.WC_E_GREATERTHAN">
+            <summary>WC_E_GREATERTHAN</summary>
+        </member>
+        <member name="F:MWindowLib.Microsoft.Windows.Shell.Standard.HRESULT.WC_E_SYNTAX">
+            <summary>WC_E_SYNTAX</summary>
+        </member>
+        <member name="M:MWindowLib.Microsoft.Windows.Shell.Standard.HRESULT.#ctor(System.UInt32)">
+            <summary>
+            Create an HRESULT from an integer value.
+            </summary>
+            <param name="i"></param>
+        </member>
+        <member name="M:MWindowLib.Microsoft.Windows.Shell.Standard.HRESULT.#ctor(System.Int32)">
+            <summary>
+            Create an HRESULT from an integer value.
+            </summary>
+            <param name="i"></param>
+        </member>
+        <member name="M:MWindowLib.Microsoft.Windows.Shell.Standard.HRESULT.op_Explicit(MWindowLib.Microsoft.Windows.Shell.Standard.HRESULT)~System.Int32">
+            <summary>
+            Convert an HRESULT to an int.  Used for COM interface declarations out of our control.
+            </summary>
+        </member>
+        <member name="P:MWindowLib.Microsoft.Windows.Shell.Standard.HRESULT.Facility">
+            <summary>
+            retrieve HRESULT_FACILITY
+            </summary>
+        </member>
+        <member name="P:MWindowLib.Microsoft.Windows.Shell.Standard.HRESULT.Code">
+            <summary>
+            retrieve HRESULT_CODE
+            </summary>
+        </member>
+        <member name="M:MWindowLib.Microsoft.Windows.Shell.Standard.HRESULT.ToString">
+            <summary>
+            Get a string representation of this HRESULT.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MWindowLib.Microsoft.Windows.Shell.Standard.HRESULT.ThrowLastError">
+            <summary>
+            Convert the result of Win32 GetLastError() into a raised exception.
+            </summary>
+        </member>
+        <member name="T:MWindowLib.Microsoft.Windows.Shell.Standard.GWL">
+            <summary>
+            GetWindowLongPtr values, GWL_*
+            </summary>
+        </member>
+        <member name="T:MWindowLib.Microsoft.Windows.Shell.Standard.POINT">
+            <summary>
+            Models a 2-D point with x and y coordinates.
+            </summary>
+        </member>
+        <member name="T:MWindowLib.Microsoft.Windows.Shell.Standard.WM">
+            <summary>
+            Window message values, WM_*
+            </summary>
+        </member>
+        <member name="F:MWindowLib.Microsoft.Windows.Shell.Standard.SC.F_ISSECURE">
+            <summary>
+            SCF_ISSECURE
+            </summary>
+        </member>
+        <member name="M:MWindowLib.Microsoft.Windows.Shell.Standard.NativeMethods.GetWindowLongPtr(System.IntPtr,MWindowLib.Microsoft.Windows.Shell.Standard.GWL)">
+            <summary>
+            This is aliased as a macro in 32bit Windows.
+            </summary>
+        </member>
+        <member name="M:MWindowLib.Microsoft.Windows.Shell.Standard.NativeMethods.SetWindowLongPtr(System.IntPtr,MWindowLib.Microsoft.Windows.Shell.Standard.GWL,System.IntPtr)">
+            <summary>
+            This is aliased as a macro in 32bit Windows.
+            </summary>
+        </member>
+        <member name="M:MWindowLib.Microsoft.Windows.Shell.Standard.NativeMethods.GetCursorPos">
+            <summary>
+            Gets the 2-D space coordinates of the cursor.
+            </summary>
+        </member>
+        <member name="M:MWindowLib.Microsoft.Windows.Shell.Standard.NativeMethods.SendMessage(System.IntPtr,MWindowLib.Microsoft.Windows.Shell.Standard.WM,System.IntPtr,System.IntPtr)">
+            <summary>
+            Depending on the message, callers may want to call GetLastError based on the return value.
+            </summary>
+        </member>
+        <member name="F:MWindowLib.Native.Constants.ShowWindowCommands.SW_HIDE">
+            <summary>
+                   Hides the window and activates another window.
+            </summary>
+        </member>
+        <member name="F:MWindowLib.Native.Constants.ShowWindowCommands.SW_SHOWNORMAL">
+            <summary>
+                   Activates and displays a window. If the window is minimized or maximized, the system restores it to its original size and position. An application should specify this flag when displaying the window for the first time.
+            </summary>
+        </member>
+        <member name="F:MWindowLib.Native.Constants.ShowWindowCommands.SW_NORMAL">
+            <summary>
+                   Activates and displays a window. If the window is minimized or maximized, the system restores it to its original size and position. An application should specify this flag when displaying the window for the first time.
+            </summary>
+        </member>
+        <member name="F:MWindowLib.Native.Constants.ShowWindowCommands.SW_SHOWMINIMIZED">
+            <summary>
+                   Activates the window and displays it as a minimized window.
+            </summary>
+        </member>
+        <member name="F:MWindowLib.Native.Constants.ShowWindowCommands.SW_SHOWMAXIMIZED">
+            <summary>
+                   Activates the window and displays it as a maximized window.
+            </summary>
+        </member>
+        <member name="F:MWindowLib.Native.Constants.ShowWindowCommands.SW_MAXIMIZE">
+            <summary>
+                   Maximizes the specified window.
+            </summary>
+        </member>
+        <member name="F:MWindowLib.Native.Constants.ShowWindowCommands.SW_SHOWNOACTIVATE">
+            <summary>
+                   Displays a window in its most recent size and position. This value is similar to <see cref="F:MWindowLib.Native.Constants.ShowWindowCommands.SW_SHOWNORMAL"/>, except the window is not activated.
+            </summary>
+        </member>
+        <member name="F:MWindowLib.Native.Constants.ShowWindowCommands.SW_SHOW">
+            <summary>
+                   Activates the window and displays it in its current size and position.
+            </summary>
+        </member>
+        <member name="F:MWindowLib.Native.Constants.ShowWindowCommands.SW_MINIMIZE">
+            <summary>
+                   Minimizes the specified window and activates the next top-level window in the z-order.
+            </summary>
+        </member>
+        <member name="F:MWindowLib.Native.Constants.ShowWindowCommands.SW_SHOWMINNOACTIVE">
+            <summary>
+                   Displays the window as a minimized window. This value is similar to <see cref="F:MWindowLib.Native.Constants.ShowWindowCommands.SW_SHOWMINIMIZED"/>, except the window is not activated.
+            </summary>
+        </member>
+        <member name="F:MWindowLib.Native.Constants.ShowWindowCommands.SW_SHOWNA">
+            <summary>
+                   Displays the window in its current size and position. This value is similar to <see cref="F:MWindowLib.Native.Constants.ShowWindowCommands.SW_SHOW"/>, except the window is not activated.
+            </summary>
+        </member>
+        <member name="F:MWindowLib.Native.Constants.ShowWindowCommands.SW_RESTORE">
+            <summary>
+                   Activates and displays the window. If the window is minimized or maximized, the system restores it to its original size and position. An application should specify this flag when restoring a minimized window.
+            </summary>
+        </member>
+        <member name="F:MWindowLib.Native.Constants.RedrawWindowFlags.Invalidate">
+            <summary>
+            Invalidates the rectangle or region that you specify in lprcUpdate or hrgnUpdate.
+            You can set only one of these parameters to a non-NULL value. If both are NULL, RDW_INVALIDATE invalidates the entire window.
+            </summary>
+        </member>
+        <member name="F:MWindowLib.Native.Constants.RedrawWindowFlags.InternalPaint">
+            <summary>Causes the OS to post a WM_PAINT message to the window regardless of whether a portion of the window is invalid.</summary>
+        </member>
+        <member name="F:MWindowLib.Native.Constants.RedrawWindowFlags.Erase">
+            <summary>
+            Causes the window to receive a WM_ERASEBKGND message when the window is repainted.
+            Specify this value in combination with the RDW_INVALIDATE value; otherwise, RDW_ERASE has no effect.
+            </summary>
+        </member>
+        <member name="F:MWindowLib.Native.Constants.RedrawWindowFlags.Validate">
+            <summary>
+            Validates the rectangle or region that you specify in lprcUpdate or hrgnUpdate.
+            You can set only one of these parameters to a non-NULL value. If both are NULL, RDW_VALIDATE validates the entire window.
+            This value does not affect internal WM_PAINT messages.
+            </summary>
+        </member>
+        <member name="F:MWindowLib.Native.Constants.RedrawWindowFlags.NoErase">
+            <summary>Suppresses any pending WM_ERASEBKGND messages.</summary>
+        </member>
+        <member name="F:MWindowLib.Native.Constants.RedrawWindowFlags.NoChildren">
+            <summary>Excludes child windows, if any, from the repainting operation.</summary>
+        </member>
+        <member name="F:MWindowLib.Native.Constants.RedrawWindowFlags.AllChildren">
+            <summary>Includes child windows, if any, in the repainting operation.</summary>
+        </member>
+        <member name="F:MWindowLib.Native.Constants.RedrawWindowFlags.UpdateNow">
+            <summary>Causes the affected windows, which you specify by setting the RDW_ALLCHILDREN and RDW_NOCHILDREN values, to receive WM_ERASEBKGND and WM_PAINT messages before the RedrawWindow returns, if necessary.</summary>
+        </member>
+        <member name="F:MWindowLib.Native.Constants.RedrawWindowFlags.EraseNow">
+            <summary>
+            Causes the affected windows, which you specify by setting the RDW_ALLCHILDREN and RDW_NOCHILDREN values, to receive WM_ERASEBKGND messages before RedrawWindow returns, if necessary.
+            The affected windows receive WM_PAINT messages at the ordinary time.
+            </summary>
+        </member>
+        <member name="T:MWindowLib.Native.RECT">
+            <summary>structure models the coordinates of a rectangle.</summary>
+        </member>
+        <member name="F:MWindowLib.Native.RECT.left">
+            <summary>left minimum coordinate of the rectangle.</summary>
+        </member>
+        <member name="F:MWindowLib.Native.RECT.top">
+            <summary>top minimum coordinate of the rectangle.</summary>
+        </member>
+        <member name="F:MWindowLib.Native.RECT.right">
+            <summary>right maximum coordinate of the rectangle.</summary>
+        </member>
+        <member name="F:MWindowLib.Native.RECT.bottom">
+            <summary>bottom maximum coordinate of the rectangle.</summary>
+        </member>
+        <member name="F:MWindowLib.Native.RECT.Empty">
+            <summary>Gets a rectangle that has no coordinates set.</summary>
+        </member>
+        <member name="P:MWindowLib.Native.RECT.Width">
+            <summary>Gets the width of the rectangle.</summary>
+        </member>
+        <member name="P:MWindowLib.Native.RECT.Height">
+            <summary>Gets the height of the rectangle.</summary>
+        </member>
+        <member name="M:MWindowLib.Native.RECT.#ctor(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>Constructs a rectangle with the specified coordinates.</summary>
+        </member>
+        <member name="M:MWindowLib.Native.RECT.#ctor(MWindowLib.Native.RECT)">
+            <summary>Copy constructs from parameter.</summary>
+        </member>
+        <member name="P:MWindowLib.Native.RECT.IsEmpty">
+            <summary>Determines whether coordinates for a rect have been set or not.</summary>
+        </member>
+        <member name="M:MWindowLib.Native.RECT.ToString">
+            <summary>Standard to string method.</summary>
+        </member>
+        <member name="M:MWindowLib.Native.RECT.Equals(System.Object)">
+            <summary> Determine if 2 RECT are equal (deep compare) </summary>
+        </member>
+        <member name="M:MWindowLib.Native.RECT.GetHashCode">
+            <summary>Return the HashCode for this struct (not garanteed to be unique)</summary>
+        </member>
+        <member name="M:MWindowLib.Native.RECT.op_Equality(MWindowLib.Native.RECT,MWindowLib.Native.RECT)">
+            <summary> Determines if 2 RECTs refer to the same coordinates or not. </summary>
+        </member>
+        <member name="M:MWindowLib.Native.RECT.op_Inequality(MWindowLib.Native.RECT,MWindowLib.Native.RECT)">
+            <summary> Determines if 2 RECTs refer to different coordinates or not. </summary>
+        </member>
+        <member name="T:MWindowLib.Native.UnsafeNativeMethods">
+            <devdoc>http://msdn.microsoft.com/en-us/library/ms182161.aspx</devdoc>
+        </member>
+        <member name="M:MWindowLib.Native.UnsafeNativeMethods.SetWindowPos(System.IntPtr,System.IntPtr,System.Int32,System.Int32,System.Int32,System.Int32,System.UInt32)">
+            <devdoc>http://msdn.microsoft.com/en-us/library/windows/desktop/ms633545(v=vs.85).aspx</devdoc>
+        </member>
+        <member name="M:MWindowLib.Native.UnsafeNativeMethods.GetMonitorInfo(System.IntPtr,MWindowLib.Native.MONITORINFO)">
+            <devdoc>http://msdn.microsoft.com/en-us/library/dd144901%28v=VS.85%29.aspx</devdoc>
+        </member>
+        <member name="M:MWindowLib.Native.UnsafeNativeMethods.MonitorFromWindow(System.IntPtr,System.Int32)">
+            <devdoc>http://msdn.microsoft.com/en-us/library/dd145064%28v=VS.85%29.aspx</devdoc>
+        </member>
+        <member name="M:MWindowLib.Native.UnsafeNativeMethods.DefWindowProc(System.IntPtr,System.Int32,System.IntPtr,System.IntPtr)">
+            <devdoc>http://msdn.microsoft.com/en-us/library/windows/desktop/ms633572%28v=vs.85%29.aspx</devdoc>
+        </member>
+        <member name="M:MWindowLib.Native.UnsafeNativeMethods.IsWindow(System.IntPtr)">
+            <devdoc>http://msdn.microsoft.com/en-us/library/windows/desktop/ms633528(v=vs.85).aspx</devdoc>
+        </member>
+        <member name="M:MWindowLib.Native.UnsafeNativeMethods.GetSystemMenu(System.IntPtr,System.Boolean)">
+            <devdoc>http://msdn.microsoft.com/en-us/library/windows/desktop/ms647985(v=vs.85).aspx</devdoc>
+        </member>
+        <member name="M:MWindowLib.Native.UnsafeNativeMethods.TrackPopupMenuEx(System.IntPtr,System.UInt32,System.Int32,System.Int32,System.IntPtr,System.IntPtr)">
+            <devdoc>http://msdn.microsoft.com/en-us/library/windows/desktop/ms648003(v=vs.85).aspx</devdoc>
+        </member>
+        <member name="M:MWindowLib.Native.UnsafeNativeMethods._PostMessage(System.IntPtr,System.UInt32,System.IntPtr,System.IntPtr)">
+            <devdoc>http://msdn.microsoft.com/en-us/library/windows/desktop/ms644944(v=vs.85).aspx</devdoc>
+        </member>
+        <member name="T:MWindowLib.Themes.ResourceKeys">
+            <summary>
+            Class implements static resource keys that should be referenced to configure
+            colors, styles and other elements that are typically changed between themes.
+            </summary>
+        </member>
+        <member name="F:MWindowLib.Themes.ResourceKeys.ControlAccentColorKey">
+            <summary>
+            Accent Color Key - This Color key is used to accent elements in the UI
+            (e.g.: Color of Activated Normal Window Frame, ResizeGrip, Focus or MouseOver input elements)
+            </summary>
+        </member>
+        <member name="F:MWindowLib.Themes.ResourceKeys.ControlAccentBrushKey">
+            <summary>
+            Accent Brush Key - This Brush key is used to accent elements in the UI
+            (e.g.: Color of Activated Normal Window Frame, ResizeGrip, Focus or MouseOver input elements)
+            </summary>
+        </member>
+        <member name="F:MWindowLib.Themes.ResourceKeys.ControlNormalForegroundKey">
+            <summary>
+            Gets the color key for the normal control enabled foreground color.
+            </summary>
+        </member>
+        <member name="F:MWindowLib.Themes.ResourceKeys.ControlNormalBackgroundKey">
+            <summary>
+            Gets the color key for the normal control enabled background color.
+            </summary>
+        </member>
+        <member name="F:MWindowLib.Themes.ResourceKeys.ControlNormalForegroundBrushKey">
+            <summary>
+            Gets the Brush key for the normal control enabled foreground color.
+            </summary>
+        </member>
+        <member name="F:MWindowLib.Themes.ResourceKeys.ControlNormalBackgroundBrushKey">
+            <summary>
+            Gets the Brush key for the normal control enabled background color.
+            </summary>
+        </member>
+        <member name="F:MWindowLib.Themes.ResourceKeys.ControlMouseOverBackgroundKey">
+            <summary>
+            Gets the Color key that should be applied when the user hovers the mouse over a control.
+            </summary>
+        </member>
+        <member name="F:MWindowLib.Themes.ResourceKeys.ControlMouseOverBackgroundBrushKey">
+            <summary>
+            Gets the applicable Brush key when the user hovers the mouse over a control.
+            </summary>
+        </member>
+        <member name="F:MWindowLib.Themes.ResourceKeys.OverlayColorKey">
+            <summary>
+            Gets the background Color key of the overlay that is shown
+            when a ContentDialog is visible within the main window.
+            </summary>
+        </member>
+        <member name="F:MWindowLib.Themes.ResourceKeys.OverlayBrushKey">
+            <summary>
+            Gets the background Brush key of the overlay that is shown
+            when a ContentDialog is visible within the main window.
+            </summary>
+        </member>
+        <member name="F:MWindowLib.Themes.ResourceKeys.WindowButtonStyleKey">
+            <summary>
+            Gets the applicable Style key for Windows buttons (close, restore, maximize etc...).
+            </summary>
+        </member>
+        <member name="T:MWindowLib.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:MWindowLib.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:MWindowLib.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+    </members>
+</doc>

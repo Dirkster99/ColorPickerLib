@@ -1,0 +1,2056 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MLib</name>
+    </assembly>
+    <members>
+        <member name="T:MLib.AppearanceManager">
+            <summary>
+            Helper class to initialize an
+            <see cref="T:MLib.Interfaces.IAppearanceManager"/> service interface.
+            </summary>
+        </member>
+        <member name="M:MLib.AppearanceManager.#ctor">
+            <summary>
+            Hidden default constructor.
+            </summary>
+        </member>
+        <member name="M:MLib.AppearanceManager.GetInstance">
+            <summary>
+            Gets an instance of an object that implements the
+            <see cref="T:MLib.Interfaces.IAppearanceManager"/> interface.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:MLib.Behaviors.MergeStyleBehaviour">
+            <summary>
+            This class can be used to adjust styles that are BasedOn another style when
+            changing a theme at run-time. Normally, styles are not merged. This class
+            however enables merging of existing partial style definitions in Window/control
+            XAML with theme specific XAML.
+            
+            Sample
+            Usage: http://social.msdn.microsoft.com/Forums/da-DK/wpf/thread/63696841-0358-4f7a-abe1-e6062518e3d6
+            Source: http://stackoverflow.com/questions/5223133/merge-control-style-with-global-style-set-by-another-project-dynamically
+            </summary>
+        </member>
+        <member name="F:MLib.Behaviors.MergeStyleBehaviour.AutoMergeStyleProperty">
+            <summary>
+            AutoMergeStyle
+            </summary>
+        </member>
+        <member name="F:MLib.Behaviors.MergeStyleBehaviour.BaseOnStyleProperty">
+            <summary>
+            BaseOnStyle
+            </summary>
+        </member>
+        <member name="F:MLib.Behaviors.MergeStyleBehaviour.OriginalStyleProperty">
+            <summary>
+            OriginalStyle
+            </summary>
+        </member>
+        <member name="M:MLib.Behaviors.MergeStyleBehaviour.GetAutoMergeStyle(System.Windows.DependencyObject)">
+            <summary>
+            AutoMergeStyle
+            </summary>
+            <param name="d"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MLib.Behaviors.MergeStyleBehaviour.SetAutoMergeStyle(System.Windows.DependencyObject,System.Boolean)">
+            <summary>
+            AutoMergeStyle
+            </summary>
+            <param name="d"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:MLib.Behaviors.MergeStyleBehaviour.GetBaseOnStyle(System.Windows.DependencyObject)">
+            <summary>
+            BaseOnStyle
+            </summary>
+            <param name="d"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MLib.Behaviors.MergeStyleBehaviour.SetBaseOnStyle(System.Windows.DependencyObject,System.Windows.Style)">
+            <summary>
+            BaseOnStyle
+            </summary>
+            <param name="d"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:MLib.Behaviors.MergeStyleBehaviour.GetOriginalStyle(System.Windows.DependencyObject)">
+            <summary>
+            OriginalStyle
+            </summary>
+            <param name="d"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MLib.Behaviors.MergeStyleBehaviour.SetOriginalStyle(System.Windows.DependencyObject,System.Windows.Style)">
+            <summary>
+            OriginalStyle
+            </summary>
+            <param name="d"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:MLib.Behaviors.MergeStyleBehaviour.OnAutoMergeStyleChanged(System.Windows.DependencyObject,System.Windows.DependencyPropertyChangedEventArgs)">
+            <summary>
+            AutoMergeStyle
+            </summary>
+            <param name="d"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:MLib.Behaviors.MergeStyleBehaviour.OnBaseOnStyleChanged(System.Windows.DependencyObject,System.Windows.DependencyPropertyChangedEventArgs)">
+            <summary>
+            BaseOnStyle
+            </summary>
+            <param name="d"></param>
+            <param name="e"></param>
+        </member>
+        <member name="T:MLib.Controls.Metro.Extensions">
+            <summary>
+            Class provides extension methods for execution on the dispatcher (UI) thread.
+            These methods should be interesting for manipulating collections that are bound
+            to a view element (UI) and cannot be changed from any other thread than the one
+            that created them (usually the UI dispatcher thread).
+            </summary>
+        </member>
+        <member name="M:MLib.Controls.Metro.Extensions.Invoke``1(System.Windows.Threading.DispatcherObject,System.Func{``0})">
+            <summary> 
+            Executes the specified function synchronously with the
+            DispatcherPriority.Background on the thread that the Dispatcher was created on.
+            </summary>
+            <param name="dispatcherObject">The dispatcher object where the action runs.</param>
+            <param name="func">Function to be executed on dispatcher thread.</param>
+            <returns>T via the invoked function T</returns>
+        </member>
+        <member name="M:MLib.Controls.Metro.Extensions.Invoke(System.Windows.Threading.DispatcherObject,System.Action)">
+            <summary> 
+            Executes the specified Action synchronously with the
+            DispatcherPriority.Background on the thread that the Dispatcher was created on.
+            </summary>
+            <param name="dispatcherObject">The dispatcher object where the action runs.</param>
+            <param name="invokeAction">An action that takes no parameters.</param>
+        </member>
+        <member name="M:MLib.Controls.Metro.Extensions.BeginInvoke(System.Windows.Threading.DispatcherObject,System.Action,System.Windows.Threading.DispatcherPriority)">
+            <summary> 
+            Executes the specified action asynchronously (this call returns BEFORE action completes)
+            with the DispatcherPriority.Background on the thread that the Dispatcher was created on.
+            </summary>
+            <param name="dispatcherObject">The dispatcher object where the action runs.</param>
+            <param name="invokeAction">An action that takes no parameters.</param>
+            <param name="priority">The dispatcher priority.</param>
+        </member>
+        <member name="T:MLib.Controls.Metro.MetroProgressBar">
+            <summary>
+            Implements a metrofied ProgressBar control.
+            <see cref="T:System.Windows.Controls.ProgressBar"/>
+            </summary>
+        </member>
+        <member name="F:MLib.Controls.Metro.MetroProgressBar.EllipseDiameterProperty">
+            <summary> 
+            Implements the backing field for the dependency property EllipseDiameter.
+            </summary>
+        </member>
+        <member name="F:MLib.Controls.Metro.MetroProgressBar.EllipseOffsetProperty">
+            <summary> 
+            Implements the backing field for the dependency property EllipseOffset.
+            </summary>
+        </member>
+        <member name="M:MLib.Controls.Metro.MetroProgressBar.#cctor">
+            <summary>
+            Static class constructor.
+            </summary>
+        </member>
+        <member name="M:MLib.Controls.Metro.MetroProgressBar.#ctor">
+            <summary>
+            Class constructor.
+            </summary>
+        </member>
+        <member name="P:MLib.Controls.Metro.MetroProgressBar.EllipseDiameter">
+            <summary>
+            Gets/sets the diameter of the ellipses dependency property
+            used in the indeterminate animation.
+            </summary>
+        </member>
+        <member name="P:MLib.Controls.Metro.MetroProgressBar.EllipseOffset">
+            <summary>
+            Gets/sets the offset of the ellipses dependency property
+            used in the indeterminate animation.
+            </summary>
+        </member>
+        <member name="M:MLib.Controls.Metro.MetroProgressBar.OnApplyTemplate">
+            <summary>
+            Called when a template is applied to a ProgressBar.(Overrides
+            FrameworkElement.OnApplyTemplate().)
+            </summary>
+        </member>
+        <member name="M:MLib.Controls.Metro.MetroProgressBar.OnInitialized(System.EventArgs)">
+            <summary>
+            Raises the Initialized event. This method is invoked whenever IsInitialized is set
+            to true internally. (Inherited from FrameworkElement.)
+            </summary>
+            <param name="e">The Initialized event.</param>
+        </member>
+        <member name="T:MLib.Controls.RelativeAnimatingContentControl">
+            <summary>
+            The platform does not currently support relative sized translation values. 
+            This primitive control walks through visual state animation storyboards
+            and looks for identifying values to use as percentages.
+            </summary>
+        </member>
+        <member name="F:MLib.Controls.RelativeAnimatingContentControl.SimpleDoubleComparisonEpsilon">
+            <summary>
+            A simple Epsilon-style value used for trying to determine if a double
+            has an identifying value. 
+            </summary>
+        </member>
+        <member name="F:MLib.Controls.RelativeAnimatingContentControl._knownWidth">
+            <summary>
+            The last known width of the control.
+            </summary>
+        </member>
+        <member name="F:MLib.Controls.RelativeAnimatingContentControl._knownHeight">
+            <summary>
+            The last known height of the control.
+            </summary>
+        </member>
+        <member name="F:MLib.Controls.RelativeAnimatingContentControl._specialAnimations">
+            <summary>
+            A set of custom animation adapters used to update the animation
+            storyboards when the size of the control changes.
+            </summary>
+        </member>
+        <member name="M:MLib.Controls.RelativeAnimatingContentControl.#ctor">
+            <summary>
+            Initializes a new instance of the RelativeAnimatingContentControl
+            type.
+            </summary>
+        </member>
+        <member name="M:MLib.Controls.RelativeAnimatingContentControl.OnSizeChanged(System.Object,System.Windows.SizeChangedEventArgs)">
+            <summary>
+            Handles the size changed event.
+            </summary>
+            <param name="sender">The source object.</param>
+            <param name="e">The event arguments.</param>
+        </member>
+        <member name="M:MLib.Controls.RelativeAnimatingContentControl.UpdateAnyAnimationValues">
+            <summary>
+            Walks through the known storyboards in the control's template that
+            may contain identifying values, storing them for future
+            use and updates.
+            </summary>
+        </member>
+        <member name="M:MLib.Controls.RelativeAnimatingContentControl.UpdateKnownAnimations">
+            <summary>
+            Walks through all special animations, updating based on the current
+            size of the control.
+            </summary>
+        </member>
+        <member name="M:MLib.Controls.RelativeAnimatingContentControl.ProcessDoubleAnimationWithKeys(System.Windows.Media.Animation.DoubleAnimationUsingKeyFrames)">
+            <summary>
+            Processes a double animation with keyframes, looking for known 
+            special values to store with an adapter.
+            </summary>
+            <param name="da">The double animation using key frames instance.</param>
+        </member>
+        <member name="M:MLib.Controls.RelativeAnimatingContentControl.ProcessDoubleAnimation(System.Windows.Media.Animation.DoubleAnimation)">
+            <summary>
+            Processes a double animation looking for special values.
+            </summary>
+            <param name="da">The double animation instance.</param>
+        </member>
+        <member name="T:MLib.Controls.RelativeAnimatingContentControl.DoubleAnimationDimension">
+            <summary>
+            A selection of dimensions of interest for updating an animation.
+            </summary>
+        </member>
+        <member name="F:MLib.Controls.RelativeAnimatingContentControl.DoubleAnimationDimension.Width">
+            <summary>
+            The width (horizontal) dimension.
+            </summary>
+        </member>
+        <member name="F:MLib.Controls.RelativeAnimatingContentControl.DoubleAnimationDimension.Height">
+            <summary>
+            The height (vertical) dimension.
+            </summary>
+        </member>
+        <member name="T:MLib.Controls.RelativeAnimatingContentControl.AnimationValueAdapter">
+            <summary>
+            A simple class designed to store information about a specific 
+            animation instance and its properties. Able to update the values at
+            runtime.
+            </summary>
+        </member>
+        <member name="P:MLib.Controls.RelativeAnimatingContentControl.AnimationValueAdapter.OriginalValue">
+            <summary>
+            Gets or sets the original double value.
+            </summary>
+        </member>
+        <member name="M:MLib.Controls.RelativeAnimatingContentControl.AnimationValueAdapter.#ctor(MLib.Controls.RelativeAnimatingContentControl.DoubleAnimationDimension)">
+            <summary>
+            Initializes a new instance of the AnimationValueAdapter type.
+            </summary>
+            <param name="dimension">The dimension of interest for updates.</param>
+        </member>
+        <member name="P:MLib.Controls.RelativeAnimatingContentControl.AnimationValueAdapter.Dimension">
+            <summary>
+            Gets the dimension of interest for the control.
+            </summary>
+        </member>
+        <member name="M:MLib.Controls.RelativeAnimatingContentControl.AnimationValueAdapter.UpdateWithNewDimension(System.Double,System.Double)">
+            <summary>
+            Updates the original instance based on new dimension information
+            from the control. Takes both and allows the subclass to make the
+            decision on which ratio, values, and dimension to use.
+            </summary>
+            <param name="width">The width of the control.</param>
+            <param name="height">The height of the control.</param>
+        </member>
+        <member name="P:MLib.Controls.RelativeAnimatingContentControl.GeneralAnimationValueAdapter`1.Instance">
+            <summary>
+            Stores the animation instance.
+            </summary>
+        </member>
+        <member name="M:MLib.Controls.RelativeAnimatingContentControl.GeneralAnimationValueAdapter`1.GetValue">
+            <summary>
+            Gets the value of the underlying property of interest.
+            </summary>
+            <returns>Returns the value of the property.</returns>
+        </member>
+        <member name="M:MLib.Controls.RelativeAnimatingContentControl.GeneralAnimationValueAdapter`1.SetValue(System.Double)">
+            <summary>
+            Sets the value for the underlying property of interest.
+            </summary>
+            <param name="newValue">The new value for the property.</param>
+        </member>
+        <member name="P:MLib.Controls.RelativeAnimatingContentControl.GeneralAnimationValueAdapter`1.InitialValue">
+            <summary>
+            Gets the initial value (minus the identifying value portion) that the
+            designer stored within the visual state animation property.
+            </summary>
+        </member>
+        <member name="F:MLib.Controls.RelativeAnimatingContentControl.GeneralAnimationValueAdapter`1._ratio">
+            <summary>
+            The ratio based on the original identifying value, used for computing
+            the updated animation property of interest when the size of the
+            control changes.
+            </summary>
+        </member>
+        <member name="M:MLib.Controls.RelativeAnimatingContentControl.GeneralAnimationValueAdapter`1.#ctor(MLib.Controls.RelativeAnimatingContentControl.DoubleAnimationDimension,`0)">
+            <summary>
+            Initializes a new instance of the GeneralAnimationValueAdapter
+            type.
+            </summary>
+            <param name="d">The dimension of interest.</param>
+            <param name="instance">The animation type instance.</param>
+        </member>
+        <member name="M:MLib.Controls.RelativeAnimatingContentControl.GeneralAnimationValueAdapter`1.StripIdentifyingValueOff(System.Double)">
+            <summary>
+            Approximately removes the identifying value from a value.
+            </summary>
+            <param name="number">The initial number.</param>
+            <returns>Returns a double with an adjustment for the identifying
+            value portion of the number.</returns>
+        </member>
+        <member name="M:MLib.Controls.RelativeAnimatingContentControl.GeneralAnimationValueAdapter`1.GetDimensionFromIdentifyingValue(System.Double)">
+            <summary>
+            Retrieves the dimension, if any, from the number. If the number
+            does not have an identifying value, null is returned.
+            </summary>
+            <param name="number">The double value.</param>
+            <returns>Returns a double animation dimension if the number was
+            contained an identifying value; otherwise, returns null.</returns>
+        </member>
+        <member name="M:MLib.Controls.RelativeAnimatingContentControl.GeneralAnimationValueAdapter`1.UpdateWithNewDimension(System.Double,System.Double)">
+            <summary>
+            Updates the animation instance based on the dimensions of the
+            control.
+            </summary>
+            <param name="width">The width of the control.</param>
+            <param name="height">The height of the control.</param>
+        </member>
+        <member name="M:MLib.Controls.RelativeAnimatingContentControl.GeneralAnimationValueAdapter`1.UpdateValue(System.Double)">
+            <summary>
+            Updates the value of the property.
+            </summary>
+            <param name="sizeToUse">The size of interest to use with a ratio
+            computation.</param>
+        </member>
+        <member name="T:MLib.Controls.RelativeAnimatingContentControl.DoubleAnimationToAdapter">
+            <summary>
+            Adapter for DoubleAnimation's To property.
+            </summary>
+        </member>
+        <member name="M:MLib.Controls.RelativeAnimatingContentControl.DoubleAnimationToAdapter.GetValue">
+            <summary>
+            Gets the value of the underlying property of interest.
+            </summary>
+            <returns>Returns the value of the property.</returns>
+        </member>
+        <member name="M:MLib.Controls.RelativeAnimatingContentControl.DoubleAnimationToAdapter.SetValue(System.Double)">
+            <summary>
+            Sets the value for the underlying property of interest.
+            </summary>
+            <param name="newValue">The new value for the property.</param>
+        </member>
+        <member name="M:MLib.Controls.RelativeAnimatingContentControl.DoubleAnimationToAdapter.#ctor(MLib.Controls.RelativeAnimatingContentControl.DoubleAnimationDimension,System.Windows.Media.Animation.DoubleAnimation)">
+            <summary>
+            Initializes a new instance of the DoubleAnimationToAdapter type.
+            </summary>
+            <param name="dimension">The dimension of interest.</param>
+            <param name="instance">The instance of the animation type.</param>
+        </member>
+        <member name="T:MLib.Controls.RelativeAnimatingContentControl.DoubleAnimationFromAdapter">
+            <summary>
+            Adapter for DoubleAnimation's From property.
+            </summary>
+        </member>
+        <member name="M:MLib.Controls.RelativeAnimatingContentControl.DoubleAnimationFromAdapter.GetValue">
+            <summary>
+            Gets the value of the underlying property of interest.
+            </summary>
+            <returns>Returns the value of the property.</returns>
+        </member>
+        <member name="M:MLib.Controls.RelativeAnimatingContentControl.DoubleAnimationFromAdapter.SetValue(System.Double)">
+            <summary>
+            Sets the value for the underlying property of interest.
+            </summary>
+            <param name="newValue">The new value for the property.</param>
+        </member>
+        <member name="M:MLib.Controls.RelativeAnimatingContentControl.DoubleAnimationFromAdapter.#ctor(MLib.Controls.RelativeAnimatingContentControl.DoubleAnimationDimension,System.Windows.Media.Animation.DoubleAnimation)">
+            <summary>
+            Initializes a new instance of the DoubleAnimationFromAdapter 
+            type.
+            </summary>
+            <param name="dimension">The dimension of interest.</param>
+            <param name="instance">The instance of the animation type.</param>
+        </member>
+        <member name="T:MLib.Controls.RelativeAnimatingContentControl.DoubleAnimationFrameAdapter">
+            <summary>
+            Adapter for double key frames.
+            </summary>
+        </member>
+        <member name="M:MLib.Controls.RelativeAnimatingContentControl.DoubleAnimationFrameAdapter.GetValue">
+            <summary>
+            Gets the value of the underlying property of interest.
+            </summary>
+            <returns>Returns the value of the property.</returns>
+        </member>
+        <member name="M:MLib.Controls.RelativeAnimatingContentControl.DoubleAnimationFrameAdapter.SetValue(System.Double)">
+            <summary>
+            Sets the value for the underlying property of interest.
+            </summary>
+            <param name="newValue">The new value for the property.</param>
+        </member>
+        <member name="M:MLib.Controls.RelativeAnimatingContentControl.DoubleAnimationFrameAdapter.#ctor(MLib.Controls.RelativeAnimatingContentControl.DoubleAnimationDimension,System.Windows.Media.Animation.DoubleKeyFrame)">
+            <summary>
+            Initializes a new instance of the DoubleAnimationFrameAdapter
+            type.
+            </summary>
+            <param name="dimension">The dimension of interest.</param>
+            <param name="frame">The instance of the animation type.</param>
+        </member>
+        <member name="T:MLib.Controls.ContentControlEx">
+            <summary>
+            Implements an extended ContentControl that keeps track of framework specific
+            things like character chasing and so forth.
+            </summary>
+        </member>
+        <member name="F:MLib.Controls.ContentControlEx.ContentCharacterCasingProperty">
+            <summary>
+            The DependencyProperty for the CharacterCasing property.
+            Controls whether or not content is converted to upper or lower case
+            Default Value: CharacterCasing.Normal
+            </summary>
+        </member>
+        <member name="P:MLib.Controls.ContentControlEx.ContentCharacterCasing">
+            <summary> 
+            Character casing of the Content
+            </summary> 
+        </member>
+        <member name="F:MLib.Controls.ContentControlEx.RecognizesAccessKeyProperty">
+            <summary>
+            The DependencyProperty for the RecognizesAccessKey property. 
+            Default Value: false 
+            </summary> 
+        </member>
+        <member name="P:MLib.Controls.ContentControlEx.RecognizesAccessKey">
+            <summary> 
+            Determine if the inner ContentPresenter should use AccessText in its style
+            </summary> 
+        </member>
+        <member name="T:MLib.Converters.BackgroundToForegroundConverter">
+            <summary>
+            Determines the Ideal Text Color Based on Specified Background Color
+            http://www.codeproject.com/KB/GDI-plus/IdealTextColor.aspx
+            </summary>
+        </member>
+        <member name="M:MLib.Converters.BackgroundToForegroundConverter.#cctor">
+            <summary>
+            Static class constructor
+            Explicit static constructor to tell C# compiler
+            not to mark type as beforefieldinit
+            </summary>
+        </member>
+        <member name="M:MLib.Converters.BackgroundToForegroundConverter.#ctor">
+            <summary>
+            Private class constructor
+            </summary>
+        </member>
+        <member name="P:MLib.Converters.BackgroundToForegroundConverter.Instance">
+            <summary>
+            Gets another the static instance of this converter class.
+            </summary>
+        </member>
+        <member name="M:MLib.Converters.BackgroundToForegroundConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            Converts a Specified Background Color into an Ideal Text (Foreground) Color.
+            http://www.codeproject.com/KB/GDI-plus/IdealTextColor.aspx
+            </summary>
+            <param name = "value"></param>
+            <param name = "targetType"></param>
+            <param name = "parameter"></param>
+            <param name = "culture"></param>
+            <returns>The converted object.</returns>
+        </member>
+        <member name="M:MLib.Converters.BackgroundToForegroundConverter.ConvertBack(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            Method is not implemented.
+            </summary>
+            <param name = "value"></param>
+            <param name = "targetType"></param>
+            <param name = "parameter"></param>
+            <param name = "culture"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MLib.Converters.BackgroundToForegroundConverter.Convert(System.Object[],System.Type,System.Object,System.Globalization.CultureInfo)">
+             <summary>
+             Method expects an array of 2 objects:
+             object[0] -> Background, object[1] -> Foreground
+            
+             and returns object[1] if it is not null
+             or
+             returns the ideal foreground color CONVERTED from object[0] value, otherwise.
+             </summary>
+             <param name = "values"></param>
+             <param name = "targetType"></param>
+             <param name = "parameter"></param>
+             <param name = "culture"></param>
+             <returns></returns>
+        </member>
+        <member name="M:MLib.Converters.BackgroundToForegroundConverter.ConvertBack(System.Object,System.Type[],System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            Method is not implemented.
+            </summary>
+            <param name = "value"></param>
+            <param name = "targetTypes"></param>
+            <param name = "parameter"></param>
+            <param name = "culture"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MLib.Converters.BackgroundToForegroundConverter.IdealTextColor(System.Windows.Media.Color)">
+            <summary>
+            Determining Ideal Text Color Based on Specified Background Color
+            http://www.codeproject.com/KB/GDI-plus/IdealTextColor.aspx
+            </summary>
+            <param name = "bg">The bg.</param>
+            <returns></returns>
+        </member>
+        <member name="T:MLib.Converters.IgnoreThicknessSideType">
+            <summary>
+            Enumeration to determine the side of the thickness to ignore in thickness converter.
+            </summary>
+        </member>
+        <member name="F:MLib.Converters.IgnoreThicknessSideType.None">
+            <summary>
+            Use all sides.
+            </summary>
+        </member>
+        <member name="F:MLib.Converters.IgnoreThicknessSideType.Left">
+            <summary>
+            Ignore the left side.
+            </summary>
+        </member>
+        <member name="F:MLib.Converters.IgnoreThicknessSideType.Top">
+            <summary>
+            Ignore the top side.
+            </summary>
+        </member>
+        <member name="F:MLib.Converters.IgnoreThicknessSideType.Right">
+            <summary>
+            Ignore the right side.
+            </summary>
+        </member>
+        <member name="F:MLib.Converters.IgnoreThicknessSideType.Bottom">
+            <summary>
+            Ignore the bottom side.
+            </summary>
+        </member>
+        <member name="T:MLib.Converters.ThicknessBindingConverter">
+            <summary>
+            Converts a Thickness to a new Thickness. It's possible to ignore a side
+            with the IgnoreThicknessSide property.
+            </summary>
+        </member>
+        <member name="P:MLib.Converters.ThicknessBindingConverter.IgnoreThicknessSide">
+            <summary>
+            Gets/sets the thickness sides that should be ignored in the conversion.
+            </summary>
+        </member>
+        <member name="M:MLib.Converters.ThicknessBindingConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            Converts a Thickness to a new Thickness. It's possible to ignore a side
+            with the IgnoreThicknessSide property.
+            </summary>
+            <param name = "value"></param>
+            <param name = "targetType"></param>
+            <param name = "parameter"></param>
+            <param name = "culture"></param>
+            <returns>The converted object.</returns>
+        </member>
+        <member name="M:MLib.Converters.ThicknessBindingConverter.ConvertBack(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            Method is not implemented.
+            </summary>
+            <param name = "value"></param>
+            <param name = "targetType"></param>
+            <param name = "parameter"></param>
+            <param name = "culture"></param>
+            <returns></returns>
+        </member>
+        <member name="T:MLib.Converters.ToUpperConverter">
+            <summary>
+            Converts string values to upper case.
+            </summary>
+        </member>
+        <member name="M:MLib.Converters.ToUpperConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            Converts a value.
+            </summary>
+            <param name="value">The value produced by the binding source.</param>
+            <param name="targetType">The type of the binding target property.</param>
+            <param name="parameter">The converter parameter to use.</param>
+            <param name="culture">The culture to use in the converter.</param>
+            <returns>
+            A converted value. If the method returns null, the valid null value is used.
+            </returns>
+        </member>
+        <member name="M:MLib.Converters.ToUpperConverter.ConvertBack(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            Converts a value.
+            </summary>
+            <param name="value">The value that is produced by the binding target.</param>
+            <param name="targetType">The type to convert to.</param>
+            <param name="parameter">The converter parameter to use.</param>
+            <param name="culture">The culture to use in the converter.</param>
+            <returns>
+            A converted value. If the method returns null, the valid null value is used.
+            </returns>
+        </member>
+        <member name="T:MLib.Converters.TreeViewMarginConverter">
+            <summary>
+            Converts a treeviewitem (and its computed depth) into a margin value.
+            </summary>
+        </member>
+        <member name="P:MLib.Converters.TreeViewMarginConverter.Length">
+            <summary>
+            Gets/sets default margin size in dependence of depth of a <seealso cref="T:System.Windows.Controls.TreeViewItem"/>.
+            </summary>
+        </member>
+        <member name="M:MLib.Converters.TreeViewMarginConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            Converts a treeviewitem (and its computed depth) into a margin.
+            </summary>
+            <param name = "value"></param>
+            <param name = "targetType"></param>
+            <param name = "parameter"></param>
+            <param name = "culture"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MLib.Converters.TreeViewMarginConverter.ConvertBack(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            Method is not implemented.
+            </summary>
+            <param name = "value"></param>
+            <param name = "targetType"></param>
+            <param name = "parameter"></param>
+            <param name = "culture"></param>
+            <returns></returns>
+        </member>
+        <member name="T:MLib.Converters.TreeViewItemExtensions">
+            <summary>
+            Provides extension methods for treeview items.
+            </summary>
+        </member>
+        <member name="M:MLib.Converters.TreeViewItemExtensions.GetDepth(System.Windows.Controls.TreeViewItem)">
+            <summary>
+            Gets the level (depth) of a tree view item and returns it as integer value.
+            </summary>
+            <param name = "item"></param>
+            <returns>the depth of treeviewitem as integer value</returns>
+        </member>
+        <member name="M:MLib.Converters.TreeViewItemExtensions.GetParent(System.Windows.Controls.TreeViewItem)">
+            <summary>
+            Gets the parent of a tree view via search in visual tree.
+            </summary>
+            <param name = "item"></param>
+            <returns>the parent if any</returns>
+        </member>
+        <member name="T:MLib.Events.ColorChangedEventHandler">
+            <summary>
+            Represents the method that will handle the
+            <see cref="T:MLib.Events.ColorChangedEventArgs"/> routed event.
+            </summary>
+            <param name="sender">The object where the event handler is attached.</param>
+            <param name="e">The event data (new color).</param>
+        </member>
+        <member name="T:MLib.Events.ColorChangedEventArgs">
+            <summary>
+            Implements the <see cref="T:MLib.Events.ColorChangedEventArgs"/> routed event.
+            
+            This event is used by the AppearanceManagerImpl
+            to tell any listener when the AccentColor has changed via the
+            AccentColorChanged event.
+            </summary>
+        </member>
+        <member name="M:MLib.Events.ColorChangedEventArgs.#ctor(System.Windows.Media.Color)">
+            <summary>
+            Class constructor from Color parameter.
+            </summary>
+        </member>
+        <member name="M:MLib.Events.ColorChangedEventArgs.#ctor">
+            <summary>
+            Class constructor.
+            </summary>
+        </member>
+        <member name="P:MLib.Events.ColorChangedEventArgs.NewColor">
+            <summary>
+            Gets the value of the new color to which the system has changed.
+            </summary>
+        </member>
+        <member name="T:MLib.Interfaces.IThemeInfo">
+            <summary>
+            Describes a WPF theme by its name and Uri source.
+            </summary>
+        </member>
+        <member name="P:MLib.Interfaces.IThemeInfo.DisplayName">
+            <summary>
+            Gets the displayable (localized) name for this theme.
+            </summary>
+        </member>
+        <member name="P:MLib.Interfaces.IThemeInfo.ThemeSources">
+            <summary>
+            Gets the Uri source for this theme.
+            </summary>
+        </member>
+        <member name="M:MLib.Interfaces.IThemeInfo.AddResources(System.Collections.Generic.List{System.Uri})">
+            <summary>
+            Adds additional resource file references into the existing theme definition.
+            </summary>
+            <param name="additionalResource"></param>
+        </member>
+        <member name="T:MLib.Interfaces.IThemeInfos">
+            <summary>
+            Interface to a class that manages a set of theminfo entries.
+            </summary>
+        </member>
+        <member name="M:MLib.Interfaces.IThemeInfos.AddThemeInfo(System.String,System.Collections.Generic.List{System.Uri})">
+            <summary>
+            Add another theme entry by its name and Uri source.
+            </summary>
+            <param name="name"></param>
+            <param name="themeSources"></param>
+        </member>
+        <member name="M:MLib.Interfaces.IThemeInfos.GetThemeInfo(System.String)">
+            <summary>
+            Retrieve an existing theme entry by its Uri source.
+            Returns null if theme is not present.
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MLib.Interfaces.IThemeInfos.RemoveThemeInfo(System.String)">
+            <summary>
+            Remove an existing theme entry by its Uri source.
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MLib.Interfaces.IThemeInfos.RemoveAllThemeInfos">
+            <summary>
+            Remove all existing theme entries.
+            </summary>
+        </member>
+        <member name="M:MLib.Interfaces.IThemeInfos.GetThemeInfos">
+            <summary>
+            Enumerate through all themes
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:MLib.Interfaces.IAppearanceManager">
+            <summary>
+            An interface to a component that manages all WPF THeming relevant things,
+            such as, theme names, there resources, accent color, and so forth...
+            </summary>
+        </member>
+        <member name="P:MLib.Interfaces.IAppearanceManager.ThemeName">
+            <summary>
+            Gets the name of the currently selected theme.
+            </summary>
+        </member>
+        <member name="P:MLib.Interfaces.IAppearanceManager.ThemeSources">
+            <summary>
+            Gets the current theme source.
+            </summary>
+        </member>
+        <member name="P:MLib.Interfaces.IAppearanceManager.AccentColor">
+            <summary>
+            Gets the current accent color.
+            </summary>
+        </member>
+        <member name="E:MLib.Interfaces.IAppearanceManager.AccentColorChanged">
+            <summary>
+            This event is invoked when the current accent color was changed to a different accent color.
+            </summary>
+        </member>
+        <member name="M:MLib.Interfaces.IAppearanceManager.GetDefaultTheme">
+            <summary>
+            Returns the default theme for the application
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MLib.Interfaces.IAppearanceManager.SetTheme(MLib.Interfaces.IThemeInfos,System.String,System.Windows.Media.Color)">
+            <summary>
+            Set the current them as a selection of the settings service peroperties
+            along with the given accentcolor.
+            </summary>
+            <param name="Themes">Collections of themes to select the new theme from.</param>
+            <param name="themeName">Name od the theme to be set (e.g.: Dark, Light)</param>
+            <param name="AccentColor">Apply this accent color
+            (can be Windows default or custom accent color).
+            Accent Color in UI elements is invisible if this is null.</param>
+        </member>
+        <member name="M:MLib.Interfaces.IAppearanceManager.SetAccentColor(System.Windows.Media.Color)">
+            <summary>
+            Resets the AccentColor without changing the theme and
+            triggers a AccentColorChanged event to all listners.
+            </summary>
+            <param name="accentColor"></param>
+        </member>
+        <member name="M:MLib.Interfaces.IAppearanceManager.SetDefaultThemes(MLib.Interfaces.IThemeInfos,System.Boolean)">
+            <summary>
+            Resets the standard themes available through the theme settings interface.
+            Method Adds Dark and Light theme infos from MLib - calling applications can
+            use the AddThemeResources() method to add more resources.
+            </summary>
+            <param name="themes">Collection of themeinfos in which Dark and Light themes
+            with MLib resources should be added.</param>
+            <param name="removeAllThemeInfos">Determines whether existing collection
+            of themeinfos is removed before addinng Dark and Light themes.</param>
+        </member>
+        <member name="M:MLib.Interfaces.IAppearanceManager.AddThemeResources(System.String,System.Collections.Generic.List{System.Uri},MLib.Interfaces.IThemeInfos)">
+            <summary>
+            Adds more resource files into the standard themes available
+            through the theme settings interface.
+            </summary>
+            <param name="themeName"></param>
+            <param name="additionalResource"></param>
+            <param name="themes"></param>
+        </member>
+        <member name="M:MLib.Interfaces.IAppearanceManager.SetDefaultTheme(MLib.Interfaces.IThemeInfos,System.String)">
+            <summary>
+            This function assumes that themes and their resources have
+            been added, previously.
+            
+            Use this method to define a default theme which can always be
+            used as a backup whenever a certain theme is not defined etc...
+            </summary>
+            <param name="Themes"></param>
+            <param name="defaultThemeName"></param>
+        </member>
+        <member name="M:MLib.Interfaces.IAppearanceManager.CreateThemeInfos">
+            <summary>
+            Creates a new instance of an object that adheres to the
+            <see cref="T:MLib.Interfaces.IThemeInfos"/> interface.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:MLib.Internal.Models.ThemeInfo">
+            <summary>
+            Defines a WPF theme by its name and Uri sources.
+            </summary>
+        </member>
+        <member name="M:MLib.Internal.Models.ThemeInfo.#ctor(System.String,System.Collections.Generic.List{System.Uri})">
+            <summary>
+            Class constructor
+            </summary>
+            <param name="themeName"></param>
+            <param name="themeSources"></param>
+        </member>
+        <member name="M:MLib.Internal.Models.ThemeInfo.#ctor">
+            <summary>
+            Hidden standard constructor
+            </summary>
+        </member>
+        <member name="P:MLib.Internal.Models.ThemeInfo.DisplayName">
+            <summary>
+            Gets the displayable (localized) name for this theme.
+            </summary>
+        </member>
+        <member name="P:MLib.Internal.Models.ThemeInfo.ThemeSources">
+            <summary>
+            Gets the Uri sources for this theme.
+            </summary>
+        </member>
+        <member name="M:MLib.Internal.Models.ThemeInfo.AddResources(System.Collections.Generic.List{System.Uri})">
+            <summary>
+            Adds additional resource file references into the existing theme definition.
+            </summary>
+            <param name="additionalResource"></param>
+        </member>
+        <member name="T:MLib.Internal.Models.ThemeInfos">
+            <summary>
+            Manages a set of theminfo entries.
+            </summary>
+        </member>
+        <member name="M:MLib.Internal.Models.ThemeInfos.AddThemeInfo(System.String,System.Collections.Generic.List{System.Uri})">
+            <summary>
+            Add another theme entry by its name and Uri source.
+            </summary>
+            <param name="name"></param>
+            <param name="themeSources"></param>
+        </member>
+        <member name="M:MLib.Internal.Models.ThemeInfos.GetThemeInfo(System.String)">
+            <summary>
+            Retrieve an existing theme entry by its Uri source.
+            Returns null if theme is not present.
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MLib.Internal.Models.ThemeInfos.RemoveThemeInfo(System.String)">
+            <summary>
+            Remove an existing theme entry by its Uri source.
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MLib.Internal.Models.ThemeInfos.RemoveAllThemeInfos">
+            <summary>
+            Remove all existing theme entries.
+            </summary>
+        </member>
+        <member name="M:MLib.Internal.Models.ThemeInfos.GetThemeInfos">
+            <summary>
+            Enumerate through all themes
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:MLib.Internal.AppearanceManagerImpl">
+            <summary>
+            The AppearanceManager class manages all WPF theme related items.
+            Its location in the hierarchy is between the viewmodels and the
+            themes settings service.
+            </summary>
+        </member>
+        <member name="F:MLib.Internal.AppearanceManagerImpl._defaultTheme">
+            <summary>
+            Name and source of the defalt theme (e.g. dark or light).
+            </summary>
+        </member>
+        <member name="M:MLib.Internal.AppearanceManagerImpl.#ctor">
+            <summary>
+            Standard class constructor.
+            </summary>
+        </member>
+        <member name="P:MLib.Internal.AppearanceManagerImpl.ThemeName">
+            <summary>
+            Gets the name of the currently selected theme.
+            </summary>
+        </member>
+        <member name="P:MLib.Internal.AppearanceManagerImpl.ThemeSources">
+            <summary>
+            Gets the current theme source.
+            </summary>
+        </member>
+        <member name="P:MLib.Internal.AppearanceManagerImpl.AccentColor">
+            <summary>
+            Gets the current AccentColor from the merged resource dictionary.
+            </summary>
+        </member>
+        <member name="E:MLib.Internal.AppearanceManagerImpl.AccentColorChanged">
+            <summary>
+            Relays an event to its subscribers whenever the accent color is changed.
+            </summary>
+        </member>
+        <member name="M:MLib.Internal.AppearanceManagerImpl.GetDefaultTheme">
+            <summary>
+            Returns the default theme for the application
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MLib.Internal.AppearanceManagerImpl.SetTheme(MLib.Interfaces.IThemeInfos,System.String,System.Windows.Media.Color)">
+            <summary>
+            Set the current theme as a selection of the settings service peroperties.
+            </summary>
+            <param name="Themes">Collections of themes to select the new theme from.</param>
+            <param name="themeName">Name od the theme to be set (e.g.: Dark, Light)</param>
+            <param name="AccentColor">Apply this accent color
+            (can be Windows default or custom accent color).
+            Accent Color in UI elements is invisible if this is null.</param>
+        </member>
+        <member name="M:MLib.Internal.AppearanceManagerImpl.SetDefaultThemes(MLib.Interfaces.IThemeInfos,System.Boolean)">
+            <summary>
+            Resets the standard themes available through the theme settings interface.
+            Method Adds Dark and Light theme infos from MLib - calling applications can
+            use the AddThemeResources() method to add more resources.
+            </summary>
+            <param name="themes">Collection of themeinfos in which Dark and Light themes
+            with MLib resources should be added.</param>
+            <param name="removeAllThemeInfos">Determines whether existing collection
+            of themeinfos is removed before addinng Dark and Light themes.</param>
+        </member>
+        <member name="M:MLib.Internal.AppearanceManagerImpl.SetDefaultTheme(MLib.Interfaces.IThemeInfos,System.String)">
+            <summary>
+            This function assumes that themes and their resources have
+            been added, previously.
+            
+            Use this method to define a default theme which can always be
+            used as a backup whenever a certain theme is not defined etc...
+            </summary>
+            <param name="Themes"></param>
+            <param name="defaultThemeName"></param>
+        </member>
+        <member name="M:MLib.Internal.AppearanceManagerImpl.AddThemeResources(System.String,System.Collections.Generic.List{System.Uri},MLib.Interfaces.IThemeInfos)">
+            <summary>
+            Adds more resource files into the standard themes available
+            through the theme settings interface.
+            </summary>
+            <param name="themeName"></param>
+            <param name="additionalResource"></param>
+            <param name="themes"></param>
+        </member>
+        <member name="M:MLib.Internal.AppearanceManagerImpl.CreateThemeInfos">
+            <summary>
+            Creates a new instance of an object that adheres to the
+            <see cref="T:MLib.Interfaces.IThemeInfos"/> interface.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MLib.Internal.AppearanceManagerImpl.SetAccentColor(System.Windows.Media.Color)">
+            <summary>
+            Resets the AccentColor without changing the theme and
+            triggers a AccentColorChanged event to all listners.
+            </summary>
+            <param name="accentColor"></param>
+        </member>
+        <member name="M:MLib.Internal.AppearanceManagerImpl.SetThemeSourceAndAccentColor(System.Collections.Generic.List{System.Uri},System.Windows.Media.Color)">
+            <summary>
+            Is invoked whenever the application theme is changed
+            and a new Accent Color is applied.
+            
+            TODO XXX: Set AccentColor in other components (MsgBox) as well.
+            </summary>
+            <param name="sources"></param>
+            <param name="accentColor"></param>
+        </member>
+        <member name="T:MLib.Util.InvokeExtensions">
+            <summary>
+            Class provides extension methods for execution on the dispatcher (UI) thread.
+            These methods should be interesting for manipulating collections that are bound
+            to a view element (UI) and cannot be changed from any other thread than the one
+            that created them (usually the UI dispatcher thread).
+            </summary>
+        </member>
+        <member name="M:MLib.Util.InvokeExtensions.Invoke``1(System.Windows.Threading.DispatcherObject,System.Func{``0})">
+            <summary> 
+            Executes the specified function synchronously with the
+            DispatcherPriority.Background on the thread that the Dispatcher was created on.
+            </summary>
+            <param name="dispatcherObject">The dispatcher object where the action runs.</param>
+            <param name="func">Function to be executed on dispatcher thread.</param>
+            <returns>T via the invoked function T</returns>
+        </member>
+        <member name="M:MLib.Util.InvokeExtensions.Invoke(System.Windows.Threading.DispatcherObject,System.Action)">
+            <summary> 
+            Executes the specified Action synchronously with the
+            DispatcherPriority.Background on the thread that the Dispatcher was created on.
+            </summary>
+            <param name="dispatcherObject">The dispatcher object where the action runs.</param>
+            <param name="invokeAction">An action that takes no parameters.</param>
+        </member>
+        <member name="M:MLib.Util.InvokeExtensions.BeginInvoke(System.Windows.Threading.DispatcherObject,System.Action,System.Windows.Threading.DispatcherPriority)">
+            <summary> 
+            Executes the specified action asynchronously (this call returns BEFORE action completes)
+            with the DispatcherPriority.Background on the thread that the Dispatcher was created on.
+            </summary>
+            <param name="dispatcherObject">The dispatcher object where the action runs.</param>
+            <param name="invokeAction">An action that takes no parameters.</param>
+            <param name="priority">The dispatcher priority.</param>
+        </member>
+        <member name="T:MLib.Util.BindingProxy">
+            <summary>
+            Implements an XAML proxy which can be used to bind items (TreeViewItem, ListViewItem etc)
+            with a viewmodel that manages the collecrions.
+            
+            Source: http://www.thomaslevesque.com/2011/03/21/wpf-how-to-bind-to-data-when-the-datacontext-is-not-inherited/
+             Issue: http://stackoverflow.com/questions/9994241/mvvm-binding-command-to-contextmenu-item
+            </summary>
+        </member>
+        <member name="F:MLib.Util.BindingProxy.DataProperty">
+            <summary>
+            Implements the backing store property field of Data property.
+            who has a reference to this object.
+            </summary>
+        </member>
+        <member name="P:MLib.Util.BindingProxy.Data">
+            <summary>
+            Gets the data object this class is forwarding to everyone
+            who has a reference to this object.
+            </summary>
+        </member>
+        <member name="M:MLib.Util.BindingProxy.CreateInstanceCore">
+            <summary>
+            Overrides of Freezable
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:MLib.Util.PasswordBoxHelper">
+            <summary>
+            Class implements dependency properties that can be attached to a password
+            control to display a tool tip warning when the CAPS LOOK key is locked.
+            between themes.
+            </summary>
+        </member>
+        <member name="F:MLib.Util.PasswordBoxHelper.CapsLockIconProperty">
+            <summary>
+            Backing property of the CapsLockIcon dependency property.
+            between themes.
+            </summary>
+        </member>
+        <member name="F:MLib.Util.PasswordBoxHelper.CapsLockWarningToolTipProperty">
+            <summary>
+            Backing property of the CapsLockWarningToolTip dependency property.
+            between themes.
+            </summary>
+        </member>
+        <member name="M:MLib.Util.PasswordBoxHelper.GetCapsLockIcon(System.Windows.Controls.PasswordBox)">
+            <summary>
+            Gets the CapsLockIcon property value of the CapsLockIcon dependency property.
+            between themes.
+            </summary>
+            <param name="element"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MLib.Util.PasswordBoxHelper.SetCapsLockIcon(System.Windows.Controls.PasswordBox,System.Object)">
+            <summary>
+            Sets the CapsLockIcon property value of the CapsLockIcon dependency property.
+            between themes.
+            </summary>
+            <param name="element"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:MLib.Util.PasswordBoxHelper.GetCapsLockWarningToolTip(System.Windows.Controls.PasswordBox)">
+            <summary>
+            Gets the CapsLockWarningToolTip property value of the CapsLockWarningToolTip dependency property.
+            between themes.
+            </summary>
+            <param name="element"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MLib.Util.PasswordBoxHelper.SetCapsLockWarningToolTip(System.Windows.Controls.PasswordBox,System.Object)">
+            <summary>
+            Sets the CapsLockWarningToolTip property value of the CapsLockWarningToolTip dependency property.
+            between themes.
+            </summary>
+            <param name="element"></param>
+            <param name="value"></param>
+        </member>
+        <member name="T:MLib.Util.TransitionType">
+            <summary>
+            enumeration for the different transition types
+            </summary>
+        </member>
+        <member name="F:MLib.Util.TransitionType.Default">
+            <summary>
+            Use the VisualState DefaultTransition
+            </summary>
+        </member>
+        <member name="F:MLib.Util.TransitionType.Normal">
+            <summary>
+            Use the VisualState Normal
+            </summary>
+        </member>
+        <member name="F:MLib.Util.TransitionType.Up">
+            <summary>
+            Use the VisualState UpTransition
+            </summary>
+        </member>
+        <member name="F:MLib.Util.TransitionType.Down">
+            <summary>
+            Use the VisualState DownTransition
+            </summary>
+        </member>
+        <member name="F:MLib.Util.TransitionType.Right">
+            <summary>
+            Use the VisualState RightTransition
+            </summary>
+        </member>
+        <member name="F:MLib.Util.TransitionType.RightReplace">
+            <summary>
+            Use the VisualState RightReplaceTransition
+            </summary>
+        </member>
+        <member name="F:MLib.Util.TransitionType.Left">
+            <summary>
+            Use the VisualState LeftTransition
+            </summary>
+        </member>
+        <member name="F:MLib.Util.TransitionType.LeftReplace">
+            <summary>
+            Use the VisualState LeftReplaceTransition
+            </summary>
+        </member>
+        <member name="F:MLib.Util.TransitionType.Custom">
+            <summary>
+            Use a custom VisualState, the name must be set using CustomVisualStatesName property
+            </summary>
+        </member>
+        <member name="T:MLib.Themes.MenuKeys">
+            <summary>
+            Class implements static resource keys that should be referenced to configure
+            menu specific colors, styles and other elements that are typically changed
+            between themes.
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.MenuKeys.MenuSeparatorBorderBrushKey">
+            <summary>
+            Gets the Brush key for the normal Menu separator border color.
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.MenuKeys.SubmenuItemBackgroundKey">
+            <summary>
+            Gets the Brush key for the normal background of a Sub-Menu-Item.
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.MenuKeys.MenuItemHighlightedBackgroundKey">
+            <summary>
+            Gets the Brush key for highlighting the background of a Menu-Item on mouse over.
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.MenuKeys.SubmenuItemBackgroundHighlightedKey">
+            <summary>
+            Gets the Brush key for highlighting the background of a Menu-Item on mouse over.
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.MenuKeys.FocusScrollButtonBrushKey">
+            <summary>
+            Gets the background Brush key for a Menu Repeat button in IsPressed state.
+            (see context menu below)
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.MenuKeys.ScrollButtonBrushKey">
+            <summary>
+            Gets the background Brush key for a Context-Menu Repeat button in IsPressed state.
+            (see menu above)
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.MenuKeys.CheckMarkBackgroundBrushKey">
+            <summary>
+            Gets the background Brush key of a Checkmark in a menu or context menu.
+            (see menu above)
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.MenuKeys.CheckMarkBorderBrushKey">
+            <summary>
+            Gets the border Brush key of a Checkmark in a menu or context menu.
+            (see menu above)
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.MenuKeys.CheckMarkForegroundBrushKey">
+            <summary>
+            Gets the foreground Brush key of a Checkmark in a menu or context menu.
+            (see menu above)
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.MenuKeys.DisabledSubMenuItemBackgroundBrushKey">
+            <summary>
+            Gets the background Brush key of a disabled sub-menu-item.
+            (see menu above)
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.MenuKeys.DisabledSubMenuItemBorderBrushKey">
+            <summary>
+            Gets the border Brush key of a disabled sub-menu-item.
+            (see menu above)
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.MenuKeys.MenuBorderBrushKey">
+            <summary>
+            Gets the border Brush key of a disabled sub-menu-item.
+            (see menu above)
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.MenuKeys.MenuBackgroundKey">
+            <summary>
+            Gets the normal background Brush key of a menu.
+            (see menu above)
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.MenuKeys.TopLevelHeaderMenuBackgroundKey">
+            <summary>
+            Gets the normal background Brush key of the top level item in a menu (Files, Edit, ...).
+            (see menu above)
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.MenuKeys.TextBrushKey">
+            <summary>
+            Gets the normal text or foreground Brush key of a menu item.
+            (see menu above)
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.MenuKeys.ItemBackgroundSelectedKey">
+            <summary>
+            Gets the normal background Brush key of a selected menu item.
+            (see menu above)
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.MenuKeys.ItemTextDisabledKey">
+            <summary>
+            Gets the text or foreground Brush key of a menu item in disabled state.
+            (see menu above)
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.MenuKeys.NormalBackgroundBrushKey">
+            <summary>
+            Gets the normal background Brush key of a menu item.
+            (see menu above)
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.MenuKeys.ItemBackgroundHoverKey">
+            <summary>
+            Gets the background Brush key of a menu item in mouse over state.
+            (see menu above)
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.MenuKeys.DropShadowEffectKey">
+            <summary>
+            Gets the Brush key that is applied to draw a drop shadow (if any) below a menu.
+            (see menu above)
+            </summary>
+        </member>
+        <member name="T:MLib.Themes.ResourceKeys">
+            <summary>
+            Class implements static resource keys that should be referenced to configure
+            colors, styles and other elements that are typically changed between themes.
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.ControlAccentColorKey">
+            <summary>
+            Accent Color Key - This Color key is used to accent elements in the UI
+            (e.g.: Color of Activated Normal Window Frame, ResizeGrip, Focus or MouseOver input elements)
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.ControlAccentBrushKey">
+            <summary>
+            Accent Brush Key - This Brush key is used to accent elements in the UI
+            (e.g.: Color of Activated Normal Window Frame, ResizeGrip, Focus or MouseOver input elements)
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.ControlNormalForegroundKey">
+            <summary>
+            Gets the color key for the normal control enabled foreground color.
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.ControlNormalBackgroundKey">
+            <summary>
+            Gets the color key for the normal control enabled background color.
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.ControlNormalForegroundBrushKey">
+            <summary>
+            Gets the Brush key for the normal control enabled foreground color.
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.ControlNormalBackgroundBrushKey">
+            <summary>
+            Gets the Brush key for the normal control enabled background color.
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.ControlMouseOverBackgroundKey">
+            <summary>
+            Gets the Color key that should be applied when the user hovers the mouse over a control.
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.ControlMouseOverBackgroundBrushKey">
+            <summary>
+            Gets the applicable Brush key when the user hovers the mouse over a control.
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.ControlTextBrushKey">
+            <summary>
+            Gets a the applicable foreground Brush key that should be used for coloring text.
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.ControlCloseButtonWidthKey">
+            <summary>
+            Gets the key of the preferred width of a (window) close button.
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.ControlSystemButtonHeightKey">
+            <summary>
+            Gets the key of the preferred height of a (window) close button.
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.ControlSystemButtonWidthKey">
+            <summary>
+            Gets the key of the preferred width of a button.
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.ControlButtonTextKey">
+            <summary>
+            Gets the Brush key of the foreground color for a button.
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.ControlSystemButtonBackgroundOnMoseOverKey">
+            <summary>
+            Gets the Brush key of the background color of a system button when a user hovers the mouse over it.
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.ControlSystemButtonForegroundOnMoseOverKey">
+            <summary>
+            Gets the Brush key of the foreground color of a system button when a user hovers the mouse over it.
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.ControlSystemButtonBackgroundIsPressedKey">
+            <summary>
+            Gets the Brush key of the background color of a button when it is in Pressed state.
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.ControlSystemButtonForegroundIsPressedKey">
+            <summary>
+            Gets the Brush key of the foreground color of a button when it is in Pressed state.
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.ControlButtonBackgroundKey">
+            <summary>
+            Gets the Brush key of the background color of a control.
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.ControlButtonBorderKey">
+            <summary>
+            Gets the Brush key of the border color of a control.
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.ControlButtonTextDisabledKey">
+            <summary>
+            Gets the Brush key of a button's text (or foreground) color when it is in disabled state.
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.ControlDisabledBackgroundKey">
+            <summary>
+            Gets the Brush key of a control's background color when it is in disabled state.
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.ControlDisabledBorderKey">
+            <summary>
+            Gets the Brush key of a control's border color when it is in disabled state.
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.ControlButtonBackgroundHoverKey">
+            <summary>
+            Gets the mouse over Brush key of a control's background color when the user hovers the mouse over it.
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.ControlButtonBackgroundPressedKey">
+            <summary>
+            Gets Brush key of a button's background color when the button is pressed.
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.ControlButtonBorderHoverKey">
+            <summary>
+            Gets Brush key of a button's border color when the mouse is hovering over it.
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.ControlButtonTextHoverKey">
+            <summary>
+            Gets Brush key of a button's text or foreground color when the mouse is hovering over it.
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.ControlButtonTextPressedKey">
+            <summary>
+            Gets Brush key of a button's text or foreground color when the button is pressed.
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.ControlButtonBorderPressedKey">
+            <summary>
+            Gets Brush key of a button's border color when the button is pressed.
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.ControlButtonIsDefaultBorderBrushKey">
+            <summary>
+            Gets Brush key of a button's border when it is the default button within a dialog.
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.ControlButtonIsUnfocusedDefaultBrushKey">
+            <summary>
+            Gets Brush key of a button's border when it is the default button within a dialog and
+            has currently no input focus.
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.ControlInputTextDisabledKey">
+            <summary>
+            Gets text or foreground Brush key of an unspecified input control that is in disabled state
+            (e.g.: ItemsControl, TreeView, ListBox ...).
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.ControlItemTextKey">
+            <summary>
+            Gets text or foreground Brush key of an item in an ItemsControl (TreeView, ListBox, ListView).
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.ControlItemBackgroundHoverKey">
+            <summary>
+            Gets background Brush key of an item in an ItemsControl (TreeView, ListBox, ListView)
+            where the mouse is hovering over.
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.ControlItemTextHoverKey">
+            <summary>
+            Gets text or foreground Brush key of an item in an ItemsControl (TreeView, ListBox, ListView)
+            where the mouse is hovering over.
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.ControlItemTextSelectedKey">
+            <summary>
+            Gets text or foreground Brush key of a selected item in an ItemsControl (TreeView, ListBox, ListView).
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.ControlItemTextDisabledKey">
+            <summary>
+            Gets text or foreground Brush key of a disabled item in an ItemsControl (TreeView, ListBox, ListView).
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.ControlItemBackgroundSelectedKey">
+            <summary>
+            Gets a background Brush key of a selected item in an ItemsControl (TreeView, ListBox, ListView).
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.ControlItemBorderSelectedKey">
+            <summary>
+            Gets a border Brush key of a selected item in an ItemsControl (TreeView, ListBox, ListView).
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.ControlItemUnfocusedBackgroundSelectedKey">
+            <summary>
+            Gets a background Brush key of a selected item in an ItemsControl (TreeView, ListBox, ListView)
+            that has currently no input focus.
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.ControlItemUnfocusedBorderSelectedKey">
+            <summary>
+            Gets a border Brush key of a selected item in an ItemsControl (TreeView, ListBox, ListView)
+            that has currently no input focus.
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.ControlItemPressedBorderBrush">
+            <summary>
+            Gets a border Brush key of a selected and pressed item in an ItemsControl (TreeView, ListBox, ListView).
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.DisabledVisualElement">
+            <summary>
+            Gets a background Brush key of a disabled  item in an ItemsControl (ListBox).
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.ValidationToolTipTemplateShadowBrush">
+            <summary>
+            Gets a background Brush key of a shadow on a validation ToolTip in a ListBox.
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.ValidationErrorElement">
+            <summary>
+            Gets a background Brush key of a validation error element in a ListBox.
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.AlternateRow1BackgroundColorKey">
+            <summary>
+            Gets the Alternate Row 1 Background Color key of a row in a listview.
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.AlternateRow2BackgroundColorKey">
+            <summary>
+            Gets the Alternate Row 2 Background Color key of a row in a listview.
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.AlternateRow1BackgroundBrushKey">
+            <summary>
+            Gets the Alternate Row 1 Background Brush key of a row in a listview.
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.AlternateRow2BackgroundBrushKey">
+            <summary>
+            Gets the Alternate Row 2 Background Brush key of a row in a listview.
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.ControlScrollBarThumbBackgroundKey">
+            <summary>
+            Gets the background Brush key of the thumb that is used to drive a scrollbar.
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.ControlScrollBarThumbBorderKey">
+            <summary>
+            Gets the border Brush key of the thumb that is used to drive a scrollbar.
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.ControlScrollBarThumbForegroundKey">
+            <summary>
+            Gets the foreground Brush key of the thumb that is used to drive a scrollbar.
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.ControlScrollBarThumbBackgroundHoverKey">
+            <summary>
+            Gets the background Brush key of the thumb that is used to drive a scrollbar
+            when the mouse is hovered over it.
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.ControlScrollBarThumbForegroundHoverKey">
+            <summary>
+            Gets the foreground Brush key of the thumb that is used to drive a scrollbar
+            when the mouse is hovered over it.
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.ControlScrollBarThumbBackgroundDraggingKey">
+            <summary>
+            Gets the background Brush key of the thumb that is used to drive a scrollbar
+            when the user is dragging it.
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.ControlScrollBarThumbForegroundDraggingKey">
+            <summary>
+            Gets the foreground Brush key of the thumb that is used to drive a scrollbar
+            when the user is dragging it.
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.ControlScrollBarBackgroundKey">
+            <summary>
+            Gets the background Brush key of a scrollbar.
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.ControlWindowBorderActiveKey">
+            <summary>
+            Gets a border Brush key of a control (Combobox, Tool Tip).
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.ControlWindowBackgroundKey">
+            <summary>
+            Gets a background Brush key of a control (Combobox, Tool Tip).
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.ControlWindowTextKey">
+            <summary>
+            Gets a text or foreground Brush key of a control (Combobox, Tool Tip).
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.ControlInputBackgroundHoverKey">
+            <summary>
+            Gets a background Brush key of an input control when the mouse is hovering over it.
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.ControlInputBorderHoverKey">
+            <summary>
+            Gets a border Brush key of an input control when the mouse is hovering over it.
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.ControlInputTextKey">
+            <summary>
+            Gets a text or foreground Brush key of an input control.
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.ControlInputBackgroundKey">
+            <summary>
+            Gets a background Brush key of an input control.
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.ControlInputBorderKey">
+            <summary>
+            Gets a border Brush key of an input control.
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.ControlPopupBackgroundKey">
+            <summary>
+            Gets a background Color key of a Pop-Up control.
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.ControlPopupBackgroundBrushKey">
+            <summary>
+            Gets a background Brush key of a Pop-Up control.
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.ProgressBackgroundBrushKey">
+            <summary>
+            Gets a background Brush key of a Progress control.
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.ControlsValidationBrushKey">
+            <summary>
+            Gets the foreground Brush key for a validation error display (e.g.: TextBlock.Foreground in PasswordBox).
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.BlackColorKey">
+            <summary>
+            Gets a general black color key usually used for foreground colors that should always
+            be visible against the background. This color can, for example, be White for a dark theme.
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.BlackBrushKey">
+            <summary>
+            Gets a general black brush key usually used for foreground colors that should always
+            be visible against the background. This color can, for example, be White for a dark theme.
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.GrayNormalKey">
+            <summary>
+            Gets a general gray color key applicable for controls in normal state.
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.GrayHoverKey">
+            <summary>
+            Gets a general gray color key applicable for controls in mouse over state.
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.GrayNormalBrushKey">
+            <summary>
+            Gets a general gray brush key applicable for controls in normal state.
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.GrayHoverBrushKey">
+            <summary>
+            Gets a general gray brush key applicable for controls in mouse over state.
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.Gray1ColorKey">
+            <summary>
+            Gets a general gray color key in a gray range from 1 (almost black) to 10 (almost white).
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.Gray2ColorKey">
+            <summary>
+            Gets a general gray color key in a gray range from 1 (almost black) to 10 (almost white).
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.Gray5ColorKey">
+            <summary>
+            Gets a general gray color key in a gray range from 1 (almost black) to 10 (almost white).
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.Gray6ColorKey">
+            <summary>
+            Gets a general gray color key in a gray range from 1 (almost black) to 10 (almost white).
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.Gray7ColorKey">
+            <summary>
+            Gets a general gray color key in a gray range from 1 (almost black) to 10 (almost white).
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.Gray8ColorKey">
+            <summary>
+            Gets a general gray color key in a gray range from 1 (almost black) to 10 (almost white).
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.Gray10ColorKey">
+            <summary>
+            Gets a general gray color key in a gray range from 1 (almost black) to 10 (almost white).
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.Gray1BrushKey">
+            <summary>
+            Gets a general gray Brush key in a gray range from 1 (almost black) to 10 (almost white).
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.Gray2BrushKey">
+            <summary>
+            Gets a general gray Brush key in a gray range from 1 (almost black) to 10 (almost white).
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.Gray5BrushKey">
+            <summary>
+            Gets a general gray Brush key in a gray range from 1 (almost black) to 10 (almost white).
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.Gray6BrushKey">
+            <summary>
+            Gets a general gray Brush key in a gray range from 1 (almost black) to 10 (almost white).
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.Gray7BrushKey">
+            <summary>
+            Gets a general gray Brush key in a gray range from 1 (almost black) to 10 (almost white).
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.Gray8BrushKey">
+            <summary>
+            Gets a general gray Brush key in a gray range from 1 (almost black) to 10 (almost white).
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.Gray10BrushKey">
+            <summary>
+            Gets a general gray Brush key in a gray range from 1 (almost black) to 10 (almost white).
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.HighlightBrushKey">
+            <summary>
+            Gets a foreground Brush key that can be used for highlighting certain elements
+            (e.g. signal checked state if applicable).
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.CheckBoxBrushKey">
+            <summary>
+            Gets a border Brush key applicable on a checkbox or radio button control.
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.TransparentWhiteBrushKey">
+            <summary>
+            Gets a transparent background Brush key that can be used to overlay an item and
+            signal its enabled state on a checkbox or radio button control.
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.SemiTransparentWhiteBrushKey">
+            <summary>
+            Gets a half transparent background Brush key that can be used to overlay an item and
+            signal its disabled state on a checkbox or radio button control.
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.GlyphBrushKey">
+            <summary>
+            Gets the Brush key applicable for Glyph elements (e.g.: down chevron on combobox).
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.GroupBoxForeground">
+            <summary>
+            Gets a foreground Brush key of a group box control.
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.GroupBoxBackground">
+            <summary>
+            Gets a background Brush key of a group box control.
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.GroupBoxBorderBrush">
+            <summary>
+            Gets a border Brush key of a group box control.
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.GroupBoxContentBackground">
+            <summary>
+            Gets a background Brush key for the content portion of a group box control.
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.SliderThumbBackground">
+            <summary>
+            Gets the normal background Brush key applicable for the thumb of a Slider control.
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.SliderThumbBorder">
+            <summary>
+            Gets the normal border Brush key applicable for the thumb of a Slider control.
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.SliderThumbBackgroundHover">
+            <summary>
+            Gets the background Brush key applicable for the thumb of a Slider control
+            when the mouse is hovered over it.
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.SliderThumbBorderHover">
+            <summary>
+            Gets the border Brush key applicable for the thumb of a Slider control
+            when the mouse is hovered over it.
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.SliderThumbBackgroundDragging">
+            <summary>
+            Gets the background Brush key applicable for the thumb of a Slider control
+            when the thumb is being dragged.
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.SliderThumbBorderDragging">
+            <summary>
+            Gets the border Brush key applicable for the thumb of a Slider control
+            when the thumb is being dragged.
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.SliderThumbBackgroundDisabled">
+            <summary>
+            Gets the background Brush key applicable for the thumb of a Slider control
+            when the slider is disabled
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.SliderThumbBorderDisabled">
+            <summary>
+            Gets the border Brush key applicable for the thumb of a Slider control
+            when the slider is disabled
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.SliderTick">
+            <summary>
+            Gets the Brush key applicable to draw Tick marks of a Slider control.
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.SliderTrackBorder">
+            <summary>
+            Gets the border Brush key applicable draw the bowser of the Tick marks part of a Slider control.
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.SliderTrackBackground">
+            <summary>
+            Gets the background Brush key applicable draw the bowser of the Tick marks part of a Slider control.
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.SliderSelectionBackground">
+            <summary>
+            Gets the background Brush key applicable draw the selected Tick marks of a Slider control.
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.SliderSelectionBorder">
+            <summary>
+            Gets the border Brush key applicable draw the selected Tick marks of a Slider control.
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.SliderTickDisabled">
+            <summary>
+            Gets the foreground Brush key applicable draw the Tick marks of a Slider control
+            when the control is in disabled state.
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.SeparatorBackground">
+            <summary>
+            Gets the background Brush key applicable for GridSplitter and StatusBar controls.
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.SeperatorForeground">
+            <summary>
+            Gets the foreground Brush key of a Seperator in a StatusBar control or GridSplitter.
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.StatusBarForegroundBrushKey">
+            <summary>
+            Gets the foreground Brush key applicable for a StatusBar control.
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.StatusBarBackgroundBrushKey">
+            <summary>
+            Gets the background Brush key applicable for a StatusBar control.
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.StatusDisabledForegroundBrushKey">
+            <summary>
+            Gets the foreground Brush key applicable for a StatusBar control in disabled state.
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.ToolBarItemHoverBackgroundBrushKey">
+            <summary>
+            Gets the background Brush key of a toolbaritem when the mouse is hovered over it.
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.ToolBarItemHoverBorderBrushKey">
+            <summary>
+            Gets the border Brush key of a toolbaritem when the mouse is hovered over it.
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.ToolBarItemDisabledBrushKey">
+            <summary>
+            Gets the background Brush key of a toolbaritem in disabled state.
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.ToolBarButtonPressed">
+            <summary>
+            Gets the background Brush key of a toolbaritem in pressed state.
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.ToolBarBackground">
+            <summary>
+            Gets the normal background Brush key of a toolbar.
+            </summary>
+        </member>
+        <member name="F:MLib.Themes.ResourceKeys.ToolBarTrayBackground">
+            <summary>
+            Gets the normal background Brush key of a ToolBarTray.
+            </summary>
+        </member>
+        <member name="T:MLib.Themes.ThemeDefinition">
+            <summary>
+            Defines a theme by its name and a list of sources
+            stated as Uri formatted strings.
+            </summary>
+        </member>
+        <member name="M:MLib.Themes.ThemeDefinition.#ctor(System.String,System.Collections.Generic.List{System.String})">
+            <summary>
+            Parameterized constructor.
+            </summary>
+            <param name="name"></param>
+            <param name="sources"></param>
+        </member>
+        <member name="M:MLib.Themes.ThemeDefinition.#ctor">
+            <summary>
+            Hidden standard constructor.
+            </summary>
+        </member>
+        <member name="P:MLib.Themes.ThemeDefinition.Name">
+            <summary>
+            Identifies a theme by a Name that can be used as a key.
+            </summary>
+        </member>
+        <member name="P:MLib.Themes.ThemeDefinition.Sources">
+            <summary>
+            Uri formatted source for this theme.
+            </summary>
+        </member>
+        <member name="T:MLib.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:MLib.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:MLib.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="T:XamlGeneratedNamespace.GeneratedInternalTypeHelper">
+            <summary>
+            GeneratedInternalTypeHelper
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateInstance(System.Type,System.Globalization.CultureInfo)">
+            <summary>
+            CreateInstance
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.GetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            GetPropertyValue
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.SetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            SetPropertyValue
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateDelegate(System.Type,System.Object,System.String)">
+            <summary>
+            CreateDelegate
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.AddEventHandler(System.Reflection.EventInfo,System.Object,System.Delegate)">
+            <summary>
+            AddEventHandler
+            </summary>
+        </member>
+    </members>
+</doc>

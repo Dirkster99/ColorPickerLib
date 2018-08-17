@@ -1,0 +1,1462 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MWindowInterfacesLib</name>
+    </assembly>
+    <members>
+        <member name="T:MWindowInterfacesLib.Enums.StaticMsgBoxModes">
+            <summary>
+            An enum representing the state of a MessageBox dialog when it is shown through
+            the static API calling function.
+            </summary>
+        </member>
+        <member name="F:MWindowInterfacesLib.Enums.StaticMsgBoxModes.InternalFixed">
+            <summary>
+            Message Box is shown as overlay over the current window content.
+            </summary>
+        </member>
+        <member name="F:MWindowInterfacesLib.Enums.StaticMsgBoxModes.ExternalFixed">
+            <summary>
+            Message Box is shown as modal dialog. The modal dialog is indepentent
+            of the current content and is hosted in a seperate modal window. But the
+            modal window is fixed over the current window such that it raises the
+            impression that it is a content dialog (although its not technically speaking).
+            </summary>
+        </member>
+        <member name="F:MWindowInterfacesLib.Enums.StaticMsgBoxModes.ExternalMoveable">
+            <summary>
+            Message Box is shown as modal dialog that user can drag via the title bar.
+            This type of modal dialog is consistent with the non-conent legacy Windows
+            dialogs of all versions prior to Windows 10.
+            </summary>
+        </member>
+        <member name="T:MWindowInterfacesLib.Events.DialogStateChangedEventArgs">
+            <summary>
+            Implements an event class that can be used to tell listeners when a dialog
+            is closed, opened and so forth.
+            </summary>
+        </member>
+        <member name="M:MWindowInterfacesLib.Events.DialogStateChangedEventArgs.#ctor">
+            <summary>
+            Class constructor.
+            </summary>
+        </member>
+        <member name="T:MWindowInterfacesLib.MetroDialogFrameSettings">
+            <summary>
+            Defines the properties that can be set to control the behaviour
+            and features of a content dialog.
+            </summary>
+        </member>
+        <member name="M:MWindowInterfacesLib.MetroDialogFrameSettings.#ctor">
+            <summary>
+            Class constructor
+            </summary>
+        </member>
+        <member name="P:MWindowInterfacesLib.MetroDialogFrameSettings.AnimateHide">
+            <summary>
+            Gets/sets whether an animation is shown upon closing a dialog.
+            </summary>
+        </member>
+        <member name="P:MWindowInterfacesLib.MetroDialogFrameSettings.AnimateShow">
+            <summary>
+            Gets/sets whether an animation is shown upon opening a dialog.
+            </summary>
+        </member>
+        <member name="P:MWindowInterfacesLib.MetroDialogFrameSettings.MsgBoxMode">
+            <summary>
+            Gets/sets whether static (non-async) message boxes are shown
+            as (fixed, moveable) external message box or not.
+            </summary>
+        </member>
+        <member name="T:MWindowInterfacesLib.Interfaces.IBaseMetroDialogFrame">
+            <summary>
+            Defines the base interface items that should be implemented by any
+            view that supports a content dialog of any type.
+            </summary>
+        </member>
+        <member name="P:MWindowInterfacesLib.Interfaces.IBaseMetroDialogFrame.DialogSettings">
+            <summary>
+            Gets the standard dialog settings for this dialog.
+            </summary>
+        </member>
+        <member name="P:MWindowInterfacesLib.Interfaces.IBaseMetroDialogFrame.Title">
+            <summary>
+            Gets/sets the dialog's title.
+            </summary>
+        </member>
+        <member name="P:MWindowInterfacesLib.Interfaces.IBaseMetroDialogFrame.MaxHeight">
+            <summary>
+            Gets or sets the maximum height constraint of the element.
+            </summary>
+            <returns>
+                The maximum height of the element, in device-independent units (1/96th inch per
+                unit). The default value is System.Double.PositiveInfinity. This value can be
+                any value equal to or greater than 0.0. System.Double.PositiveInfinity is also
+                valid.
+            </returns>
+        </member>
+        <member name="P:MWindowInterfacesLib.Interfaces.IBaseMetroDialogFrame.MinHeight">
+            <summary>
+            Gets or sets the minimum height constraint of the element.
+            </summary>
+            <returns>
+                The minimum height of the element, in device-independent units (1/96th inch per
+                unit). The default value is 0.0. This value can be any value equal to or greater
+                than 0.0. However, System.Double.PositiveInfinity is NOT valid, nor is System.Double.NaN.
+            </returns>
+        </member>
+        <member name="P:MWindowInterfacesLib.Interfaces.IBaseMetroDialogFrame.DataContext">
+            <summary>
+            Gets or sets the data context for an element when it participates in data binding.
+            </summary>
+            <returns>The object to use as data context.</returns>
+        </member>
+        <member name="P:MWindowInterfacesLib.Interfaces.IBaseMetroDialogFrame.SizeChangedHandler">
+            <summary>
+            Gets/sets an event handler that is invoked when the <seealso cref="T:MWindowInterfacesLib.Interfaces.IMetroWindow"/>
+            has chnaged its size. The event coupling is necessary to have the content dialog
+            change its size accordingly.
+            </summary>
+        </member>
+        <member name="M:MWindowInterfacesLib.Interfaces.IBaseMetroDialogFrame.WaitForLoadAsync">
+            <summary>
+            Waits for the dialog to become ready for interaction.
+            </summary>
+            <returns>A task that represents the operation and it's status.</returns>
+        </member>
+        <member name="M:MWindowInterfacesLib.Interfaces.IBaseMetroDialogFrame.WaitUntilUnloadedAsync">
+            <summary>
+            Waits until this dialog gets unloaded.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MWindowInterfacesLib.Interfaces.IBaseMetroDialogFrame._WaitForCloseAsync">
+            <summary>
+            Waits until this dialog is closed
+            (Storyboard animation may require some extra time etc.).
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MWindowInterfacesLib.Interfaces.IBaseMetroDialogFrame.OnClose">
+            <summary>
+            Method is called upon closing of the window to resources
+            should there be any to clean-up.
+            </summary>
+        </member>
+        <member name="M:MWindowInterfacesLib.Interfaces.IBaseMetroDialogFrame.OnShown">
+            <summary>
+            Method is called between dialog load and show to allocate
+            extra resources should there be any need for that.
+            </summary>
+        </member>
+        <member name="M:MWindowInterfacesLib.Interfaces.IBaseMetroDialogFrame.SetZIndex(System.Int32)">
+            <summary>
+            Set the ZIndex value for this BaseMetroDialog.
+            This method can make sure that a given dialog is visible when more
+            than one dialog is open.
+            </summary>
+            <param name="newPanelIndex"></param>
+        </member>
+        <member name="T:MWindowInterfacesLib.Interfaces.IBaseMetroDialogFrameViewModel`1">
+            <summary>
+            Defines the base interface items that should be implemented by any
+            viewmodel that supports a content dialog of any type. This type of
+            viewmodel can return a TResult to give a callers
+            more details than just true/false for Cancel or OK.
+            </summary>
+            <typeparam name="TResult"></typeparam>
+        </member>
+        <member name="P:MWindowInterfacesLib.Interfaces.IBaseMetroDialogFrameViewModel`1.Title">
+            <summary>
+            Gets/sets the title (if any) of the dialog to be displayed.
+            </summary>
+        </member>
+        <member name="P:MWindowInterfacesLib.Interfaces.IBaseMetroDialogFrameViewModel`1.DialogCanCloseViaChrome">
+            <summary>
+            Use this property to determine whether the dialog can be closed
+            without picking a choice (e.g. OK or Cancel) or not.
+            </summary>
+        </member>
+        <member name="P:MWindowInterfacesLib.Interfaces.IBaseMetroDialogFrameViewModel`1.DialogCloseResult">
+            <summary>
+            Use this property to tell the view that the viewmodel would like to close now.
+            </summary>
+        </member>
+        <member name="P:MWindowInterfacesLib.Interfaces.IBaseMetroDialogFrameViewModel`1.CloseCommand">
+            <summary>
+            Gets the close command that is invoked to close this dialog.
+            The close command is invoked when the user clicks:
+            1) the dialogs (x) button or
+            2) a button that is, for example, labelled |Close|
+            
+            - if any of the above is visible
+            - if |Close| button is bound
+            </summary>
+        </member>
+        <member name="P:MWindowInterfacesLib.Interfaces.IBaseMetroDialogFrameViewModel`1.CloseWindowButtonVisibility">
+            <summary>
+            Determines whether the dialog's close (x) button is visible or not.
+            </summary>
+        </member>
+        <member name="P:MWindowInterfacesLib.Interfaces.IBaseMetroDialogFrameViewModel`1.Result">
+            <summary>
+            Get the resulting button (that has been clicked
+            by the user) or result event when working with the dialog.
+            </summary>
+        </member>
+        <member name="P:MWindowInterfacesLib.Interfaces.IBaseMetroDialogFrameViewModel`1.DefaultResult">
+            <summary>
+            Gets the default value for the result datatype.
+            </summary>
+        </member>
+        <member name="P:MWindowInterfacesLib.Interfaces.IBaseMetroDialogFrameViewModel`1.DefaultCloseResult">
+            <summary>
+            Gets property to determine dialog result when user closes it
+            via F4 or Window Close (X) button when using window chrome.
+            </summary>
+        </member>
+        <member name="T:MWindowInterfacesLib.Interfaces.IContentDialogService">
+            <summary>
+            This service is the root item for all other content dialog
+            related services in this assembly.
+            </summary>
+        </member>
+        <member name="P:MWindowInterfacesLib.Interfaces.IContentDialogService.DialogSettings">
+            <summary>
+            Gets the default dialog settings that are applied when invoking
+            a dialog from this service.
+            
+            The message box service methodes take care of this property, automatically,
+            the methodes in all other services, DialogManager and
+            DialogCoordinator should be invoked with this property
+            as parameter (or will be invoked with default settings).
+            </summary>
+        </member>
+        <member name="P:MWindowInterfacesLib.Interfaces.IContentDialogService.Manager">
+            <summary>
+            Gets an instance of the <seealso cref="T:MWindowInterfacesLib.Interfaces.IDialogManager"/> object.
+            </summary>
+        </member>
+        <member name="P:MWindowInterfacesLib.Interfaces.IContentDialogService.Coordinator">
+            <summary>
+            Gets an instance of the <seealso cref="T:MWindowInterfacesLib.Interfaces.IDialogCoordinator"/> object.
+            </summary>
+        </member>
+        <member name="P:MWindowInterfacesLib.Interfaces.IContentDialogService.MsgBox">
+            <summary>
+            Gets a message box service that can display message boxes
+            in a variety of different configurations.
+            </summary>
+        </member>
+        <member name="T:MWindowInterfacesLib.Interfaces.IDialogCoordinator">
+             <summary>
+             Supports coordination of content dialogs from within
+             a viewmodel that is attached to a window view.
+             
+             The relevant methods contain a parameter called context to support
+             this use case. The context is either:
+             
+             1) An implementation of <seealso cref="T:MWindowInterfacesLib.Interfaces.IMetroWindow"/> or
+             
+             2) A ViewModel that is bound to an <seealso cref="T:MWindowInterfacesLib.Interfaces.IMetroWindow"/> implementation
+                and registered via DialogParticipation.
+            
+             The methods specified here require no direct (only in-direct) references to a
+             parent window.
+             See also <seealso cref="T:MWindowInterfacesLib.Interfaces.IDialogManager"/>
+             </summary>
+        </member>
+        <member name="M:MWindowInterfacesLib.Interfaces.IDialogCoordinator.GetCurrentDialogAsync``1(System.Object)">
+            <summary>
+            Gets the current shown dialog.
+            </summary>
+            <param name="context">Typically this should be the view model, which you register in XAML using DialogParticipation.SetRegister.</param>
+        </member>
+        <member name="M:MWindowInterfacesLib.Interfaces.IDialogCoordinator.ShowMetroDialogAsync(System.Object,MWindowInterfacesLib.Interfaces.IBaseMetroDialogFrame,MWindowInterfacesLib.Interfaces.IMetroDialogFrameSettings)">
+            <summary>
+            Adds a Metro Dialog instance to the specified window and makes it visible asynchronously.        
+            <para>You have to close the resulting dialog yourself with <see cref="M:MWindowInterfacesLib.Interfaces.IDialogCoordinator.HideMetroDialogAsync(System.Object,MWindowInterfacesLib.Interfaces.IBaseMetroDialogFrame,MWindowInterfacesLib.Interfaces.IMetroDialogFrameSettings)"/>.</para>
+            </summary>
+            <param name="context">Typically this should be the view model, which you register in XAML using DialogParticipation.SetRegister.</param>
+            <param name="dialog">The dialog instance itself.</param>
+            <param name="settings">An optional pre-defined settings instance.</param>
+            <returns>A task representing the operation.</returns>
+            <exception cref="T:System.InvalidOperationException">The <paramref name="dialog"/> is already visible in the window.</exception>
+        </member>
+        <member name="M:MWindowInterfacesLib.Interfaces.IDialogCoordinator.ShowMetroDialogAsync(System.Object,MWindowInterfacesLib.Interfaces.IMsgBoxDialogFrame{System.Int32},MWindowInterfacesLib.Interfaces.IMetroDialogFrameSettings)">
+            <summary>
+            Adds a Metro Dialog instance to the specified window and makes it visible asynchronously.        
+            <para>You have to close the resulting dialog yourself with <see cref="M:MWindowInterfacesLib.Interfaces.IDialogCoordinator.HideMetroDialogAsync(System.Object,MWindowInterfacesLib.Interfaces.IBaseMetroDialogFrame,MWindowInterfacesLib.Interfaces.IMetroDialogFrameSettings)"/>.</para>
+            </summary>
+            <param name="context">Typically this should be the view model, which you register in XAML using DialogParticipation.SetRegister.</param>
+            <param name="dialog">The dialog instance itself.</param>
+            <param name="settings">An optional pre-defined settings instance.</param>
+            <returns>A task representing the operation.</returns>
+            <exception cref="T:System.InvalidOperationException">The <paramref name="dialog"/> is already visible in the window.</exception>
+        </member>
+        <member name="M:MWindowInterfacesLib.Interfaces.IDialogCoordinator.HideMetroDialogAsync(System.Object,MWindowInterfacesLib.Interfaces.IBaseMetroDialogFrame,MWindowInterfacesLib.Interfaces.IMetroDialogFrameSettings)">
+            <summary>
+            Hides a visible Metro Dialog instance.
+            </summary>
+            <param name="context">Typically this should be the view model, which you register in XAML using DialogParticipation.SetRegister.</param>
+            <param name="dialog">The dialog instance to hide.</param>
+            <param name="settings">An optional pre-defined settings instance.</param>
+            <returns>A task representing the operation.</returns>
+            <exception cref="T:System.InvalidOperationException">
+            The <paramref name="dialog"/> is not visible in the window.
+            This happens if ShowMetroDialogAsync hasn't been called before.
+            </exception>
+        </member>
+        <member name="M:MWindowInterfacesLib.Interfaces.IDialogCoordinator.GetMetroWindow(System.Object)">
+            <summary>
+            Attempts to find the MetroWindow that should show the ContentDialog
+            by searching the context object in the DialogParticipation.
+            object.
+            </summary>
+            <param name="context"></param>
+            <returns></returns>
+        </member>
+        <member name="T:MWindowInterfacesLib.Interfaces.IDialogManager">
+             <summary>
+             Defines a service interface that supports coordination of content dialogs from within
+             code behind of a view or code that holds references to a view.
+            
+             The methods specified here require a reference to a parent window.
+             See also <seealso cref="T:MWindowInterfacesLib.Interfaces.IDialogCoordinator"/>
+             </summary>
+        </member>
+        <member name="E:MWindowInterfacesLib.Interfaces.IDialogManager.DialogOpened">
+            <summary>
+            Implements an event source to tell listeners when a dialog is opened.
+            </summary>
+        </member>
+        <member name="E:MWindowInterfacesLib.Interfaces.IDialogManager.DialogClosed">
+            <summary>
+            Implements an event source to tell listeners when a dialog is closed.
+            </summary>
+        </member>
+        <member name="M:MWindowInterfacesLib.Interfaces.IDialogManager.HideMetroDialogAsync(MWindowInterfacesLib.Interfaces.IMetroWindow,MWindowInterfacesLib.Interfaces.IBaseMetroDialogFrame,MWindowInterfacesLib.Interfaces.IMetroDialogFrameSettings)">
+            <summary>
+            Hides a visible Metro Dialog instance.
+            </summary>
+            <param name="metroWindow">The window with the dialog that is visible.</param>
+            <param name="dialog">The dialog instance to hide.</param>
+            <param name="settings">An optional pre-defined settings instance.</param>
+            <returns>A task representing the operation.</returns>
+            <exception cref="T:System.InvalidOperationException">
+            The <paramref name="dialog"/> is not visible in the window.
+            This happens if ShowMetroDialogAsync hasn't been called before.
+            </exception>
+        </member>
+        <member name="M:MWindowInterfacesLib.Interfaces.IDialogManager.ShowMsgBoxAsync(MWindowInterfacesLib.Interfaces.IMetroWindow,MWindowInterfacesLib.Interfaces.IMsgBoxDialogFrame{MWindowInterfacesLib.MsgBox.Enums.MsgBoxResult},MWindowInterfacesLib.Interfaces.IMetroDialogFrameSettings)">
+            <summary>
+            Creates a dialog inside of the current window.
+            </summary>
+            <param name="metroWindow">The MetroWindow</param>
+            <param name="dialog">The dialog result interface of the dialog.</param>
+            <param name="settings">Optional settings that override the global metro dialog settings.</param>
+            <returns>A task promising the result of which button was pressed.</returns>
+        </member>
+        <member name="M:MWindowInterfacesLib.Interfaces.IDialogManager.ShowMetroDialogAsync(MWindowInterfacesLib.Interfaces.IMetroWindow,MWindowInterfacesLib.Interfaces.IBaseMetroDialogFrame,MWindowInterfacesLib.Interfaces.IMetroDialogFrameSettings)">
+            <summary>
+            Adds a Metro Dialog instance to the specified window and makes it visible asynchronously.
+            If you want to wait until the user has closed the dialog, use ShowMetroDialogAsyncAwaitable
+            <para>You have to close the resulting dialog yourself with <see cref="M:MWindowInterfacesLib.Interfaces.IDialogManager.HideMetroDialogAsync(MWindowInterfacesLib.Interfaces.IMetroWindow,MWindowInterfacesLib.Interfaces.IBaseMetroDialogFrame,MWindowInterfacesLib.Interfaces.IMetroDialogFrameSettings)"/>.</para>
+            </summary>
+            <param name="metroWindow">The owning window of the dialog.</param>
+            <param name="dialog">The dialog instance itself.</param>
+            <param name="settings">An optional pre-defined settings instance.</param>
+            <returns>A task representing the operation.</returns>
+            <exception cref="T:System.InvalidOperationException">The <paramref name="dialog"/> is already visible in the window.</exception>
+        </member>
+        <member name="M:MWindowInterfacesLib.Interfaces.IDialogManager.ShowMetroDialogAsync(MWindowInterfacesLib.Interfaces.IMetroWindow,MWindowInterfacesLib.Interfaces.IMsgBoxDialogFrame{System.Int32},MWindowInterfacesLib.Interfaces.IMetroDialogFrameSettings)">
+            <summary>
+            Creates a modal dialog inside of the current main window.
+            </summary>
+            <param name="metroWindow">The MetroWindow</param>
+            <param name="dialog">The outside modal window to be owned by a given <seealso cref="T:MWindowInterfacesLib.Interfaces.IMetroWindow"/></param>
+            <param name="settings">Optional settings that override the global metro dialog settings.</param>
+            <returns>The result that was entered or 0 if the user escape keyed the dialog...</returns>
+        </member>
+        <member name="M:MWindowInterfacesLib.Interfaces.IDialogManager.ShowModalDialogExternal(MWindowInterfacesLib.Interfaces.IMetroWindow,MWindowInterfacesLib.Interfaces.IMsgBoxDialogFrame{System.Int32},MWindowInterfacesLib.Interfaces.IMetroDialogFrameSettings)">
+            <summary>
+            Creates a custom dialog outside of the current window.
+            </summary>
+            <param name="metroWindow">The MetroWindow</param>
+            <param name="dialog">The outside modal window to be owned by a given MetroWindow</param>
+            <param name="settings">Optional settings that override the global metro dialog settings.</param>
+            <returns>The result event that was generated to close the dialog (button click).</returns>
+        </member>
+        <member name="M:MWindowInterfacesLib.Interfaces.IDialogManager.ShowModalDialogExternal(MWindowInterfacesLib.Interfaces.IMetroWindow,MWindowInterfacesLib.Interfaces.IMsgBoxDialogFrame{MWindowInterfacesLib.MsgBox.Enums.MsgBoxResult},MWindowInterfacesLib.Interfaces.IMetroDialogFrameSettings)">
+            <summary>
+            Creates an External MsgBox dialog outside of the current window.
+            </summary>
+            <param name="metroWindow">The MetroWindow</param>
+            <param name="dialog">The outside modal window to be owned by a given MetroWindow</param>
+            <param name="settings">Optional settings that override the global metro dialog settings.</param>
+            <returns>The result event that was generated to close the dialog (button click).</returns>
+        </member>
+        <member name="T:MWindowInterfacesLib.Interfaces.IMetroDialogFrameSettings">
+            <summary>
+            Defines the properties that can be set to control the behaviour
+            and features of a content dialog.
+            </summary>
+        </member>
+        <member name="P:MWindowInterfacesLib.Interfaces.IMetroDialogFrameSettings.AnimateHide">
+            <summary>
+            Gets/sets whether an animation is shown upon closing a dialog.
+            </summary>
+        </member>
+        <member name="P:MWindowInterfacesLib.Interfaces.IMetroDialogFrameSettings.AnimateShow">
+            <summary>
+            Gets/sets whether an animation is shown upon opening a dialog.
+            </summary>
+        </member>
+        <member name="P:MWindowInterfacesLib.Interfaces.IMetroDialogFrameSettings.MsgBoxMode">
+            <summary>
+            Gets/sets whether static (non-async) message boxes are shown
+            as (fixed, moveable) external message box or not.
+            </summary>
+        </member>
+        <member name="T:MWindowInterfacesLib.Interfaces.DialogIntResults">
+            <summary>
+            Class models a dialog result (button clicked) via const int definitions
+            that improve readability and maintainability of the implemented code.
+            </summary>
+        </member>
+        <member name="F:MWindowInterfacesLib.Interfaces.DialogIntResults.NONE">
+            <summary>
+            This is mostly technically needed for properties that implement
+            automatic magic, such as, setting a useful default button. This
+            magic occurs only if this default parameter is set in the
+            constructor/interface - otherwise the button set by the caller
+            is used.
+            </summary>
+        </member>
+        <member name="F:MWindowInterfacesLib.Interfaces.DialogIntResults.NO_DEFAULT_BUTTON">
+            <summary>
+            This can be used to tell the dialog sub-system explicitly to not
+            set any default button (which is rather un-uasual but possible if
+            the user needs to determine somthing that has a real 50:50 chance
+            of being ansered or if there is no button to click on...).
+            
+            This member should only be set in the defaultbutton parameter of the
+            constructor but should never appear as actual result of a dialog display.
+            </summary>
+        </member>
+        <member name="F:MWindowInterfacesLib.Interfaces.DialogIntResults.OK">
+            <summary>
+            The result value of the dialog  is OK.
+            </summary>
+        </member>
+        <member name="F:MWindowInterfacesLib.Interfaces.DialogIntResults.CANCEL">
+            <summary>
+            The result value of the dialog is Cancel.
+            </summary>
+        </member>
+        <member name="T:MWindowInterfacesLib.Interfaces.IMsgBoxDialogFrame`1">
+            <summary>
+            This interface defines a custom dialog interface that defines the type
+            (and hence its values) of the dialog result via the TResult template
+            parameter.
+            </summary>
+            <typeparam name="TResult"></typeparam>
+        </member>
+        <member name="E:MWindowInterfacesLib.Interfaces.IMsgBoxDialogFrame`1.DialogCloseResultEvent">
+            <summary>
+            This event is invoked to signal subscribers when the dialog is about to be closed.
+            </summary>
+        </member>
+        <member name="P:MWindowInterfacesLib.Interfaces.IMsgBoxDialogFrame`1.DialogCanCloseViaChrome">
+            <summary>
+            Bind this property between view and viemodel to have the viewmodel tell
+            the view whether it OK to close without picking a choice (eg. yes) or not.
+            </summary>
+        </member>
+        <member name="P:MWindowInterfacesLib.Interfaces.IMsgBoxDialogFrame`1.DialogCloseResult">
+            <summary>
+            Bind this property between view and viemodel to have the viewmodel tell
+            the view that it is time to disappear (eg. user has clicked a choice button).
+            </summary>
+        </member>
+        <member name="P:MWindowInterfacesLib.Interfaces.IMsgBoxDialogFrame`1.DialogThumb">
+            <summary>
+            Gets the dialog's thumb that is used to drag the dialog around
+            when the user drags it.
+            </summary>
+        </member>
+        <member name="M:MWindowInterfacesLib.Interfaces.IMsgBoxDialogFrame`1.WaitForButtonPressAsync">
+            <summary>
+            The method keeps the dialog open until a user or process has signalled
+            that we can close this with a result...
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:MWindowInterfacesLib.Interfaces.IMetroWindowService">
+            <summary>
+            Defines an interfaces to a service component.
+            This service component creates instances of Metro Windows
+            and supports utillity functions ...
+            </summary>
+        </member>
+        <member name="M:MWindowInterfacesLib.Interfaces.IMetroWindowService.CreateExternalWindow(System.Boolean,System.Boolean,System.Boolean,System.Windows.ResizeMode,System.Windows.WindowStyle,System.Windows.WindowStartupLocation,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            Creates another metro window instance with the given (default) parameters.
+            </summary>
+            <param name="showInTaskbar"></param>
+            <param name="showActivated"></param>
+            <param name="topmost"></param>
+            <param name="resizeMode"></param>
+            <param name="windowStyle"></param>
+            <param name="windowStartupLocation"></param>
+            <param name="showTitleBar"></param>
+            <param name="showTitle"></param>
+            <param name="showMinButton"></param>
+            <param name="showMaxButton"></param>
+            <param name="showCloseButton"></param>
+            <returns></returns>
+        </member>
+        <member name="T:MWindowInterfacesLib.Interfaces.IMetroWindow">
+            <summary>
+            Defines an interface that must be implemented by the window that
+            shows the content dialog as part of its content.
+            </summary>
+        </member>
+        <member name="P:MWindowInterfacesLib.Interfaces.IMetroWindow.ActualHeight">
+             <summary>
+             Gets the rendered height of this element.
+             </summary>
+             <returns>
+             The element's height, as a value in device-independent units (1/96th inch per
+             unit). The default value is 0 (zero).
+            </returns>
+        </member>
+        <member name="P:MWindowInterfacesLib.Interfaces.IMetroWindow.ActualWidth">
+            <summary>
+            Gets the rendered width of this element.
+            </summary>
+            <returns>
+            The element's width, as a value in device-independent units (1/96th inch per
+            unit). The default value is 0 (zero).
+            </returns>
+        </member>
+        <member name="P:MWindowInterfacesLib.Interfaces.IMetroWindow.Dispatcher">
+            <summary>
+            Gets the System.Windows.Threading.Dispatcher this System.Windows.Threading.DispatcherObject
+            is associated with.
+            </summary>
+            <returns>The dispatcher.</returns>
+        </member>
+        <member name="P:MWindowInterfacesLib.Interfaces.IMetroWindow.Owner">
+             <summary>
+             Gets or sets the System.Windows.Window that owns this System.Windows.Window.
+            
+             Exceptions:
+               T:System.ArgumentException:
+                 A window tries to own itself-or-Two windows try to own each other.
+            
+               T:System.InvalidOperationException:
+                 The System.Windows.Window.Owner property is set on a visible window shown using
+                 System.Windows.Window.ShowDialog-or-The System.Windows.Window.Owner property
+                 is set with a window that has not been previously shown.
+             </summary>
+             <returns>A System.Windows.Window object that represents the owner of this System.Windows.Window.</returns>
+        </member>
+        <member name="P:MWindowInterfacesLib.Interfaces.IMetroWindow.OverlayBox">
+            <summary>
+            Gets the overlay box that is used to display modal dialogs inside the main window.
+            </summary>
+        </member>
+        <member name="P:MWindowInterfacesLib.Interfaces.IMetroWindow.MetroActiveDialogContainer">
+            <summary>
+            Gets a collection of Active modal dialogs that are displayed inside the main window.
+            </summary>
+        </member>
+        <member name="P:MWindowInterfacesLib.Interfaces.IMetroWindow.MetroInactiveDialogContainer">
+            <summary>
+            Gets a collection of InActive modal dialogs that can be displayed inside the main window.
+            </summary>
+        </member>
+        <member name="P:MWindowInterfacesLib.Interfaces.IMetroWindow.IsContentDialogVisible">
+            <summary>
+            Determines if there is currently a ContentDialog visible or not.
+            </summary>
+        </member>
+        <member name="E:MWindowInterfacesLib.Interfaces.IMetroWindow.SizeChanged">
+            <summary>
+                Occurs when either the System.Windows.FrameworkElement.ActualHeight or the System.Windows.FrameworkElement.ActualWidth
+                properties change value on this element.
+            </summary>
+        </member>
+        <member name="M:MWindowInterfacesLib.Interfaces.IMetroWindow.ShowOverlay">
+            <summary>
+            Ensure visibility of the OverlayBox.
+            </summary>
+        </member>
+        <member name="M:MWindowInterfacesLib.Interfaces.IMetroWindow.ShowOverlayAsync">
+            <summary>
+            Begins to show the MetroWindow's overlay effect.
+            </summary>
+            <returns>A task representing the process.</returns>
+        </member>
+        <member name="M:MWindowInterfacesLib.Interfaces.IMetroWindow.HideOverlay">
+            <summary>
+            Ensure non-visibility of the OverlayBox.
+            </summary>
+        </member>
+        <member name="M:MWindowInterfacesLib.Interfaces.IMetroWindow.HideOverlayAsync">
+            <summary>
+            Begins to hide the MetroWindow's overlay effect.
+            </summary>
+            <returns>A task representing the process.</returns>
+        </member>
+        <member name="M:MWindowInterfacesLib.Interfaces.IMetroWindow.StoreFocus(System.Windows.IInputElement)">
+            <summary>
+            Stores the given element, or the last focused element via FocusManager, for restoring the focus after closing a dialog.
+            See also RestoreFocus, ResetStoredFocus method.
+            </summary>
+            <param name="thisElement">The element which will be focused again.</param>
+        </member>
+        <member name="M:MWindowInterfacesLib.Interfaces.IMetroWindow.RestoreFocus">
+            <summary>
+            Restores a previously saved keyboard focus back to the last focused element.
+            See also StoreFocus, ResetStoredFocus method.
+            </summary>
+        </member>
+        <member name="M:MWindowInterfacesLib.Interfaces.IMetroWindow.GetCurrentDialogAsync``1">
+            <summary>
+            Gets a task object for the currently active content dialog.
+            </summary>
+        </member>
+        <member name="M:MWindowInterfacesLib.Interfaces.IMetroWindow.SetWindowEvents(System.Windows.Controls.Primitives.Thumb)">
+            <summary>
+            Method connects the <see cref="T:System.Windows.Controls.Primitives.Thumb"/> object on the window chrome
+            with the correct drag events to let user drag the window on the screen.
+            </summary>
+            <param name="windowTitleThumb"></param>
+        </member>
+        <member name="T:MWindowInterfacesLib.MsgBox.Enums.MsgBoxButtons">
+            <summary>
+            This enumeration describes the possible GUI elements (OK, Cancel, Yes, No button)
+            that are displayed with the message. Displaying these GUI elements gives the user
+            a chance to review a message and interact with the system based on the displayed content.
+            </summary>
+        </member>
+        <member name="F:MWindowInterfacesLib.MsgBox.Enums.MsgBoxButtons.YesNo">
+            <summary>
+            Display Yes and No GUI elements
+            </summary>
+        </member>
+        <member name="F:MWindowInterfacesLib.MsgBox.Enums.MsgBoxButtons.YesNoCancel">
+            <summary>
+            Display Yes, No, and No GUI elements
+            </summary>
+        </member>
+        <member name="F:MWindowInterfacesLib.MsgBox.Enums.MsgBoxButtons.OKCancel">
+            <summary>
+            Display OK and Cancel GUI elements
+            </summary>
+        </member>
+        <member name="F:MWindowInterfacesLib.MsgBox.Enums.MsgBoxButtons.OKClose">
+            <summary>
+            Display OK and Close GUI elements
+            </summary>
+        </member>
+        <member name="F:MWindowInterfacesLib.MsgBox.Enums.MsgBoxButtons.OK">
+            <summary>
+            Display OK GUI element
+            </summary>
+        </member>
+        <member name="F:MWindowInterfacesLib.MsgBox.Enums.MsgBoxButtons.Close">
+            <summary>
+            Display Close GUI element
+            </summary>
+        </member>
+        <member name="F:MWindowInterfacesLib.MsgBox.Enums.MsgBoxButtons.YesNoCopy">
+            <summary>
+            Display Yes, No, and Copy GUI elements
+            </summary>
+        </member>
+        <member name="F:MWindowInterfacesLib.MsgBox.Enums.MsgBoxButtons.YesNoCancelCopy">
+            <summary>
+            Display Yes, No, Cancel, and Copy GUI elements
+            </summary>
+        </member>
+        <member name="F:MWindowInterfacesLib.MsgBox.Enums.MsgBoxButtons.OKCancelCopy">
+            <summary>
+            Display OK, Cancel, and Copy GUI elements
+            </summary>
+        </member>
+        <member name="F:MWindowInterfacesLib.MsgBox.Enums.MsgBoxButtons.OKCloseCopy">
+            <summary>
+            Display OK, Close, and Copy GUI elements
+            </summary>
+        </member>
+        <member name="F:MWindowInterfacesLib.MsgBox.Enums.MsgBoxButtons.OKCopy">
+            <summary>
+            Display OK, Copy GUI element
+            </summary>
+        </member>
+        <member name="F:MWindowInterfacesLib.MsgBox.Enums.MsgBoxButtons.CloseCopy">
+            <summary>
+            Display Close and Copy GUI element
+            </summary>
+        </member>
+        <member name="T:MWindowInterfacesLib.MsgBox.Enums.MsgBoxImage">
+            <summary>
+            Type of images that can be displayed in a message box
+            (indexes need to increment in the shown order because they
+            into a static array: MsgBoxViewModel.MsgBoxImageResourcesUris.
+            </summary>
+        </member>
+        <member name="F:MWindowInterfacesLib.MsgBox.Enums.MsgBoxImage.Information">
+            <summary>
+            Display a standard image to indicate an imformal message
+            </summary>
+        </member>
+        <member name="F:MWindowInterfacesLib.MsgBox.Enums.MsgBoxImage.Question">
+            <summary>
+            Display a standard image to indicate a message that contains a question
+            </summary>
+        </member>
+        <member name="F:MWindowInterfacesLib.MsgBox.Enums.MsgBoxImage.Error">
+            <summary>
+            Display a standard image to indicate a message that contains an error
+            </summary>
+        </member>
+        <member name="F:MWindowInterfacesLib.MsgBox.Enums.MsgBoxImage.OK">
+            <summary>
+            Display a standard image to indicate a message that contains nice to know information
+            </summary>
+        </member>
+        <member name="F:MWindowInterfacesLib.MsgBox.Enums.MsgBoxImage.Alert">
+            <summary>
+            Display a standard image to indicate a message that contains information about a fatal problem.
+            </summary>
+        </member>
+        <member name="F:MWindowInterfacesLib.MsgBox.Enums.MsgBoxImage.Default">
+            <summary>
+            Display a standard image to indicate a message that is not classified.
+            </summary>
+        </member>
+        <member name="F:MWindowInterfacesLib.MsgBox.Enums.MsgBoxImage.Warning">
+            <summary>
+            Display a standard image to indicate a message that contains a warning.
+            </summary>
+        </member>
+        <member name="F:MWindowInterfacesLib.MsgBox.Enums.MsgBoxImage.Default_OffLight">
+            <summary>
+            Display a standard image with a light turned off.
+            </summary>
+        </member>
+        <member name="F:MWindowInterfacesLib.MsgBox.Enums.MsgBoxImage.Default_RedLight">
+            <summary>
+            Display a standard image with a red light turned on.
+            </summary>
+        </member>
+        <member name="F:MWindowInterfacesLib.MsgBox.Enums.MsgBoxImage.Information_Orange">
+            <summary>
+            Display a standard image with a orange light turned on.
+            </summary>
+        </member>
+        <member name="F:MWindowInterfacesLib.MsgBox.Enums.MsgBoxImage.Information_Red">
+            <summary>
+            Display a standard image indicating an important information.
+            </summary>
+        </member>
+        <member name="F:MWindowInterfacesLib.MsgBox.Enums.MsgBoxImage.Process_Stop">
+            <summary>
+            Display a standard image indicating the end of a process run or program exit.
+            </summary>
+        </member>
+        <member name="F:MWindowInterfacesLib.MsgBox.Enums.MsgBoxImage.None">
+            <summary>
+            Do not show an image at all.
+            </summary>
+        </member>
+        <member name="T:MWindowInterfacesLib.MsgBox.Enums.MsgBoxResult">
+            <summary>
+            This enumeration describes the possible results from displaying a message. A result is directly
+            equivalent to a GUI element (OK, Cancel, Yes, No button) that a user clicked to close the message view.
+            </summary>
+        </member>
+        <member name="F:MWindowInterfacesLib.MsgBox.Enums.MsgBoxResult.None">
+            <summary>
+            This is mostly technically needed for properties that implement
+            automatic magic, such as, setting a useful default button. This
+            magic occurs only if this default parameter is set in the
+            constructor/interface - otherwise the button set by the caller
+            is used.
+            </summary>
+        </member>
+        <member name="F:MWindowInterfacesLib.MsgBox.Enums.MsgBoxResult.NoDefaultButton">
+            <summary>
+            This can be used to tell the messagebox sub-system explicitly to not
+            set any default button (which is rather un-uasual but possible if
+            the user needs to determine somthing that has a real 50:50 chance
+            of being ansered).
+            
+            This Enum member can only be set in the defaultbutton parameter of the
+            constructor but will never appear as actual result of a messagebox display.
+            </summary>
+        </member>
+        <member name="F:MWindowInterfacesLib.MsgBox.Enums.MsgBoxResult.OK">
+            <summary>
+            The result value of the message box is OK.
+            </summary>
+        </member>
+        <member name="F:MWindowInterfacesLib.MsgBox.Enums.MsgBoxResult.Cancel">
+            <summary>
+            The result value of the message box is Cancel.
+            </summary>
+        </member>
+        <member name="F:MWindowInterfacesLib.MsgBox.Enums.MsgBoxResult.Yes">
+            <summary>
+            The result value of the message box is Yes.
+            </summary>
+        </member>
+        <member name="F:MWindowInterfacesLib.MsgBox.Enums.MsgBoxResult.No">
+            <summary>
+            The result value of the message box is No.
+            </summary>
+        </member>
+        <member name="F:MWindowInterfacesLib.MsgBox.Enums.MsgBoxResult.Close">
+            <summary>
+            The result value of the message box is Close.
+            </summary>
+        </member>
+        <member name="T:MWindowInterfacesLib.MsgBox.IMessageBoxService">
+            <summary>
+            Defines an interface to a message box service that can
+            display message boxes in a variety of different configurations.
+            </summary>
+        </member>
+        <member name="M:MWindowInterfacesLib.MsgBox.IMessageBoxService.ShowAsync(System.String,MWindowInterfacesLib.MsgBox.Enums.MsgBoxResult,System.Object,System.String,System.String,System.Func{System.Object,System.Boolean},System.Boolean)">
+            <summary>
+            Show a simple message (minimal with OK button) to the user.
+            Only the <paramref name="messageBoxText"/> is a required parameter
+            all others are optional.
+            </summary>
+            <param name="messageBoxText"></param>
+            <param name="btnDefault"></param>
+            <param name="helpLink"></param>
+            <param name="helpLinkTitle"></param>
+            <param name="helpLabel"></param>
+            <param name="navigateHelplinkMethod"></param>
+            <param name="showCopyMessage"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MWindowInterfacesLib.MsgBox.IMessageBoxService.Show(System.String,MWindowInterfacesLib.MsgBox.Enums.MsgBoxResult,System.Object,System.String,System.String,System.Func{System.Object,System.Boolean},System.Boolean)">
+            <summary>
+            Show a simple message (minimal with OK button) to the user.
+            Only the <paramref name="messageBoxText"/> is a required parameter
+            all others are optional.
+            </summary>
+            <param name="messageBoxText"></param>
+            <param name="btnDefault"></param>
+            <param name="helpLink"></param>
+            <param name="helpLinkTitle"></param>
+            <param name="helpLabel"></param>
+            <param name="navigateHelplinkMethod"></param>
+            <param name="showCopyMessage"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MWindowInterfacesLib.MsgBox.IMessageBoxService.ShowAsync(System.String,System.String,MWindowInterfacesLib.MsgBox.Enums.MsgBoxResult,System.Object,System.String,System.String,System.Func{System.Object,System.Boolean},System.Boolean)">
+            <summary>
+            Show a simple message (minimal with OK button) to the user.
+            Only the <paramref name="messageBoxText"/> and 
+            <paramref name="caption"/> are a required parameters
+            all others are optional.
+            </summary>
+            <param name="messageBoxText"></param>
+            <param name="caption"></param>
+            <param name="btnDefault"></param>
+            <param name="helpLink"></param>
+            <param name="helpLinkTitle"></param>
+            <param name="helpLabel"></param>
+            <param name="navigateHelplinkMethod"></param>
+            <param name="showCopyMessage"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MWindowInterfacesLib.MsgBox.IMessageBoxService.Show(System.String,System.String,MWindowInterfacesLib.MsgBox.Enums.MsgBoxResult,System.Object,System.String,System.String,System.Func{System.Object,System.Boolean},System.Boolean)">
+            <summary>
+            Show a simple message (minimal with OK button) to the user.
+            Only the <paramref name="messageBoxText"/> and 
+            <paramref name="caption"/> are a required parameters
+            all others are optional.
+            </summary>
+            <param name="messageBoxText"></param>
+            <param name="caption"></param>
+            <param name="btnDefault"></param>
+            <param name="helpLink"></param>
+            <param name="helpLinkTitle"></param>
+            <param name="helpLabel"></param>
+            <param name="navigateHelplinkMethod"></param>
+            <param name="showCopyMessage"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MWindowInterfacesLib.MsgBox.IMessageBoxService.ShowAsync(System.String,System.String,MWindowInterfacesLib.MsgBox.Enums.MsgBoxButtons,MWindowInterfacesLib.MsgBox.Enums.MsgBoxResult,System.Object,System.String,System.String,System.Func{System.Object,System.Boolean},System.Boolean)">
+            <summary>
+            Show a simple message (minimal with OK button) to the user.
+            The parameters:
+            <paramref name="messageBoxText"/> and 
+            <paramref name="caption"/>
+            <paramref name="buttonOption"/>
+            are a required parameters.
+            </summary>
+            <param name="messageBoxText"></param>
+            <param name="caption"></param>
+            <param name="buttonOption"></param>
+            <param name="btnDefault"></param>
+            <param name="helpLink"></param>
+            <param name="helpLinkTitle"></param>
+            <param name="helpLabel"></param>
+            <param name="navigateHelplinkMethod"></param>
+            <param name="showCopyMessage"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MWindowInterfacesLib.MsgBox.IMessageBoxService.Show(System.String,System.String,MWindowInterfacesLib.MsgBox.Enums.MsgBoxButtons,MWindowInterfacesLib.MsgBox.Enums.MsgBoxResult,System.Object,System.String,System.String,System.Func{System.Object,System.Boolean},System.Boolean)">
+            <summary>
+            Show a simple message (minimal with OK button) to the user.
+            The parameters:
+            <paramref name="messageBoxText"/> and 
+            <paramref name="caption"/>
+            <paramref name="buttonOption"/>
+            are a required parameters.
+            </summary>
+            <param name="messageBoxText"></param>
+            <param name="buttonOption"></param>
+            <param name="caption"></param>
+            <param name="btnDefault"></param>
+            <param name="helpLink"></param>
+            <param name="helpLinkTitle"></param>
+            <param name="helpLabel"></param>
+            <param name="navigateHelplinkMethod"></param>
+            <param name="showCopyMessage"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MWindowInterfacesLib.MsgBox.IMessageBoxService.ShowAsync(System.String,System.String,MWindowInterfacesLib.MsgBox.Enums.MsgBoxButtons,MWindowInterfacesLib.MsgBox.Enums.MsgBoxImage,MWindowInterfacesLib.MsgBox.Enums.MsgBoxResult,System.Object,System.String,System.String,System.Func{System.Object,System.Boolean},System.Boolean)">
+            <summary>
+            Show a simple message (minimal with OK button) to the user.
+            The parameters:
+            <paramref name="messageBoxText"/> and 
+            <paramref name="caption"/>
+            <paramref name="buttonOption"/>
+            <param name="image"></param>
+            are a required parameters.
+            </summary>
+            <param name="messageBoxText"></param>
+            <param name="caption"></param>
+            <param name="buttonOption"></param>
+            <param name="btnDefault"></param>
+            <param name="helpLink"></param>
+            <param name="helpLinkTitle"></param>
+            <param name="helpLabel"></param>
+            <param name="navigateHelplinkMethod"></param>
+            <param name="showCopyMessage"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MWindowInterfacesLib.MsgBox.IMessageBoxService.Show(System.String,System.String,MWindowInterfacesLib.MsgBox.Enums.MsgBoxButtons,MWindowInterfacesLib.MsgBox.Enums.MsgBoxImage,MWindowInterfacesLib.MsgBox.Enums.MsgBoxResult,System.Object,System.String,System.String,System.Func{System.Object,System.Boolean},System.Boolean)">
+            <summary>
+            Show a simple message (minimal with OK button) to the user.
+            The parameters:
+            <paramref name="messageBoxText"/> and 
+            <paramref name="caption"/>
+            <paramref name="buttonOption"/>
+            <param name="image"></param>
+            are a required parameters.
+            </summary>
+            <param name="messageBoxText"></param>
+            <param name="buttonOption"></param>
+            <param name="caption"></param>
+            <param name="btnDefault"></param>
+            <param name="helpLink"></param>
+            <param name="helpLinkTitle"></param>
+            <param name="helpLabel"></param>
+            <param name="navigateHelplinkMethod"></param>
+            <param name="showCopyMessage"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MWindowInterfacesLib.MsgBox.IMessageBoxService.ShowAsync(System.String,System.String,System.String,MWindowInterfacesLib.MsgBox.Enums.MsgBoxButtons,MWindowInterfacesLib.MsgBox.Enums.MsgBoxImage,MWindowInterfacesLib.MsgBox.Enums.MsgBoxResult,System.Object,System.String,System.String,System.Func{System.Object,System.Boolean},System.Boolean)">
+            <summary>
+            Show a simple message (minimal with OK button) to the user.
+            The parameters:
+            <paramref name="messageBoxText"/> and 
+            <paramref name="caption"/>
+            <paramref name="details"/>
+            <paramref name="buttonOption"/>
+            <param name="image"></param>
+            are a required parameters.
+            </summary>
+            <param name="messageBoxText"></param>
+            <param name="caption"></param>
+            <param name="details"></param>
+            <param name="buttonOption"></param>
+            <param name="btnDefault"></param>
+            <param name="helpLink"></param>
+            <param name="helpLinkTitle"></param>
+            <param name="helpLabel"></param>
+            <param name="navigateHelplinkMethod"></param>
+            <param name="showCopyMessage"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MWindowInterfacesLib.MsgBox.IMessageBoxService.Show(System.String,System.String,System.String,MWindowInterfacesLib.MsgBox.Enums.MsgBoxButtons,MWindowInterfacesLib.MsgBox.Enums.MsgBoxImage,MWindowInterfacesLib.MsgBox.Enums.MsgBoxResult,System.Object,System.String,System.String,System.Func{System.Object,System.Boolean},System.Boolean)">
+            <summary>
+            Show a simple message (minimal with OK button) to the user.
+            The parameters:
+            <paramref name="messageBoxText"/> and 
+            <paramref name="caption"/>
+            <paramref name="details"/>
+            <paramref name="buttonOption"/>
+            <param name="image"></param>
+            are a required parameters.
+            </summary>
+            <param name="messageBoxText"></param>
+            <param name="caption"></param>
+            <param name="buttonOption"></param>
+            <param name="details"></param>
+            <param name="btnDefault"></param>
+            <param name="helpLink"></param>
+            <param name="helpLinkTitle"></param>
+            <param name="helpLabel"></param>
+            <param name="navigateHelplinkMethod"></param>
+            <param name="showCopyMessage"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MWindowInterfacesLib.MsgBox.IMessageBoxService.ShowAsync(System.Exception,System.String,MWindowInterfacesLib.MsgBox.Enums.MsgBoxButtons,MWindowInterfacesLib.MsgBox.Enums.MsgBoxImage,MWindowInterfacesLib.MsgBox.Enums.MsgBoxResult,System.Object,System.String,System.String,System.Func{System.Object,System.Boolean},System.Boolean)">
+            <summary>
+            Show a message box with a standard Exception display to the user.
+            The parameters:
+            <paramref name="exp"/>
+            <paramref name="caption"/>
+            <paramref name="buttonOption"/>
+            <param name="image"></param>
+            are a required parameters.
+            </summary>
+            <param name="exp"></param>
+            <param name="caption"></param>
+            <param name="buttonOption"></param>
+            <param name="btnDefault"></param>
+            <param name="helpLink"></param>
+            <param name="helpLinkTitle"></param>
+            <param name="helpLabel"></param>
+            <param name="navigateHelplinkMethod"></param>
+            <param name="showCopyMessage"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MWindowInterfacesLib.MsgBox.IMessageBoxService.Show(System.Exception,System.String,MWindowInterfacesLib.MsgBox.Enums.MsgBoxButtons,MWindowInterfacesLib.MsgBox.Enums.MsgBoxImage,MWindowInterfacesLib.MsgBox.Enums.MsgBoxResult,System.Object,System.String,System.String,System.Func{System.Object,System.Boolean},System.Boolean)">
+            <summary>
+            Show a message box with a standard Exception display to the user.
+            The parameters:
+            <paramref name="exp"/>
+            <paramref name="caption"/>
+            <paramref name="buttonOption"/>
+            <param name="image"></param>
+            are a required parameters.
+            </summary>
+            <param name="exp"></param>
+            <param name="caption"></param>
+            <param name="buttonOption"></param>
+            <param name="btnDefault"></param>
+            <param name="helpLink"></param>
+            <param name="helpLinkTitle"></param>
+            <param name="helpLabel"></param>
+            <param name="navigateHelplinkMethod"></param>
+            <param name="showCopyMessage"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MWindowInterfacesLib.MsgBox.IMessageBoxService.ShowAsync(System.Exception,System.String,System.String,MWindowInterfacesLib.MsgBox.Enums.MsgBoxButtons,MWindowInterfacesLib.MsgBox.Enums.MsgBoxImage,MWindowInterfacesLib.MsgBox.Enums.MsgBoxResult,System.Object,System.String,System.String,System.Func{System.Object,System.Boolean},System.Boolean)">
+            <summary>
+            Show a message box with a standard Exception display to the user.
+            Only the <paramref name="exp"/> parameter is required all others are optional.
+            </summary>
+            <param name="exp"></param>
+            <param name="textMessage"></param>
+            <param name="caption"></param>
+            <param name="buttonOption"></param>
+            <param name="image"></param>
+            <param name="btnDefault"></param>
+            <param name="helpLink"></param>
+            <param name="helpLinkTitle"></param>
+            <param name="helpLabel"></param>
+            <param name="navigateHelplinkMethod"></param>
+            <param name="showCopyMessage"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MWindowInterfacesLib.MsgBox.IMessageBoxService.Show(System.Exception,System.String,System.String,MWindowInterfacesLib.MsgBox.Enums.MsgBoxButtons,MWindowInterfacesLib.MsgBox.Enums.MsgBoxImage,MWindowInterfacesLib.MsgBox.Enums.MsgBoxResult,System.Object,System.String,System.String,System.Func{System.Object,System.Boolean},System.Boolean)">
+            <summary>
+            Show a message box with a standard Exception display to the user.
+            Only the <paramref name="exp"/> parameter is required all others are optional.
+            </summary>
+            <param name="exp"></param>
+            <param name="textMessage"></param>
+            <param name="caption"></param>
+            <param name="buttonOption"></param>
+            <param name="image"></param>
+            <param name="btnDefault"></param>
+            <param name="helpLink"></param>
+            <param name="helpLinkTitle"></param>
+            <param name="helpLabel"></param>
+            <param name="navigateHelplinkMethod"></param>
+            <param name="showCopyMessage"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MWindowInterfacesLib.MsgBox.IMessageBoxService.ShowAsync(System.Object,System.String,System.String,MWindowInterfacesLib.MsgBox.Enums.MsgBoxButtons,MWindowInterfacesLib.MsgBox.Enums.MsgBoxImage,MWindowInterfacesLib.MsgBox.Enums.MsgBoxResult,System.Object,System.String,System.String,System.Func{System.Object,System.Boolean},System.Boolean)">
+            <summary>
+            Show a simple message (minimal with OK button) to the user.
+            Only <param name="ownerContext"/> and <paramref name="messageBoxText"/>
+            are required parameters
+            </summary>
+            <param name="messageBoxText"></param>
+            <param name="caption"></param>
+            <param name="buttonOption"></param>
+            <param name="image"></param>
+            <param name="btnDefault"></param>
+            <param name="helpLink"></param>
+            <param name="helpLinkTitle"></param>
+            <param name="helpLinkLabel"></param>
+            <param name="navigateHelplinkMethod"></param>
+            <param name="showCopyMessage"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MWindowInterfacesLib.MsgBox.IMessageBoxService.Show(System.Object,System.String,System.String,MWindowInterfacesLib.MsgBox.Enums.MsgBoxButtons,MWindowInterfacesLib.MsgBox.Enums.MsgBoxImage,MWindowInterfacesLib.MsgBox.Enums.MsgBoxResult,System.Object,System.String,System.String,System.Func{System.Object,System.Boolean},System.Boolean)">
+            <summary>
+            Show a simple message (minimal with OK button) to the user.
+            Only <param name="ownerContext"/> and <paramref name="messageBoxText"/>
+            are required parameters
+            </summary>
+            <param name="messageBoxText"></param>
+            <param name="caption"></param>
+            <param name="buttonOption"></param>
+            <param name="image"></param>
+            <param name="btnDefault"></param>
+            <param name="helpLink"></param>
+            <param name="helpLinkTitle"></param>
+            <param name="helpLinkLabel"></param>
+            <param name="navigateHelplinkMethod"></param>
+            <param name="showCopyMessage"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MWindowInterfacesLib.MsgBox.IMessageBoxService.ShowAsync(System.Object,System.String,System.String,MWindowInterfacesLib.MsgBox.Enums.MsgBoxResult,System.Boolean,MWindowInterfacesLib.MsgBox.Enums.MsgBoxButtons,MWindowInterfacesLib.MsgBox.Enums.MsgBoxImage,MWindowInterfacesLib.MsgBox.Enums.MsgBoxResult,System.Object,System.String,System.String,System.Func{System.Object,System.Boolean},System.Boolean)">
+            <summary>
+            Show a simple message (minimal with OK button) to the user.
+            Only the
+            <paramref name="ownerContext"/>,
+            <paramref name="messageBoxText"/>,
+            <paramref name="caption"/>,
+            <paramref name="defaultCloseResult"/>,
+            <paramref name="dialogCanCloseViaChrome"/> are required parameters
+            XXX
+            XXX TODO: dialogCanCloseViaChrome and defaultCloseResult are NOT supported yet
+            XXX
+            </summary>
+            <param name="ownerContext"></param>
+            <param name="caption"></param>
+            <param name="defaultCloseResult"></param>
+            <param name="dialogCanCloseViaChrome"></param>
+            <param name="buttonOption"></param>
+            <param name="image"></param>
+            <param name="messageBoxText"></param>
+            <param name="btnDefault"></param>
+            <param name="helpLink"></param>
+            <param name="helpLinkTitle"></param>
+            <param name="helpLinkLabel"></param>
+            <param name="navigateHelplinkMethod"></param>
+            <param name="showCopyMessage"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MWindowInterfacesLib.MsgBox.IMessageBoxService.Show(System.Object,System.String,System.String,MWindowInterfacesLib.MsgBox.Enums.MsgBoxResult,System.Boolean,MWindowInterfacesLib.MsgBox.Enums.MsgBoxButtons,MWindowInterfacesLib.MsgBox.Enums.MsgBoxImage,MWindowInterfacesLib.MsgBox.Enums.MsgBoxResult,System.Object,System.String,System.String,System.Func{System.Object,System.Boolean},System.Boolean)">
+            <summary>
+            Show a simple message (minimal with OK button) to the user.
+            Only the
+            <paramref name="ownerContext"/>,
+            <paramref name="messageBoxText"/>,
+            XXX
+            XXX TODO: dialogCanCloseViaChrome and defaultCloseResult are NOT supported yet
+            XXX
+            </summary>
+            <param name="ownerContext"></param>
+            <param name="messageBoxText"></param>
+            <param name="caption"/>,
+            <param name="defaultCloseResult"/>,
+            <param name="dialogCanCloseViaChrome"/> are required parameters
+            <param name="image"></param>
+            <param name="buttonOption"></param>
+            <param name="btnDefault"></param>
+            <param name="helpLink"></param>
+            <param name="helpLinkTitle"></param>
+            <param name="helpLinkLabel"></param>
+            <param name="navigateHelplinkMethod"></param>
+            <param name="showCopyMessage"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MWindowInterfacesLib.MsgBox.IMessageBoxService.ShowAsync(System.String,MWindowInterfacesLib.MsgBox.Enums.MsgBoxResult,System.Boolean,MWindowInterfacesLib.MsgBox.Enums.MsgBoxResult,System.Object,System.String,System.String,System.Func{System.Object,System.Boolean},System.Boolean)">
+            <summary>
+            Show a message dialog to the user.
+            Only the
+            <paramref name="messageBoxText"/>,
+            <paramref name="defaultCloseResult"/>,
+            <paramref name="dialogCanCloseViaChrome"/> are required parameters
+            XXX
+            XXX TODO: dialogCanCloseViaChrome and defaultCloseResult are NOT supported yet
+            XXX
+            </summary>
+            <param name="messageBoxText"></param>
+            <param name="defaultCloseResult"></param>
+            <param name="dialogCanCloseViaChrome"></param>
+            
+            <param name="btnDefault"></param>
+            <param name="helpLink"></param>
+            <param name="helpLinkTitle"></param>
+            <param name="helpLabel"></param>
+            <param name="navigateHelplinkMethod"></param>
+            <param name="showCopyMessage"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MWindowInterfacesLib.MsgBox.IMessageBoxService.Show(System.String,MWindowInterfacesLib.MsgBox.Enums.MsgBoxResult,System.Boolean,MWindowInterfacesLib.MsgBox.Enums.MsgBoxResult,System.Object,System.String,System.String,System.Func{System.Object,System.Boolean},System.Boolean)">
+            <summary>
+            Show a message dialog to the user.
+            Only the
+            <paramref name="messageBoxText"/>,
+            <paramref name="defaultCloseResult"/>,
+            <paramref name="dialogCanCloseViaChrome"/> are required parameters
+            XXX
+            XXX TODO: dialogCanCloseViaChrome and defaultCloseResult are NOT supported yet
+            XXX
+            </summary>
+            <param name="messageBoxText"></param>
+            <param name="defaultCloseResult"></param>
+            <param name="dialogCanCloseViaChrome"></param>
+            
+            <param name="btnDefault"></param>
+            <param name="helpLink"></param>
+            <param name="helpLinkTitle"></param>
+            <param name="helpLabel"></param>
+            <param name="navigateHelplinkMethod"></param>
+            <param name="showCopyMessage"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MWindowInterfacesLib.MsgBox.IMessageBoxService.ShowAsync(System.String,System.String,MWindowInterfacesLib.MsgBox.Enums.MsgBoxResult,System.Boolean,MWindowInterfacesLib.MsgBox.Enums.MsgBoxResult,System.Object,System.String,System.String,System.Func{System.Object,System.Boolean},System.Boolean)">
+            <summary>
+            Show a message dialog to the user.
+            Only the
+            <paramref name="messageBoxText"/>,
+            <paramref name="caption"/>,
+            <paramref name="defaultCloseResult"/>,
+            <paramref name="dialogCanCloseViaChrome"/> are required parameters
+            XXX
+            XXX TODO: dialogCanCloseViaChrome and defaultCloseResult are NOT supported yet
+            XXX
+            </summary>
+            <param name="messageBoxText"></param>
+            <param name="caption"></param>
+            <param name="defaultCloseResult"></param>
+            <param name="dialogCanCloseViaChrome"></param>
+            
+            <param name="btnDefault"></param>
+            <param name="helpLink"></param>
+            <param name="helpLinkTitle"></param>
+            <param name="helpLabel"></param>
+            <param name="navigateHelplinkMethod"></param>
+            <param name="showCopyMessage"></param>
+        </member>
+        <member name="M:MWindowInterfacesLib.MsgBox.IMessageBoxService.Show(System.String,System.String,MWindowInterfacesLib.MsgBox.Enums.MsgBoxResult,System.Boolean,MWindowInterfacesLib.MsgBox.Enums.MsgBoxResult,System.Object,System.String,System.String,System.Func{System.Object,System.Boolean},System.Boolean)">
+            <summary>
+            Show a message dialog to the user.
+            Only the
+            <paramref name="messageBoxText"/>,
+            <paramref name="caption"/>,
+            <paramref name="defaultCloseResult"/>,
+            <paramref name="dialogCanCloseViaChrome"/> are required parameters
+            XXX
+            XXX TODO: dialogCanCloseViaChrome and defaultCloseResult are NOT supported yet
+            XXX
+            </summary>
+            <param name="messageBoxText"></param>
+            <param name="caption"></param>
+            <param name="defaultCloseResult"></param>
+            <param name="dialogCanCloseViaChrome"></param>
+            
+            <param name="btnDefault"></param>
+            <param name="helpLink"></param>
+            <param name="helpLinkTitle"></param>
+            <param name="helpLabel"></param>
+            <param name="navigateHelplinkMethod"></param>
+            <param name="showCopyMessage"></param>
+        </member>
+        <member name="M:MWindowInterfacesLib.MsgBox.IMessageBoxService.ShowAsync(System.String,System.String,MWindowInterfacesLib.MsgBox.Enums.MsgBoxButtons,MWindowInterfacesLib.MsgBox.Enums.MsgBoxResult,System.Boolean,MWindowInterfacesLib.MsgBox.Enums.MsgBoxResult,System.Object,System.String,System.String,System.Func{System.Object,System.Boolean},System.Boolean)">
+            <summary>
+            Show a message dialog to the user.
+            Only the
+            <paramref name="messageBoxText"/>,
+            <paramref name="caption"/>,
+            <paramref name="buttonOption"/>,
+            <paramref name="defaultCloseResult"/>,
+            <paramref name="dialogCanCloseViaChrome"/> are required parameters
+            XXX
+            XXX TODO: dialogCanCloseViaChrome and defaultCloseResult are NOT supported yet
+            XXX
+            </summary>
+            <param name="messageBoxText"></param>
+            <param name="caption"></param>
+            <param name="buttonOption"></param>
+            <param name="defaultCloseResult"></param>
+            <param name="dialogCanCloseViaChrome"></param>
+            
+            <param name="btnDefault"></param>
+            <param name="helpLink"></param>
+            <param name="helpLinkTitle"></param>
+            <param name="helpLabel"></param>
+            <param name="navigateHelplinkMethod"></param>
+            <param name="showCopyMessage"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MWindowInterfacesLib.MsgBox.IMessageBoxService.Show(System.String,System.String,MWindowInterfacesLib.MsgBox.Enums.MsgBoxButtons,MWindowInterfacesLib.MsgBox.Enums.MsgBoxResult,System.Boolean,MWindowInterfacesLib.MsgBox.Enums.MsgBoxResult,System.Object,System.String,System.String,System.Func{System.Object,System.Boolean},System.Boolean)">
+            <summary>
+            Show a message dialog to the user.
+            Only the
+            <paramref name="messageBoxText"/>,
+            <paramref name="caption"/>,
+            <paramref name="buttonOption"/>,
+            <paramref name="defaultCloseResult"/>,
+            <paramref name="dialogCanCloseViaChrome"/> are required parameters
+            XXX
+            XXX TODO: dialogCanCloseViaChrome and defaultCloseResult are NOT supported yet
+            XXX
+            </summary>
+            <param name="messageBoxText"></param>
+            <param name="caption"></param>
+            <param name="buttonOption"></param>
+            <param name="defaultCloseResult"></param>
+            <param name="dialogCanCloseViaChrome"></param>
+            
+            <param name="btnDefault"></param>
+            <param name="helpLink"></param>
+            <param name="helpLinkTitle"></param>
+            <param name="helpLabel"></param>
+            <param name="navigateHelplinkMethod"></param>
+            <param name="showCopyMessage"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MWindowInterfacesLib.MsgBox.IMessageBoxService.ShowAsync(System.String,System.String,MWindowInterfacesLib.MsgBox.Enums.MsgBoxButtons,MWindowInterfacesLib.MsgBox.Enums.MsgBoxImage,MWindowInterfacesLib.MsgBox.Enums.MsgBoxResult,System.Boolean,MWindowInterfacesLib.MsgBox.Enums.MsgBoxResult,System.Object,System.String,System.String,System.Func{System.Object,System.Boolean},System.Boolean)">
+            <summary>
+            Show a message dialog to the user.
+            Only the
+            <paramref name="messageBoxText"/>,
+            <paramref name="caption"/>,
+            <paramref name="buttonOption"/>,
+            <paramref name="image"/>,
+            <paramref name="defaultCloseResult"/>,
+            <paramref name="dialogCanCloseViaChrome"/> are required parameters
+            XXX
+            XXX TODO: dialogCanCloseViaChrome and defaultCloseResult are NOT supported yet
+            XXX
+            </summary>
+            <param name="messageBoxText"></param>
+            <param name="caption"></param>
+            <param name="buttonOption"></param>
+            <param name="image"></param>
+            <param name="defaultCloseResult"></param>
+            <param name="dialogCanCloseViaChrome"></param>
+            
+            <param name="btnDefault"></param>
+            <param name="helpLink"></param>
+            <param name="helpLinkTitle"></param>
+            <param name="helpLabel"></param>
+            <param name="navigateHelplinkMethod"></param>
+            <param name="showCopyMessage"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MWindowInterfacesLib.MsgBox.IMessageBoxService.Show(System.String,System.String,MWindowInterfacesLib.MsgBox.Enums.MsgBoxButtons,MWindowInterfacesLib.MsgBox.Enums.MsgBoxImage,MWindowInterfacesLib.MsgBox.Enums.MsgBoxResult,System.Boolean,MWindowInterfacesLib.MsgBox.Enums.MsgBoxResult,System.Object,System.String,System.String,System.Func{System.Object,System.Boolean},System.Boolean)">
+            <summary>
+            Show a message dialog to the user.
+            Only the
+            <paramref name="messageBoxText"/>,
+            <paramref name="caption"/>,
+            <paramref name="buttonOption"/>,
+            <paramref name="image"/>,
+            <paramref name="defaultCloseResult"/>,
+            <paramref name="dialogCanCloseViaChrome"/> are required parameters
+            XXX
+            XXX TODO: dialogCanCloseViaChrome and defaultCloseResult are NOT supported yet
+            XXX
+            </summary>
+            <param name="messageBoxText"></param>
+            <param name="caption"></param>
+            <param name="buttonOption"></param>
+            <param name="image"></param>
+            <param name="defaultCloseResult"></param>
+            <param name="dialogCanCloseViaChrome"></param>
+            
+            <param name="btnDefault"></param>
+            <param name="helpLink"></param>
+            <param name="helpLinkTitle"></param>
+            <param name="helpLabel"></param>
+            <param name="navigateHelplinkMethod"></param>
+            <param name="showCopyMessage"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MWindowInterfacesLib.MsgBox.IMessageBoxService.ShowAsync(System.String,System.String,System.String,MWindowInterfacesLib.MsgBox.Enums.MsgBoxButtons,MWindowInterfacesLib.MsgBox.Enums.MsgBoxImage,MWindowInterfacesLib.MsgBox.Enums.MsgBoxResult,System.Boolean,MWindowInterfacesLib.MsgBox.Enums.MsgBoxResult,System.Object,System.String,System.String,System.Func{System.Object,System.Boolean},System.Boolean)">
+            <summary>
+            Show a message dialog to the user.
+            Only the
+            <paramref name="messageBoxText"/>,
+            <paramref name="caption"/>,
+            <paramref name="details"/>,
+            <paramref name="buttonOption"/>,
+            <paramref name="image"/>,
+            <paramref name="defaultCloseResult"/>,
+            <paramref name="dialogCanCloseViaChrome"/> are required parameters
+            XXX
+            XXX TODO: dialogCanCloseViaChrome and defaultCloseResult are NOT supported yet
+            XXX
+            </summary>
+            <param name="messageBoxText"></param>
+            <param name="caption"></param>
+            <param name="details"></param>
+            <param name="buttonOption"></param>
+            <param name="image"></param>
+            <param name="defaultCloseResult"></param>
+            <param name="dialogCanCloseViaChrome"></param>
+            
+            <param name="btnDefault"></param>
+            <param name="helpLink"></param>
+            <param name="helpLinkTitle"></param>
+            <param name="helpLabel"></param>
+            <param name="navigateHelplinkMethod"></param>
+            <param name="showCopyMessage"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MWindowInterfacesLib.MsgBox.IMessageBoxService.Show(System.String,System.String,System.String,MWindowInterfacesLib.MsgBox.Enums.MsgBoxButtons,MWindowInterfacesLib.MsgBox.Enums.MsgBoxImage,MWindowInterfacesLib.MsgBox.Enums.MsgBoxResult,System.Boolean,MWindowInterfacesLib.MsgBox.Enums.MsgBoxResult,System.Object,System.String,System.String,System.Func{System.Object,System.Boolean},System.Boolean)">
+            <summary>
+            Show a message dialog to the user.
+            Only the
+            <paramref name="messageBoxText"/>,
+            <paramref name="caption"/>,
+            <paramref name="details"/>,
+            <paramref name="buttonOption"/>,
+            <paramref name="image"/>,
+            <paramref name="defaultCloseResult"/>,
+            <paramref name="dialogCanCloseViaChrome"/> are required parameters
+            XXX
+            XXX TODO: dialogCanCloseViaChrome and defaultCloseResult are NOT supported yet
+            XXX
+            </summary>
+            <param name="messageBoxText"></param>
+            <param name="caption"></param>
+            <param name="details"></param>
+            <param name="buttonOption"></param>
+            <param name="image"></param>
+            <param name="defaultCloseResult"></param>
+            <param name="dialogCanCloseViaChrome"></param>
+            
+            <param name="btnDefault"></param>
+            <param name="helpLink"></param>
+            <param name="helpLinkTitle"></param>
+            <param name="helpLabel"></param>
+            <param name="navigateHelplinkMethod"></param>
+            <param name="showCopyMessage"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
