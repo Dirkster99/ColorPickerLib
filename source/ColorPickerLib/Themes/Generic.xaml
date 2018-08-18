@@ -5,16 +5,12 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="/ColorPickerLib;component/Themes/Generic/Brushes.xaml" />
         <ResourceDictionary Source="/ColorPickerLib;component/Primitives/Themes/Generic/SelectorItem.xaml" />
-        <!-- ResourceDictionary Source="/ColorPickerLib;component/Themes/Generic/Buttons.xaml" / -->
-        <ResourceDictionary Source="/ColorPickerLib;component/ButtonSpinner/Themes/Generic.xaml" />
         <ResourceDictionary Source="/ColorPickerLib;component/Chromes/Themes/Generic.xaml" />
 
         <ResourceDictionary Source="/ColorPickerLib;component/Controls/VerticalSlideThumbTemplate.xaml" />
         <ResourceDictionary Source="/ColorPickerLib;component/Controls/ColorSpectrumSlider.xaml" />
         <ResourceDictionary Source="/ColorPickerLib;component/Controls/ColorCanvas.xaml" />
 
-        <ResourceDictionary Source="/ColorPickerLib;component/NumericUpDown/Themes/Generic.xaml" />
-        <ResourceDictionary Source="/ColorPickerLib;component/WatermarkTextBox/Themes/Generic.xaml" />
         <ResourceDictionary Source="/ColorPickerLib;component/Controls/ColorPicker.xaml" />
     </ResourceDictionary.MergedDictionaries>
 

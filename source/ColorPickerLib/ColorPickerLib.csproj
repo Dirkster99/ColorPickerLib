@@ -52,15 +52,7 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AutoSelectTextBox\Implementation\AutoSelectBehaviorEnum.cs" />
-    <Compile Include="AutoSelectTextBox\Implementation\AutoSelectTextBox.cs" />
-    <Compile Include="AutoSelectTextBox\Implementation\QueryMoveFocusEventArgs.cs" />
     <Compile Include="Behaviours\AllowableCharactersTextBoxBehavior .cs" />
-    <Compile Include="ButtonSpinner\Implementation\ButtonSpinner.cs" />
-    <Compile Include="ButtonSpinner\Implementation\SpinDirection.cs" />
-    <Compile Include="ButtonSpinner\Implementation\SpinEventArgs.cs" />
-    <Compile Include="ButtonSpinner\Implementation\Spinner.cs" />
-    <Compile Include="ButtonSpinner\Implementation\ValidSpinDirections.cs" />
     <Compile Include="Chromes\Implementation\ButtonChrome.cs" />
     <Compile Include="Controls\ColorCanvas.cs" />
     <Compile Include="Controls\ColorSpectrumSlider.cs" />
@@ -130,32 +122,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Strings.zh-CHT.resx</DependentUpon>
     </Compile>
-    <Compile Include="NumericUpDown\Implementation\AllowedSpecialValuesEnum.cs" />
-    <Compile Include="NumericUpDown\Implementation\AutoSelectBehavior.cs" />
-    <Compile Include="NumericUpDown\Implementation\ByteUpDown.cs" />
-    <Compile Include="NumericUpDown\Implementation\CommonNumericUpDown.cs" />
-    <Compile Include="NumericUpDown\Implementation\DecimalUpDown.cs" />
-    <Compile Include="NumericUpDown\Implementation\DoubleUpDown.cs" />
-    <Compile Include="NumericUpDown\Implementation\IntegerUpDown.cs" />
-    <Compile Include="NumericUpDown\Implementation\LongUpDown.cs" />
-    <Compile Include="NumericUpDown\Implementation\NumericUpDown.cs" />
-    <Compile Include="NumericUpDown\Implementation\SByteUpDown.cs" />
-    <Compile Include="NumericUpDown\Implementation\ShortUpDown.cs" />
-    <Compile Include="NumericUpDown\Implementation\SingleUpDown.cs" />
-    <Compile Include="NumericUpDown\Implementation\UIntegerUpDown.cs" />
-    <Compile Include="NumericUpDown\Implementation\ULongUpDown.cs" />
-    <Compile Include="NumericUpDown\Implementation\UShortUpDown.cs" />
     <Compile Include="Primitives\InputBase.cs" />
     <Compile Include="Primitives\MouseWheelActiveTrigger.cs" />
     <Compile Include="Primitives\Selector.cs" />
     <Compile Include="Primitives\SelectorItem.cs" />
-    <Compile Include="Primitives\UpDownBase.cs" />
     <Compile Include="Themes\ResourceKeys.cs" />
-    <Compile Include="WatermarkTextBox\Implementation\WatermarkTextBox.cs" />
-    <Page Include="ButtonSpinner\Themes\Generic.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Chromes\Themes\Common.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -183,10 +154,6 @@
     <Page Include="Controls\VerticalSlideThumbTemplate.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="NumericUpDown\Themes\Generic.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="Primitives\Themes\Aero2\SelectorItem.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -233,14 +200,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Themes\Generic\Glyphs.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="WatermarkTextBox\Themes\MetroDark.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="WatermarkTextBox\Themes\Generic.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
