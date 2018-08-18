@@ -3,7 +3,6 @@
                     
                     xmlns:localiz="clr-namespace:ColorPickerLib.Localized"
                     xmlns:controls="clr-namespace:ColorPickerLib.Controls"
-                    xmlns:local="clr-namespace:ColorPickerLib"
                     xmlns:conv="clr-namespace:ColorPickerLib.Converters"
                     xmlns:chrome="clr-namespace:ColorPickerLib.Chromes"
                     xmlns:themes="clr-namespace:ColorPickerLib.Themes"
@@ -71,8 +70,7 @@
     </Style>
 
     <Style x:Key="ColorDisplayStyle" TargetType="ContentControl">
-        <Setter Property="Focusable"
-              Value="False" />
+        <Setter Property="Focusable" Value="False" />
         <Setter Property="ContentTemplate">
             <Setter.Value>
                 <DataTemplate>
@@ -84,9 +82,8 @@
         </Setter>
         <Style.Triggers>
             <DataTrigger Binding="{Binding SelectedColor, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=controls:ColorPicker}}"
-                      Value="{x:Null}">
-                <Setter Property="Visibility"
-                    Value="Collapsed" />
+                         Value="{x:Null}">
+                <Setter Property="Visibility" Value="Collapsed" />
             </DataTrigger>
         </Style.Triggers>
     </Style>
@@ -173,14 +170,19 @@
                             <Grid Margin="3">
                                 <ContentControl x:Name="ColorOnly" Style="{StaticResource ColorDisplayStyle}" />
 
-                                <Border x:Name="ColorAndName" Background="White" Visibility="Hidden">
+                                <Border x:Name="ColorAndName"
+                                        Background="Transparent"
+                                        Visibility="Hidden">
                                     <StackPanel Orientation="Horizontal">
+                                        
+                                        <!-- Displays a color by its solid filled rectangle -->
                                         <ContentControl HorizontalAlignment="Left"
                                                         Width="20" Margin="2,1,4,1"
                                                         Style="{StaticResource ColorDisplayStyle}"
                                                         BorderThickness="1" BorderBrush="#FFC9CACA" />
-                                        <TextBlock Text="{Binding SelectedColorText, RelativeSource={RelativeSource TemplatedParent}}"
-                                                   VerticalAlignment="Center" />
+                                        <!-- Displays the color name (Hex String of a color)-->
+                                        <Label Content="{Binding SelectedColorText, RelativeSource={RelativeSource TemplatedParent}}"
+                                               VerticalAlignment="Center" />
                                         
                                         <!-- Measuring textblock ensures minimal size -->
                                         <TextBlock Text="XXXXXX" VerticalAlignment="Center" Visibility="Hidden" />
@@ -255,9 +257,9 @@
                                                 </Grid.RowDefinitions>
                                                 <TextBlock Text="{x:Static localiz:Strings.STR_Recent_Colors_LABEL}" Padding="2" Margin="0,1,0,1" />
                                                 <ListBox x:Name="PART_RecentColors"
-                                             Grid.Row="1"
-                                             ItemsSource="{Binding RecentColors, RelativeSource={RelativeSource TemplatedParent}}"
-                                             Style="{StaticResource ColorListStyle}" />
+                                                         Grid.Row="1"
+                                                         ItemsSource="{Binding RecentColors, RelativeSource={RelativeSource TemplatedParent}}"
+                                                         Style="{StaticResource ColorListStyle}" />
                                             </Grid>
                                         </Grid>
                                     </Grid>

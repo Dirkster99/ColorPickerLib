@@ -69,53 +69,6 @@
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
 
-                    <!-- StackPanel Grid.Row="0"
-                               Grid.Column="0"
-                               Grid.ColumnSpan="2"
-                               HorizontalAlignment="Stretch"
-                               Orientation="Horizontal"
-                               xmlns:numUpDown="clr-namespace:NumericUpDownLib;assembly=NumericUpDownLib"
-                    >
-                        <TextBlock Text="R:"
-                                   VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                        <numUpDown:NumericUpDown
-                            x:Name="_R"
-                            Value="{Binding ElementName=_colorCanvas, Path=R, Mode=TwoWay}"
-                            MinValue="0"
-                            MaxValue="255"
-                            VerticalAlignment="Center" HorizontalAlignment="Center"
-                        />
-
-                        <TextBlock Text="G:" Margin="6"
-                                   VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                        <numUpDown:NumericUpDown
-                            x:Name="_G"
-                            Value="{Binding ElementName=_colorCanvas, Path=G, Mode=TwoWay}"
-                            MinValue="0"
-                            MaxValue="255"
-                            VerticalAlignment="Center" HorizontalAlignment="Center"
-                        />
-
-                        <TextBlock Text="B:" Margin="6"
-                                   VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                        <numUpDown:NumericUpDown
-                            x:Name="_B"
-                            Value="{Binding ElementName=_colorCanvas, Path=B, Mode=TwoWay}"
-                            MinValue="0"
-                            MaxValue="255"
-                            VerticalAlignment="Center" HorizontalAlignment="Center"
-                        />
-                        
-                        <TextBlock Text="A:" Margin="6"
-                                   VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                        <numUpDown:NumericUpDown
-                            x:Name="_A"
-                            Value="{Binding ElementName=_colorCanvas, Path=A, Mode=TwoWay}"
-                            MinValue="0"
-                            MaxValue="255"
-                            VerticalAlignment="Center" HorizontalAlignment="Center" />
-                    </StackPanel -->
-
                     <TextBlock Grid.Column="0"
                                Grid.Row="1"
                                Text="UsingAlphaChannel: " />
@@ -258,8 +211,8 @@
 
             <controls:ColorPicker x:Name="_colorPicker"
                                   ShowRecentColors="True"
-                                   Grid.Row="3"
-                                   VerticalAlignment="Top" />
+                                  Grid.Row="3"
+                                  VerticalAlignment="Top" />
         </Grid>
 
     </Grid>
