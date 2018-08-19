@@ -7,10 +7,10 @@ A WPF/MVVM implementation of a themeable color picker control.
 <table>
 <tr>
 <td>
-<img src="https://github.com/Dirkster99/Docu/blob/master/ColorPickerLib/MetroDarkColorPicker.png">
+<img src="https://github.com/Dirkster99/Docu/blob/master/ColorPickerLib/DemoProgramm_Screenshot.png">
 </td>
 <td>
-<img src="https://github.com/Dirkster99/Docu/blob/master/ColorPickerLib/MetroColorPicker.png">
+<img src="https://github.com/Dirkster99/Docu/blob/master/ColorPickerLib/DemoProgramm_Screenshot_PopUp1.png">
 </td>
 </tr>
 </table>
@@ -19,12 +19,9 @@ A WPF/MVVM implementation of a themeable color picker control.
 
 # Project Description
 
-This project implements a Color Picker control using MVVM/Windows Presentation Foundation (WPF) pattern and technology. that can be themed and localized.
+This project implements a Color Picker control using MVVM/Windows Presentation Foundation (WPF) pattern and technology. These controls  can be themed in dark and light themes and are localized.
 
-You can test these controls with the demo application provided in this repository or in a sample application:
-
-* [Locult](http://locult.codeplex.com/)
-* [SettingsModel](http://settingsmodel.codeplex.com/documentation)
+You can test these controls with the demo application provided in this repository.
 
 # Features
 
