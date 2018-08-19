@@ -41,6 +41,9 @@
         private const string PART_ColorPickerPalettePopup = "PART_ColorPickerPalettePopup";
         private const string PART_ColorModeButton = "PART_ColorModeButton";
 
+        // Defines a color that is applied if nothing else (binding etc) is available...
+        private static readonly Color SelectedDefaultColor = Color.FromArgb(128,255,0,0);
+
         #region Members
 
         private ListBox _availableColors;
@@ -127,8 +130,14 @@
         #endregion //AvailableColorsSortingMode
 
         #region ButtonStyle
-
+        /// <summary>
+        /// Defines the stayle that is applied to the toggle button of the color picker.
+        /// </summary>
         public static readonly DependencyProperty ButtonStyleProperty = DependencyProperty.Register("ButtonStyle", typeof(Style), typeof(ColorPicker));
+
+        /// <summary>
+        /// Defines the stayle that is applied to the toggle button of the color picker.
+        /// </summary>
         public Style ButtonStyle
         {
             get
@@ -161,8 +170,18 @@
         #endregion //DisplayColorAndName
 
         #region ColorMode
+        /// <summary>
+        /// Determines the color mode of the Color Picker PopUp Control.
+        /// 
+        /// The PopUp Control can show different color controls (eg. Palette of Color Canvas)
+        /// to select a color from and this is the property that determines the current mode/display.
+        /// </summary>
+        public static readonly DependencyProperty ColorModeProperty =
+            DependencyProperty.Register("ColorMode",
+                typeof(ColorMode),
+                typeof(ColorPicker),
+                new UIPropertyMetadata(ColorMode.ColorPalette));
 
-        public static readonly DependencyProperty ColorModeProperty = DependencyProperty.Register("ColorMode", typeof(ColorMode), typeof(ColorPicker), new UIPropertyMetadata(ColorMode.ColorPalette));
         public ColorMode ColorMode
         {
             get
@@ -213,7 +232,14 @@
 
         #region SelectedColor
 
-        public static readonly DependencyProperty SelectedColorProperty = DependencyProperty.Register("SelectedColor", typeof(Color?), typeof(ColorPicker), new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, new PropertyChangedCallback(OnSelectedColorPropertyChanged)));
+        public static readonly DependencyProperty SelectedColorProperty
+            = DependencyProperty.Register("SelectedColor",
+                typeof(Color?),
+                typeof(ColorPicker),
+                new FrameworkPropertyMetadata(SelectedDefaultColor, // Set a default color selection
+                    FrameworkPropertyMetadataOptions.BindsTwoWayByDefault,
+                    new PropertyChangedCallback(OnSelectedColorPropertyChanged)));
+
         public Color? SelectedColor
         {
             get
@@ -229,8 +255,11 @@
         private static void OnSelectedColorPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             ColorPicker colorPicker = (ColorPicker)d;
+
             if (colorPicker != null)
+            {
                 colorPicker.OnSelectedColorChanged((Color?)e.OldValue, (Color?)e.NewValue);
+            }
         }
 
         private void OnSelectedColorChanged(Color? oldValue, Color? newValue)

@@ -222,6 +222,7 @@
                                   HorizontalAlignment="Stretch"
                                   VerticalAlignment="Top"
                                   Margin="3"
+                                  SelectedColor="{Binding SelectedAccentColor}"
                                   />
         </Grid>
 

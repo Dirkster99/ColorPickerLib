@@ -325,15 +325,28 @@
                                            TickFrequency="1"
                                            Margin="3,6,3,6"
                                            Value="{Binding R, RelativeSource={RelativeSource TemplatedParent}}"
-                                           VerticalAlignment="Center" />
+                                           VerticalAlignment="Center">
+                                        <Slider.ToolTip>
+                                            <TextBlock>
+                                                <TextBlock Text="Red:"><TextBlock Text="{Binding R, RelativeSource={RelativeSource TemplatedParent}}" /></TextBlock>
+                                            </TextBlock>
+                                        </Slider.ToolTip>
+                                    </Slider>
 
                                     <numupdown:NumericUpDown Grid.Row="1" Grid.Column="1"
-                                            Value="{Binding R, RelativeSource={RelativeSource TemplatedParent},Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                            Value="{Binding R, ValidatesOnDataErrors=True, RelativeSource={RelativeSource TemplatedParent},Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                                             VerticalAlignment="Center" HorizontalAlignment="Stretch"
                                             MinValue="0"
                                             MaxValue="255"
                                             IsReadOnly="False"
-                                    />
+                                    >
+                                        <numupdown:NumericUpDown.ToolTip>
+                                            <TextBlock>
+                                                <TextBlock Text="Red:"><TextBlock Text="{Binding R, RelativeSource={RelativeSource TemplatedParent}}" /></TextBlock>
+                                            </TextBlock>
+                                        </numupdown:NumericUpDown.ToolTip>
+                                    </numupdown:NumericUpDown>
+                                    
                                     <TextBlock Grid.Row="1" Grid.Column="1"
                                                 VerticalAlignment="Center"
                                                 Text="XXXX"
@@ -354,15 +367,27 @@
                                            TickFrequency="1"
                                            Margin="3,6,3,6"
                                            Value="{Binding G, RelativeSource={RelativeSource TemplatedParent}}"
-                                           VerticalAlignment="Center" />
-                                    
+                                           VerticalAlignment="Center">
+                                        <Slider.ToolTip>
+                                            <TextBlock>
+                                                <TextBlock Text="Green:"><TextBlock Text="{Binding G, RelativeSource={RelativeSource TemplatedParent}}" /></TextBlock>
+                                            </TextBlock>
+                                        </Slider.ToolTip>
+                                    </Slider>
+
                                     <numupdown:NumericUpDown Grid.Row="3" Grid.Column="1"
-                                            Value="{Binding G, RelativeSource={RelativeSource TemplatedParent},Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                            Value="{Binding G, ValidatesOnDataErrors=True, RelativeSource={RelativeSource TemplatedParent},Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                                             VerticalAlignment="Center"  HorizontalAlignment="Stretch"
                                             MinValue="0"
                                             MaxValue="255"
                                             IsReadOnly="False"
-                                    />
+                                    >
+                                        <numupdown:NumericUpDown.ToolTip>
+                                            <TextBlock>
+                                                    <TextBlock Text="Green:"><TextBlock Text="{Binding G, RelativeSource={RelativeSource TemplatedParent}}" /></TextBlock>
+                                            </TextBlock>
+                                        </numupdown:NumericUpDown.ToolTip>
+                                    </numupdown:NumericUpDown>
 
                                     <TextBlock Grid.Row="4" Grid.Column="0"
                                               Text="{Binding Source={x:Static localiz:Strings.STR_BLUE_LABEL}, StringFormat={}{0}:}"
@@ -376,14 +401,27 @@
                                             TickFrequency="1"
                                             Margin="3,6,3,6"
                                             Value="{Binding B, RelativeSource={RelativeSource TemplatedParent}}"
-                                            VerticalAlignment="Center" />
+                                            VerticalAlignment="Center" >
+                                        <Slider.ToolTip>
+                                            <TextBlock>
+                                                <TextBlock Text="Blue:"><TextBlock Text="{Binding B, RelativeSource={RelativeSource TemplatedParent}}" /></TextBlock>
+                                            </TextBlock>
+                                        </Slider.ToolTip>
+                                    </Slider>
+
                                     <numupdown:NumericUpDown Grid.Row="5" Grid.Column="1"
-                                            Value="{Binding B, RelativeSource={RelativeSource TemplatedParent},Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                            Value="{Binding B, ValidatesOnDataErrors=True, RelativeSource={RelativeSource TemplatedParent},Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                                             VerticalAlignment="Center" HorizontalAlignment="Stretch"
                                             MinValue="0"
                                             MaxValue="255"
                                             IsReadOnly="False"
-                                    />
+                                    >
+                                        <numupdown:NumericUpDown.ToolTip>
+                                            <TextBlock>
+                                                    <TextBlock Text="Blue:"><TextBlock Text="{Binding B, RelativeSource={RelativeSource TemplatedParent}}" /></TextBlock>
+                                            </TextBlock>
+                                        </numupdown:NumericUpDown.ToolTip>
+                                    </numupdown:NumericUpDown>
 
                                     <TextBlock Grid.Row="6" Grid.Column="0"
                                               Text="{Binding Source={x:Static localiz:Strings.STR_ALPHA_LABEL}, StringFormat={}{0}:}"
@@ -399,15 +437,27 @@
                                             Margin="3,6,3,6"
                                             Value="{Binding Path=A, RelativeSource={RelativeSource TemplatedParent}}"
                                             VerticalAlignment="Center"
-                                            Visibility="{Binding Path=UsingAlphaChannel, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+                                            Visibility="{Binding Path=UsingAlphaChannel, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                        <Slider.ToolTip>
+                                            <TextBlock>
+                                                <TextBlock Text="Opacity:"><TextBlock Text="{Binding A, RelativeSource={RelativeSource TemplatedParent}}" /></TextBlock>
+                                            </TextBlock>
+                                        </Slider.ToolTip>
+                                    </Slider>
+
                                     <numupdown:NumericUpDown Grid.Row="7" Grid.Column="1"
-                                            Value="{Binding Path=A, RelativeSource={RelativeSource TemplatedParent},Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                            Value="{Binding Path=A, ValidatesOnDataErrors=True, RelativeSource={RelativeSource TemplatedParent},Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                                             VerticalAlignment="Center" HorizontalAlignment="Stretch"
                                             MinValue="0"
                                             MaxValue="255"
                                             Visibility="{Binding Path=UsingAlphaChannel, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource BooleanToVisibilityConverter}}"
-                                            IsReadOnly="False"
-                                    />
+                                            IsReadOnly="False">
+                                        <numupdown:NumericUpDown.ToolTip>
+                                            <TextBlock>
+                                                    <TextBlock Text="Opacity:"><TextBlock Text="{Binding A, RelativeSource={RelativeSource TemplatedParent}}" /></TextBlock>
+                                            </TextBlock>
+                                        </numupdown:NumericUpDown.ToolTip>
+                                    </numupdown:NumericUpDown>
                                 </Grid>
                             </Border>
                         </Grid>

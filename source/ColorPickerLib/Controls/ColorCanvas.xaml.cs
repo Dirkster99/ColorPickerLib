@@ -2,6 +2,7 @@
 {
     using ColorPickerLib.Core.Utilities;
     using ColorPickerLib.Primitives;
+    using System.Diagnostics;
     using System.IO;
     using System.Windows;
     using System.Windows.Controls;
@@ -321,6 +322,7 @@
                 _colorShadingCanvas.MouseLeftButtonUp -= ColorShadingCanvas_MouseLeftButtonUp;
                 _colorShadingCanvas.MouseMove -= ColorShadingCanvas_MouseMove;
                 _colorShadingCanvas.SizeChanged -= ColorShadingCanvas_SizeChanged;
+                _colorShadingCanvas.Loaded -= _colorShadingCanvas_Loaded;
             }
 
             _colorShadingCanvas = GetTemplateChild(PART_ColorShadingCanvas) as Canvas;
@@ -331,6 +333,7 @@
                 _colorShadingCanvas.MouseLeftButtonUp += ColorShadingCanvas_MouseLeftButtonUp;
                 _colorShadingCanvas.MouseMove += ColorShadingCanvas_MouseMove;
                 _colorShadingCanvas.SizeChanged += ColorShadingCanvas_SizeChanged;
+                _colorShadingCanvas.Loaded += _colorShadingCanvas_Loaded;
             }
 
             _colorShadeSelector = GetTemplateChild(PART_ColorShadeSelector) as Canvas;
@@ -363,6 +366,22 @@
 
             // When changing theme, HexadecimalString needs to be set since it is not binded.
             SetHexadecimalTextBoxTextProperty(ColorUtilities.GetFormatedColorString(SelectedColor, UsingAlphaChannel));
+        }
+
+        private void _colorShadingCanvas_Loaded(object sender, RoutedEventArgs e)
+        {
+            // Components of each color are not always updated when using complicated scenarious
+            // like PopUp controls and partially visible elements
+            // So, this hack makes sure colors are always correct when UI is loaded after construction
+            if (SelectedColor != null)
+            {
+                var backUPColor = SelectedColor;
+
+                SelectedColor = Color.FromArgb(00,00,00,00);
+                SelectedColor = Color.FromArgb(0xff, 0xff, 0xff, 0xff);
+
+                SelectedColor = backUPColor;
+            }
         }
 
         protected override void OnKeyDown(KeyEventArgs e)

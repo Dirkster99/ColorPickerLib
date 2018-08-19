@@ -126,7 +126,7 @@
                     Color="#FFEAF6FD" />
 
     <SolidColorBrush x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type reskeys:ResourceKeys}, ResourceId=ButtonFocusedOuterBorderKey}"
-                    Color="#FF707070"
+                    Color="{DynamicResource {x:Static reskeys:ResourceKeys.ControlAccentColorKey}}"
                     options:Freeze="true" />
    <SolidColorBrush x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type reskeys:ResourceKeys}, ResourceId=ButtonFocusedInnerBorderKey}"
                     Color="#F900CCFF"
