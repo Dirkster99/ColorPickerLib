@@ -9,11 +9,9 @@
 
     <ControlTemplate x:Key="VerticalSlideThumbTemplate" TargetType="{x:Type Thumb}">
         <Canvas SnapsToDevicePixels="true"
-                UseLayoutRounding="True"
                 Background="Transparent"
                 >
             <Grid VerticalAlignment="Stretch" HorizontalAlignment="Center"
-                  MinHeight="9"
                   Width="27">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
@@ -23,8 +21,8 @@
 
                 <Path x:Name="LeftArrow" Grid.Column="0"
                       Stretch="Uniform"
-                      Stroke="#FF000000" StrokeThickness="2"
-                      Fill="#FF000000"
+                      StrokeThickness="0"
+                      Fill="{DynamicResource {x:Static reskeys:ResourceKeys.VerticalSLideThumbForegroundBrushKey}}"
                       Data="F1 M 276.761,316L 262.619,307.835L 262.619,324.165L 276.761,316 Z "
                       RenderTransformOrigin="0.5,0.5" 
                       HorizontalAlignment="Stretch"
@@ -34,14 +32,14 @@
                             <ScaleTransform />
                             <SkewTransform />
                             <RotateTransform />
-                            <!-- TranslateTransform Y="6" X="8" /-->
+                            <TranslateTransform Y="-8" X="-3" />
                         </TransformGroup>
                     </Path.RenderTransform>
                 </Path>
                 <Path x:Name="RightArrow" Grid.Column="2"
                       Stretch="Uniform"
-                      Stroke="#FF000000" StrokeThickness="2"
-                      Fill="#FF000000"
+                      StrokeThickness="0"
+                      Fill="{DynamicResource {x:Static reskeys:ResourceKeys.VerticalSLideThumbForegroundBrushKey}}"
                       Data="F1 M 276.761,316L 262.619,307.835L 262.619,324.165L 276.761,316 Z "
                       RenderTransformOrigin="0.5,0.5"
                       HorizontalAlignment="Stretch"
@@ -51,7 +49,7 @@
                             <ScaleTransform />
                             <SkewTransform />
                             <RotateTransform Angle="-180" />
-                            <!-- TranslateTransform Y="6" X="8" /-->
+                            <TranslateTransform Y="-8" X="3" />
                         </TransformGroup>
                     </Path.RenderTransform>
                 </Path>

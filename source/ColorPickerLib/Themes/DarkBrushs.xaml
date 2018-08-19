@@ -34,12 +34,16 @@
                      Color="#3e3e42"
                      />
 
+    <SolidColorBrush x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type reskeys:ResourceKeys},
+                     ResourceId=ControlTextBrushKey}"
+                     Color="Gray"/>
+
     <SolidColorBrush x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type reskeys:ResourceKeys}, ResourceId=ControlFocusedBorderKey}"
                     Color="#FF989898"
                     options:Freeze="true" />
 
    <SolidColorBrush x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type reskeys:ResourceKeys}, ResourceId=ButtonNormalOuterBorderKey}"
-                    Color="#FF333333"
+                    Color="#FF666666"
                     options:Freeze="true" />
 
     <SolidColorBrush x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type reskeys:ResourceKeys}, ResourceId=ButtonNormalInnerBorderKey}"
@@ -204,5 +208,17 @@
                             ResourceId=VerticalSLideThumbMouseOverBrushKey}"
                      Color="{DynamicResource {x:Static reskeys:ResourceKeys.ControlAccentColorKey}}"
     />
+
+    <SolidColorBrush x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type reskeys:ResourceKeys},
+                            ResourceId=VerticalSLideThumbForegroundBrushKey}"
+                     Color="White"/>
+
+    <SolidColorBrush x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type reskeys:ResourceKeys},
+                            ResourceId=CanvasSLideThumbForegroundBrushKey}"
+                     Color="White"/>
+
+    <SolidColorBrush x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type reskeys:ResourceKeys},
+                            ResourceId=CanvasSLideThumbBorderBrushKey}"
+                     Color="Black"/>
 
 </ResourceDictionary>

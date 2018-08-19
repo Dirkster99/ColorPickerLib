@@ -15,19 +15,20 @@
 
         #region Private Members
 
-        private Rectangle _spectrumDisplay;
+        private Rectangle _Part_SpectrumDisplay;
         private LinearGradientBrush _pickerBrush;
 
         #endregion //Private Members
 
         #region Constructors
-
+        /// <summary>
+        /// Class constructor
+        /// </summary>
         static ColorSpectrumSlider()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(ColorSpectrumSlider), new FrameworkPropertyMetadata(typeof(ColorSpectrumSlider)));
         }
-
-        #endregion //Constructors
+        #endregion Constructors
 
         #region Dependency Properties
 
@@ -52,7 +53,11 @@
         {
             base.OnApplyTemplate();
 
-            _spectrumDisplay = (Rectangle)GetTemplateChild(PART_SpectrumDisplay);
+            _Part_SpectrumDisplay = (Rectangle)GetTemplateChild(PART_SpectrumDisplay);
+
+            if (_Part_SpectrumDisplay == null)
+                return;
+
             CreateSpectrum();
             OnValueChanged(Double.NaN, Value);
         }
@@ -87,7 +92,7 @@
             }
 
             _pickerBrush.GradientStops[i - 1].Offset = 1.0;
-            _spectrumDisplay.Fill = _pickerBrush;
+            _Part_SpectrumDisplay.Fill = _pickerBrush;
         }
 
         #endregion //Methods

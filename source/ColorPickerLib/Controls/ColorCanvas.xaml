@@ -17,126 +17,6 @@
     <conv:ColorToSolidColorBrushConverter x:Key="ColorToSolidColorBrushConverter" />
     <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
 
-    <LinearGradientBrush x:Key="ColorCanvasBackgroundBrush" StartPoint="0,0" EndPoint="0,1">
-        <LinearGradientBrush.GradientStops>
-            <GradientStopCollection>
-                <GradientStop Offset="0" Color="#FFffffff" />
-                <GradientStop Offset="1" Color="#FFE8EBED" />
-            </GradientStopCollection>
-        </LinearGradientBrush.GradientStops>
-    </LinearGradientBrush>
-
-    <SolidColorBrush x:Key="HorizontalSliderTrackNormalBackground" Color="#FFE7EAEA" />
-
-    <LinearGradientBrush x:Key="HorizontalSliderTrackNormalBorder" EndPoint="0,1" StartPoint="0,0">
-        <GradientStop Color="#FFAEB1AF" Offset="0.1" />
-        <GradientStop Color="White" Offset=".9" />
-    </LinearGradientBrush>
-
-    <LinearGradientBrush x:Key="ThumbStroke" EndPoint="0.5,1" StartPoint="0.5,0">
-        <GradientStop Color="#FFA3AEB9" Offset="0" />
-        <GradientStop Color="#FF8399A9" Offset="0.375" />
-        <GradientStop Color="#FF718597" Offset="0.375" />
-        <GradientStop Color="#FF617584" Offset="1" />
-    </LinearGradientBrush>
-
-    <LinearGradientBrush x:Key="ThumbFill" StartPoint="0,0" EndPoint="0,1">
-        <LinearGradientBrush.GradientStops>
-            <GradientStopCollection>
-                <GradientStop Offset="0" Color="#FFfefefe" />
-                <GradientStop Offset="0.5" Color="#FFeff1f2" />
-                <GradientStop Offset="1" Color="#FFd0d6db" />
-            </GradientStopCollection>
-        </LinearGradientBrush.GradientStops>
-    </LinearGradientBrush>
-
-    <SolidColorBrush x:Key="ThumbMouseOver" Color="#FFE5F2F6" />
-
-    <Style x:Key="CustomThumbForSlider"
-          TargetType="{x:Type Thumb}">
-        <Setter Property="OverridesDefaultStyle" Value="True" />
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="{x:Type Thumb}">
-                    <Rectangle x:Name="_thumb"
-                              Fill="{StaticResource ThumbFill}"
-                              Stroke="{StaticResource ThumbStroke}"
-                              Height="14"
-                              Width="8"
-                              RadiusX="1"
-                              RadiusY="1" />
-                    <ControlTemplate.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="_thumb" Property="Rectangle.Fill" Value="{StaticResource ThumbMouseOver}" />
-                        </Trigger>
-                    </ControlTemplate.Triggers>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-
-    <Style x:Key="ColorCanvasSliderStyle" TargetType="{x:Type Slider}">
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="{x:Type Slider}">
-                    <Border BorderBrush="{TemplateBinding BorderBrush}"
-                           BorderThickness="{TemplateBinding BorderThickness}"
-                           Background="{TemplateBinding Background}"
-                           SnapsToDevicePixels="true">
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" MinHeight="{TemplateBinding MinHeight}" />
-                                <RowDefinition Height="Auto" />
-                            </Grid.RowDefinitions>
-                            <TickBar x:Name="TopTick"
-                                      Fill="{TemplateBinding Foreground}"
-                                      Height="4"
-                                      Placement="Top"
-                                      Grid.Row="0"
-                                      Visibility="Collapsed" />
-                            <TickBar x:Name="BottomTick"
-                                      Fill="{TemplateBinding Foreground}"
-                                      Height="4"
-                                      Placement="Bottom"
-                                      Grid.Row="2"
-                                      Visibility="Collapsed" />
-                            <Border x:Name="TrackBackground"
-                                     BorderBrush="{StaticResource HorizontalSliderTrackNormalBorder}"
-                                     BorderThickness="1"
-                                     Background="{StaticResource HorizontalSliderTrackNormalBackground}"
-                                     CornerRadius="1"
-                                     Height="4.0"
-                                     Margin="5,0"
-                                     Grid.Row="1"
-                                     VerticalAlignment="center">
-                                <Canvas Margin="-6,-1">
-                                    <Rectangle x:Name="PART_SelectionRange"
-                                      Fill="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"
-                                      Height="4.0"
-                                      Stroke="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}"
-                                      StrokeThickness="1.0"
-                                      Visibility="Hidden" />
-                                </Canvas>
-                            </Border>
-                            <Track x:Name="PART_Track" Grid.Row="1">
-                                <Track.DecreaseRepeatButton>
-                                    <RepeatButton Command="{x:Static Slider.DecreaseLarge}" Style="{StaticResource SliderRepeatButtonStyle}" />
-                                </Track.DecreaseRepeatButton>
-                                <Track.IncreaseRepeatButton>
-                                    <RepeatButton Command="{x:Static Slider.IncreaseLarge}" Style="{StaticResource SliderRepeatButtonStyle}" />
-                                </Track.IncreaseRepeatButton>
-                                <Track.Thumb>
-                                    <Thumb x:Name="Thumb" Style="{StaticResource CustomThumbForSlider}" />
-                                </Track.Thumb>
-                            </Track>
-                        </Grid>
-                    </Border>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-
     <Style TargetType="{x:Type controls:ColorCanvas}">
         <Setter Property="Background" Value="{DynamicResource {x:Static themes:ResourceKeys.PanelBackgroundBrushKey}}" />
         <Setter Property="BorderBrush" Value="{DynamicResource {x:Static themes:ResourceKeys.ControlNormalBorderKey}}" />
@@ -172,12 +52,12 @@
                                         VerticalAlignment="Stretch"
                                         />
                                 <Canvas x:Name="PART_ColorShadingCanvas"
-                                            Margin="0"
-                                            Width="300"
-                                            Height="150"
-                                            HorizontalAlignment="Stretch"
-                                            VerticalAlignment="Stretch"
-                                            >
+                                        Margin="0"
+                                        Width="300"
+                                        Height="150"
+                                        HorizontalAlignment="Stretch"
+                                        VerticalAlignment="Stretch"
+                                        >
                                         <Rectangle x:Name="ColorShadingRectangle"
                                                    VerticalAlignment="Stretch"
                                                    HorizontalAlignment="Stretch"
@@ -212,16 +92,18 @@
                                                 Width="10"
                                                 Height="10"
                                                 IsHitTestVisible="False">
-                                            <Ellipse Width="10"
-                                                     Height="10"
-                                                     StrokeThickness="3"
-                                                     Stroke="#FFFFFFFF"
-                                                     IsHitTestVisible="False" />
-                                            <Ellipse Width="10"
-                                                     Height="10"
-                                                     StrokeThickness="1"
-                                                     Stroke="#FF000000"
-                                                     IsHitTestVisible="False" />
+                                        <Ellipse
+                                                Width="10"
+                                                Height="10"
+                                                StrokeThickness="3"
+                                                Stroke="{DynamicResource {x:Static themes:ResourceKeys.CanvasSLideThumbForegroundBrushKey}}"
+                                                IsHitTestVisible="False">
+                                        </Ellipse>
+                                        <Ellipse Width="10"
+                                                    Height="10"
+                                                    StrokeThickness="1"
+                                                    Stroke="{DynamicResource {x:Static themes:ResourceKeys.CanvasSLideThumbBorderBrushKey}}"
+                                                    IsHitTestVisible="False" />
                                         </Canvas>
                                     </Canvas>
 

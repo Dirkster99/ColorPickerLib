@@ -43,7 +43,12 @@
          </GradientStopCollection>
       </LinearGradientBrush.GradientStops>
    </LinearGradientBrush>
-   <LinearGradientBrush x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type reskeys:ResourceKeys}, ResourceId=ControlFocusedBorderKey}"
+
+    <SolidColorBrush x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type reskeys:ResourceKeys},
+                     ResourceId=ControlTextBrushKey}"
+                     Color="Black"/>
+
+    <LinearGradientBrush x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type reskeys:ResourceKeys}, ResourceId=ControlFocusedBorderKey}"
                         StartPoint="0,0"
                         EndPoint="0,1"
                         options:Freeze="true">
@@ -200,5 +205,17 @@
                             ResourceId=VerticalSLideThumbMouseOverBrushKey}"
                      Color="{DynamicResource {x:Static reskeys:ResourceKeys.ControlAccentColorKey}}"
     />
+    
+    <SolidColorBrush x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type reskeys:ResourceKeys},
+                            ResourceId=VerticalSLideThumbForegroundBrushKey}"
+                     Color="Black"/>
+
+    <SolidColorBrush x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type reskeys:ResourceKeys},
+                            ResourceId=CanvasSLideThumbForegroundBrushKey}"
+                     Color="White"/>
+
+    <SolidColorBrush x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type reskeys:ResourceKeys},
+                            ResourceId=CanvasSLideThumbBorderBrushKey}"
+                     Color="Black"/>
 
 </ResourceDictionary>

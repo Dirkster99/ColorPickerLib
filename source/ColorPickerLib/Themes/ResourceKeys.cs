@@ -24,6 +24,9 @@
         public static readonly ComponentResourceKey ControlDisabledBackgroundKey = new ComponentResourceKey(typeof(ResourceKeys), "ControlDisabledBackgroundKey");
         public static readonly ComponentResourceKey ControlNormalBorderKey = new ComponentResourceKey(typeof(ResourceKeys), "ControlNormalBorderKey");
         public static readonly ComponentResourceKey ControlMouseOverBorderKey = new ComponentResourceKey(typeof(ResourceKeys), "ControlMouseOverBorderKey");
+
+        public static readonly ComponentResourceKey ControlTextBrushKey = new ComponentResourceKey(typeof(ResourceKeys), "ControlTextBrushKey");
+        
         public static readonly ComponentResourceKey ControlSelectedBorderKey = new ComponentResourceKey(typeof(ResourceKeys), "ControlSelectedBorderKey");
         public static readonly ComponentResourceKey ControlFocusedBorderKey = new ComponentResourceKey(typeof(ResourceKeys), "ControlFocusedBorderKey");
 
@@ -63,8 +66,23 @@
         public static readonly ComponentResourceKey PopUpOpenBorderBrushKey = new ComponentResourceKey(typeof(ResourceKeys), "PopUpOpenBorderBrushKey");
 
         /// <summary>
-        /// Styles the border of a PopUp Control when it is open.
+        /// Styles the thumb of the vertical color spectrum slider when mouse is over.
         /// </summary>
         public static readonly ComponentResourceKey VerticalSLideThumbMouseOverBrushKey = new ComponentResourceKey(typeof(ResourceKeys), "VerticalSLideThumbMouseOverBrushKey");
+
+        /// <summary>
+        /// Styles the foreground color of the thumb of the vertical color spectrum slider.
+        /// </summary>
+        public static readonly ComponentResourceKey VerticalSLideThumbForegroundBrushKey = new ComponentResourceKey(typeof(ResourceKeys), "VerticalSLideThumbForegroundBrushKey");
+
+        /// <summary>
+        /// Styles the foreground color of the color canvas thumb of the color slider.
+        /// </summary>
+        public static readonly ComponentResourceKey CanvasSLideThumbForegroundBrushKey = new ComponentResourceKey(typeof(ResourceKeys), "CanvasSLideThumbForegroundBrushKey");
+
+        /// <summary>
+        /// Styles the border color of the color canvas thumb of the color slider.
+        /// </summary>
+        public static readonly ComponentResourceKey CanvasSLideThumbBorderBrushKey = new ComponentResourceKey(typeof(ResourceKeys), "CanvasSLideThumbBorderBrushKey");
     }
 }
