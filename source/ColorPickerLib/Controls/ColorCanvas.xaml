@@ -7,6 +7,8 @@
                     xmlns:numupdown="clr-namespace:NumericUpDownLib;assembly=NumericUpDownLib"
                     xmlns:conv="clr-namespace:ColorPickerLib.Converters"
                     xmlns:behav="clr-namespace:ColorPickerLib.Behaviours"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+                    xmlns:updownconv="clr-namespace:NumericUpDownLib.Converters;assembly=NumericUpDownLib"
                     >
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="/ColorPickerLib;component/Themes/Generic/Brushes.xaml" />
@@ -17,6 +19,8 @@
     <conv:ColorToSolidColorBrushConverter x:Key="ColorToSolidColorBrushConverter" />
     <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
 
+    <updownconv:FactorToDoubleConverter x:Key="FactorToDoubleConverter" Factor="100.0" />
+
     <Style TargetType="{x:Type controls:ColorCanvas}">
         <Setter Property="Background" Value="{DynamicResource {x:Static themes:ResourceKeys.PanelBackgroundBrushKey}}" />
         <Setter Property="BorderBrush" Value="{DynamicResource {x:Static themes:ResourceKeys.ControlNormalBorderKey}}" />
@@ -24,6 +28,16 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type controls:ColorCanvas}">
+                    <ControlTemplate.Resources>
+                        <!-- Enumerates the ColorSpace enumeration and gives access to its members -->
+                        <ObjectDataProvider x:Key="ColorSpaceOptions" MethodName="GetValues"
+                          ObjectType="{x:Type sys:Enum}">
+                            <ObjectDataProvider.MethodParameters>
+                                <x:Type TypeName="controls:ColorSpace" />
+                            </ObjectDataProvider.MethodParameters>
+                        </ObjectDataProvider>
+                    </ControlTemplate.Resources>
+                    
                     <Border Background="{TemplateBinding Background}"
                             BorderThickness="{TemplateBinding BorderThickness}"
                             BorderBrush="{TemplateBinding BorderBrush}">
@@ -171,188 +185,235 @@
                                                               />
                             </Grid>
 
-                            <Border x:Name="RGBBorder"
+                            <Border x:Name="ColorSpaceDetailsBorder"
                                     MinWidth="180"
                                     Grid.Row="1"
                                     BorderThickness="1"
                                     ClipToBounds="True"
-                                     Margin="3,12,3,12">
+                                    Margin="3,12,3,12">
                                 <Grid>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="Auto" />
-                                        <RowDefinition Height="Auto" />
-                                        <RowDefinition Height="Auto" />
-                                        <RowDefinition Height="Auto" />
-                                        <RowDefinition Height="Auto" />
-                                        <RowDefinition Height="Auto" />
-                                        <RowDefinition Height="Auto" />
-                                        <RowDefinition Height="Auto" />
-                                    </Grid.RowDefinitions>
                                     <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
                                         <ColumnDefinition Width="*" />
                                         <ColumnDefinition Width="Auto" />
                                     </Grid.ColumnDefinitions>
 
-                                    <TextBlock Grid.Row="0"
-                                               Grid.Column="0"
-                                               Grid.ColumnSpan="2"
-                                               Text="{Binding Source={x:Static localiz:Strings.STR_RED_LABEL}, StringFormat={}{0}:}"
-                                               VerticalAlignment="Center"
-                                               Margin="0,6,0,0"
-                                               />
-                                    <Slider x:Name="PART_RSlider" Grid.Row="1" Grid.Column="0"
-                                           Maximum="255"
-                                           SmallChange="1"
-                                           LargeChange="10"
-                                           TickFrequency="1"
-                                           Margin="3,6,3,6"
-                                           Value="{Binding R, RelativeSource={RelativeSource TemplatedParent}}"
-                                           VerticalAlignment="Center">
-                                        <Slider.ToolTip>
-                                            <TextBlock>
-                                                <TextBlock Text="Red:"><TextBlock Text="{Binding R, RelativeSource={RelativeSource TemplatedParent}}" /></TextBlock>
-                                            </TextBlock>
-                                        </Slider.ToolTip>
-                                    </Slider>
+                                    <Grid Grid.Column="0">
+                                        <ComboBox ItemsSource="{Binding Source={StaticResource ColorSpaceOptions}}"
+                                                  SelectedItem="{Binding Path=DisplayColorSpace, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
+                                                  HorizontalAlignment="Left"
+                                                  VerticalAlignment="Top"
+                                                  />
+                                    </Grid>
+                                    
+                                    <!-- RGB -->
+                                    <Grid Grid.Column="1" x:Name="RGB_Controls_Grid">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
 
-                                    <numupdown:NumericUpDown Grid.Row="1" Grid.Column="1"
-                                            Value="{Binding R, ValidatesOnDataErrors=True, RelativeSource={RelativeSource TemplatedParent},Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
-                                            VerticalAlignment="Center" HorizontalAlignment="Stretch"
+                                        <Label Grid.Column="0" Grid.Row="0"
+                                               Content="{Binding Source={x:Static localiz:Strings.STR_RED_LABEL}, StringFormat={}{0}:}"
+                                               HorizontalAlignment="Right"
+                                               VerticalAlignment="Center"
+                                               Margin="3,0,3,0"
+                                               />
+                                        <numupdown:ByteUpDown Grid.Column="1" Grid.Row="0"
+                                            Value="{Binding R, RelativeSource={RelativeSource TemplatedParent},Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                            HorizontalAlignment="Stretch" VerticalAlignment="Center"
                                             MinValue="0"
                                             MaxValue="255"
                                             IsReadOnly="False"
-                                    >
-                                        <numupdown:NumericUpDown.ToolTip>
-                                            <TextBlock>
-                                                <TextBlock Text="Red:"><TextBlock Text="{Binding R, RelativeSource={RelativeSource TemplatedParent}}" /></TextBlock>
+                                            Margin="0,3,0,0">
+                                            <numupdown:ByteUpDown.ToolTip>
+                                                <TextBlock>
+                                                <TextBlock Text="{Binding Source={x:Static localiz:Strings.STR_RED_LABEL}, StringFormat={}{0}}"><TextBlock Text=" "/><TextBlock Text="{Binding R, RelativeSource={RelativeSource TemplatedParent}}" /></TextBlock>
                                             </TextBlock>
-                                        </numupdown:NumericUpDown.ToolTip>
-                                    </numupdown:NumericUpDown>
-                                    
-                                    <TextBlock Grid.Row="1" Grid.Column="1"
-                                                VerticalAlignment="Center"
-                                                Text="XXXX"
-                                                Visibility="Hidden" />
-                                    <!-- Size Measuring TextBlock -->
+                                        </numupdown:ByteUpDown.ToolTip>
+                                        </numupdown:ByteUpDown>
 
-                                    <TextBlock Grid.Row="2"
-                                               Grid.Column="0" Grid.ColumnSpan="2"
-                                               Text="{Binding Source={x:Static localiz:Strings.STR_GREEN_LABEL}, StringFormat={}{0}:}"
+                                        <Label Grid.Column="0" Grid.Row="1"
+                                               Content="{Binding Source={x:Static localiz:Strings.STR_GREEN_LABEL}, StringFormat={}{0}:}"
                                                VerticalAlignment="Center"
-                                               Margin="0,6,0,0"
-                                               />
-
-                                    <Slider x:Name="PART_GSlider" Grid.Row="3" Grid.Column="0"
-                                           Maximum="255"
-                                           SmallChange="1"
-                                           LargeChange="10"
-                                           TickFrequency="1"
-                                           Margin="3,6,3,6"
-                                           Value="{Binding G, RelativeSource={RelativeSource TemplatedParent}}"
-                                           VerticalAlignment="Center">
-                                        <Slider.ToolTip>
-                                            <TextBlock>
-                                                <TextBlock Text="Green:"><TextBlock Text="{Binding G, RelativeSource={RelativeSource TemplatedParent}}" /></TextBlock>
-                                            </TextBlock>
-                                        </Slider.ToolTip>
-                                    </Slider>
-
-                                    <numupdown:NumericUpDown Grid.Row="3" Grid.Column="1"
+                                               HorizontalAlignment="Right"
+                                               Margin="3,0,3,0"
+                                        />
+                                        <numupdown:ByteUpDown Grid.Column="1" Grid.Row="1"
                                             Value="{Binding G, ValidatesOnDataErrors=True, RelativeSource={RelativeSource TemplatedParent},Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                                             VerticalAlignment="Center"  HorizontalAlignment="Stretch"
                                             MinValue="0"
                                             MaxValue="255"
                                             IsReadOnly="False"
-                                    >
-                                        <numupdown:NumericUpDown.ToolTip>
-                                            <TextBlock>
-                                                    <TextBlock Text="Green:"><TextBlock Text="{Binding G, RelativeSource={RelativeSource TemplatedParent}}" /></TextBlock>
+                                            Margin="0,3,0,0"
+                                        >
+                                            <numupdown:ByteUpDown.ToolTip>
+                                                <TextBlock>
+                                                    <TextBlock Text="{Binding Source={x:Static localiz:Strings.STR_GREEN_LABEL}, StringFormat={}{0}}"><TextBlock Text=" "/><TextBlock Text="{Binding G, RelativeSource={RelativeSource TemplatedParent}}" /></TextBlock>
                                             </TextBlock>
-                                        </numupdown:NumericUpDown.ToolTip>
-                                    </numupdown:NumericUpDown>
+                                        </numupdown:ByteUpDown.ToolTip>
+                                        </numupdown:ByteUpDown>
 
-                                    <TextBlock Grid.Row="4" Grid.Column="0"
-                                              Text="{Binding Source={x:Static localiz:Strings.STR_BLUE_LABEL}, StringFormat={}{0}:}"
+                                        <Label Grid.Column="0" Grid.Row="2"
+                                              Content="{Binding Source={x:Static localiz:Strings.STR_BLUE_LABEL}, StringFormat={}{0}:}"
                                               VerticalAlignment="Center"
-                                              Margin="0,6,0,0"
-                                               />
-                                    <Slider x:Name="PART_BSlider" Grid.Row="5" Grid.Column="0"
-                                            Maximum="255"
-                                            SmallChange="1"
-                                            LargeChange="10"
-                                            TickFrequency="1"
-                                            Margin="3,6,3,6"
-                                            Value="{Binding B, RelativeSource={RelativeSource TemplatedParent}}"
-                                            VerticalAlignment="Center" >
-                                        <Slider.ToolTip>
-                                            <TextBlock>
-                                                <TextBlock Text="Blue:"><TextBlock Text="{Binding B, RelativeSource={RelativeSource TemplatedParent}}" /></TextBlock>
-                                            </TextBlock>
-                                        </Slider.ToolTip>
-                                    </Slider>
-
-                                    <numupdown:NumericUpDown Grid.Row="5" Grid.Column="1"
+                                              HorizontalAlignment="Right"
+                                              Margin="3,0,3,0"
+                                        />
+                                        <numupdown:ByteUpDown Grid.Column="1" Grid.Row="2"
                                             Value="{Binding B, ValidatesOnDataErrors=True, RelativeSource={RelativeSource TemplatedParent},Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                                             VerticalAlignment="Center" HorizontalAlignment="Stretch"
                                             MinValue="0"
                                             MaxValue="255"
                                             IsReadOnly="False"
-                                    >
-                                        <numupdown:NumericUpDown.ToolTip>
-                                            <TextBlock>
-                                                    <TextBlock Text="Blue:"><TextBlock Text="{Binding B, RelativeSource={RelativeSource TemplatedParent}}" /></TextBlock>
+                                            Margin="0,3,0,0"
+                                        >
+                                            <numupdown:ByteUpDown.ToolTip>
+                                                <TextBlock>
+                                                    <TextBlock Text="{Binding Source={x:Static localiz:Strings.STR_BLUE_LABEL}, StringFormat={}{0}}"><TextBlock Text=" "/><TextBlock Text="{Binding B, RelativeSource={RelativeSource TemplatedParent}}" /></TextBlock>
                                             </TextBlock>
-                                        </numupdown:NumericUpDown.ToolTip>
-                                    </numupdown:NumericUpDown>
+                                        </numupdown:ByteUpDown.ToolTip>
+                                        </numupdown:ByteUpDown>
+                                    </Grid>
 
-                                    <TextBlock Grid.Row="6" Grid.Column="0"
-                                              Text="{Binding Source={x:Static localiz:Strings.STR_ALPHA_LABEL}, StringFormat={}{0}:}"
-                                              VerticalAlignment="Center"
-                                              Visibility="{Binding Path=UsingAlphaChannel, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource BooleanToVisibilityConverter}}"
-                                              Margin="0,12,0,0"
-                                               />
-                                    <Slider x:Name="PART_OpacitySlider" Grid.Row="7" Grid.Column="0"
-                                            Minimum="0"
-                                            Maximum="255"
-                                            SmallChange="1"
-                                            LargeChange="10"
-                                            Margin="3,6,3,6"
-                                            Value="{Binding Path=A, RelativeSource={RelativeSource TemplatedParent}}"
-                                            VerticalAlignment="Center"
-                                            Visibility="{Binding Path=UsingAlphaChannel, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource BooleanToVisibilityConverter}}">
-                                        <Slider.ToolTip>
-                                            <TextBlock>
-                                                <TextBlock Text="Opacity:"><TextBlock Text="{Binding A, RelativeSource={RelativeSource TemplatedParent}}" /></TextBlock>
+                                    <!-- HSV -->
+                                    <Grid Grid.Column="1"  x:Name="HSV_Controls_Grid">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <Label Grid.Column="0" Grid.Row="0"
+                                               Content="Hue"
+                                               HorizontalAlignment="Right" VerticalAlignment="Center"
+                                               Margin="3,0,3,0"
+                                        />
+                                        <numupdown:DoubleUpDown Grid.Column="1" Grid.Row="0"
+                                            Value="{Binding H, ValidatesOnDataErrors=True, RelativeSource={RelativeSource TemplatedParent},Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                            HorizontalAlignment="Left" VerticalAlignment="Center"
+                                            MinValue="0"
+                                            MaxValue="359"
+                                            StepSize="1"
+                                            IsReadOnly="False"
+                                            DisplayLength="6"
+                                            IsDisplayLengthFixed="True"
+                                            Margin="0,3,0,0">
+                                            <numupdown:DoubleUpDown.ToolTip>
+                                                <TextBlock>
+                                                <TextBlock Text="{Binding Source={x:Static localiz:Strings.STR_HUE_LABEL}, StringFormat={}{0}}"><TextBlock Text=" "/><TextBlock Text="{Binding H, RelativeSource={RelativeSource TemplatedParent}, StringFormat={}{0:n0}}" /></TextBlock>
                                             </TextBlock>
-                                        </Slider.ToolTip>
-                                    </Slider>
+                                        </numupdown:DoubleUpDown.ToolTip>
+                                        </numupdown:DoubleUpDown>
 
-                                    <numupdown:NumericUpDown Grid.Row="7" Grid.Column="1"
+                                        <Label Grid.Column="0" Grid.Row="1"
+                                               Content="Saturation"
+                                               VerticalAlignment="Center" HorizontalAlignment="Right"
+                                               Margin="3,0,3,0"
+                                         />
+                                        <numupdown:DoubleUpDown
+                                            Grid.Column="1" Grid.Row="1"
+                                            HorizontalAlignment="Left" VerticalAlignment="Center"
+                                            Value="{Binding S,Converter={StaticResource FactorToDoubleConverter},RelativeSource={RelativeSource TemplatedParent},Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                            MinValue="0"
+                                            MaxValue="100"
+                                            StepSize="1"
+                                            IsReadOnly="False"
+                                            DisplayLength="6"
+                                            IsDisplayLengthFixed="True"
+                                            Margin="0,3,0,0" >
+                                            <numupdown:DoubleUpDown.ToolTip>
+                                                <TextBlock>
+                                                  <TextBlock Text="{Binding Source={x:Static localiz:Strings.STR_SATURATION_LABEL}, StringFormat={}{0:F2}}"><TextBlock Text=" "/><TextBlock Text="{Binding S, RelativeSource={RelativeSource TemplatedParent}, StringFormat={}{0:F2}}" /></TextBlock>
+                                                </TextBlock>
+                                            </numupdown:DoubleUpDown.ToolTip>                                            
+                                        </numupdown:DoubleUpDown>
+
+                                        <Label Grid.Column="0" Grid.Row="2"
+                                              Content="Value"
+                                              VerticalAlignment="Center" HorizontalAlignment="Right"
+                                              Margin="3,0,3,0"
+                                                 />
+                                        <numupdown:DoubleUpDown
+                                            Grid.Column="1" Grid.Row="2"
+                                            HorizontalAlignment="Left" VerticalAlignment="Center"
+                                            Value="{Binding V,Converter={StaticResource FactorToDoubleConverter},RelativeSource={RelativeSource TemplatedParent},Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                            MinValue="0"
+                                            MaxValue="100"
+                                            StepSize="1"
+                                            IsReadOnly="False"
+                                            DisplayLength="6"
+                                            IsDisplayLengthFixed="True"
+                                            Margin="0,3,0,0">
+                                            <numupdown:DoubleUpDown.ToolTip>
+                                                <TextBlock>
+                                                  <TextBlock Text="{Binding Source={x:Static localiz:Strings.STR_VALUE_LABEL}, StringFormat={}{0:F2}}"><TextBlock Text=" "/><TextBlock Text="{Binding V, RelativeSource={RelativeSource TemplatedParent}, StringFormat={}{0:F2}}" /></TextBlock>
+                                                </TextBlock>                                                
+                                            </numupdown:DoubleUpDown.ToolTip>
+                                        </numupdown:DoubleUpDown>
+                                    </Grid>
+
+                                    <Grid Grid.Column="2" Margin="12,0,0,0">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <Label Grid.Column="0" Grid.Row="0"
+                                               Content="{Binding Source={x:Static localiz:Strings.STR_ALPHA_LABEL}, StringFormat={}{0}}"
+                                               VerticalAlignment="Center" HorizontalAlignment="Right"
+                                               Visibility="{Binding Path=UsingAlphaChannel, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource BooleanToVisibilityConverter}}"
+                                               Margin="3,0,3,0"
+                                        />
+                                        <numupdown:ByteUpDown Grid.Column="1" Grid.Row="0"
                                             Value="{Binding Path=A, ValidatesOnDataErrors=True, RelativeSource={RelativeSource TemplatedParent},Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
-                                            VerticalAlignment="Center" HorizontalAlignment="Stretch"
+                                            VerticalAlignment="Center" HorizontalAlignment="Left"
                                             MinValue="0"
                                             MaxValue="255"
                                             Visibility="{Binding Path=UsingAlphaChannel, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource BooleanToVisibilityConverter}}"
-                                            IsReadOnly="False">
-                                        <numupdown:NumericUpDown.ToolTip>
-                                            <TextBlock>
-                                                    <TextBlock Text="Opacity:"><TextBlock Text="{Binding A, RelativeSource={RelativeSource TemplatedParent}}" /></TextBlock>
+                                            IsReadOnly="False"
+                                            Margin="0,3,0,0"
+                                        >
+                                            <numupdown:ByteUpDown.ToolTip>
+                                                <TextBlock>
+                                                    <TextBlock Text="{Binding Source={x:Static localiz:Strings.STR_ALPHA_LABEL}, StringFormat={}{0}}"><TextBlock Text=" "/><TextBlock Text="{Binding A, RelativeSource={RelativeSource TemplatedParent}}" /></TextBlock>
                                             </TextBlock>
-                                        </numupdown:NumericUpDown.ToolTip>
-                                    </numupdown:NumericUpDown>
+                                        </numupdown:ByteUpDown.ToolTip>
+                                        </numupdown:ByteUpDown>
+                                    </Grid>
                                 </Grid>
                             </Border>
                         </Grid>
                     </Border>
                     <ControlTemplate.Triggers>
+                        <Trigger Property="DisplayColorSpace" Value="RGB">
+                            <Setter TargetName="RGB_Controls_Grid" Property="Visibility" Value="Visible"/>
+                            <Setter TargetName="HSV_Controls_Grid" Property="Visibility" Value="Collapsed"/>
+                        </Trigger>
+                        <Trigger Property="DisplayColorSpace" Value="HSV">
+                            <Setter TargetName="RGB_Controls_Grid" Property="Visibility" Value="Collapsed"/>
+                            <Setter TargetName="HSV_Controls_Grid" Property="Visibility" Value="Visible"/>
+                        </Trigger>
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}" />
                         </Trigger>
                         <Trigger Property="SelectedColor" Value="{x:Null}">
                             <Setter Property="Visibility" Value="Collapsed" TargetName="PART_ColorShadeSelector" />
                             <Setter Property="Background" Value="Transparent" TargetName="SelectedColorBorder" />
-                            <Setter Property="IsEnabled" Value="False" TargetName="RGBBorder" />
-                            <Setter Property="TextElement.Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}" TargetName="RGBBorder" />
+                            <Setter  TargetName="ColorSpaceDetailsBorder" Property="IsEnabled" Value="False" />
+                            <Setter  TargetName="ColorSpaceDetailsBorder" Property="TextElement.Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

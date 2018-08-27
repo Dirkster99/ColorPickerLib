@@ -2,12 +2,18 @@
 {
     using ColorPickerLib.Core.Utilities;
     using ColorPickerLib.Primitives;
-    using System.Diagnostics;
+    using System;
     using System.IO;
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Input;
     using System.Windows.Media;
+
+    public enum ColorSpace
+    {
+        RGB = 0,
+        HSV = 1
+    }
 
     [TemplatePart(Name = PART_ColorShadingCanvas, Type = typeof(Canvas))]
     [TemplatePart(Name = PART_ColorShadeSelector, Type = typeof(Canvas))]
@@ -15,12 +21,11 @@
     [TemplatePart(Name = PART_HexadecimalTextBox, Type = typeof(TextBox))]
     public class ColorCanvas : Control
     {
+        #region fields
         private const string PART_ColorShadingCanvas = "PART_ColorShadingCanvas";
         private const string PART_ColorShadeSelector = "PART_ColorShadeSelector";
         private const string PART_SpectrumSlider = "PART_SpectrumSlider";
         private const string PART_HexadecimalTextBox = "PART_HexadecimalTextBox";
-
-        #region Private Members
 
         private TranslateTransform _colorShadeSelectorTransform = new TranslateTransform();
         private Canvas _colorShadingCanvas;
@@ -29,11 +34,20 @@
         private TextBox _hexadecimalTextBox;
         private Point? _currentColorPosition;
         private bool _surpressPropertyChanged;
+        #endregion fields
 
-        #endregion //Private Members
+        #region Constructors
+        /// <summary>
+        /// Static class constructor
+        /// </summary>
+        static ColorCanvas()
+        {
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(ColorCanvas), new FrameworkPropertyMetadata(typeof(ColorCanvas)));
+        }
+
+        #endregion Constructors
 
         #region Properties
-
         #region SelectedColor
 
         public static readonly DependencyProperty SelectedColorProperty = DependencyProperty.Register("SelectedColor",
@@ -73,10 +87,14 @@
         #endregion //SelectedColor
 
         #region RGB
-
         #region A
+        /// <summary>
+        /// Dependency property for channel A (Opacity)
+        /// </summary>
+        public static readonly DependencyProperty AProperty =
+            DependencyProperty.Register("A",
+                typeof(byte), typeof(ColorCanvas), new UIPropertyMetadata((byte)255, OnAChanged));
 
-        public static readonly DependencyProperty AProperty = DependencyProperty.Register("A", typeof(byte), typeof(ColorCanvas), new UIPropertyMetadata((byte)255, OnAChanged));
         public byte A
         {
             get
@@ -101,12 +119,16 @@
             if (!_surpressPropertyChanged)
                 UpdateSelectedColor();
         }
-
-        #endregion //A
+        #endregion A
 
         #region R
+        /// <summary>
+        /// Dependency property for channel Red (R) of RGB.
+        /// </summary>
+        public static readonly DependencyProperty RProperty =
+            DependencyProperty.Register("R", typeof(byte),
+                typeof(ColorCanvas), new UIPropertyMetadata((byte)0, OnRChanged));
 
-        public static readonly DependencyProperty RProperty = DependencyProperty.Register("R", typeof(byte), typeof(ColorCanvas), new UIPropertyMetadata((byte)0, OnRChanged));
         public byte R
         {
             get
@@ -131,12 +153,14 @@
             if (!_surpressPropertyChanged)
                 UpdateSelectedColor();
         }
-
-        #endregion //R
+        #endregion R
 
         #region G
-
+        /// <summary>
+        /// Dependency property for channel Green (G) of RGB.
+        /// </summary>
         public static readonly DependencyProperty GProperty = DependencyProperty.Register("G", typeof(byte), typeof(ColorCanvas), new UIPropertyMetadata((byte)0, OnGChanged));
+
         public byte G
         {
             get
@@ -161,12 +185,14 @@
             if (!_surpressPropertyChanged)
                 UpdateSelectedColor();
         }
-
-        #endregion //G
+        #endregion G
 
         #region B
-
+        /// <summary>
+        /// Dependency property for channel Blue (B) of RGB.
+        /// </summary>
         public static readonly DependencyProperty BProperty = DependencyProperty.Register("B", typeof(byte), typeof(ColorCanvas), new UIPropertyMetadata((byte)0, OnBChanged));
+
         public byte B
         {
             get
@@ -191,10 +217,107 @@
             if (!_surpressPropertyChanged)
                 UpdateSelectedColor();
         }
+        #endregion B
 
-        #endregion //B
+        #endregion RGB
 
-        #endregion //RGB
+        #region HSV
+        // HSV (hue, saturation, value)
+        // https://en.wikipedia.org/wiki/HSL_and_HSV
+        //
+        #region H
+        public double H
+        {
+            get { return (double)GetValue(HProperty); }
+            set { SetValue(HProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for H.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty HProperty =
+            DependencyProperty.Register("H", typeof(double),
+                typeof(ColorCanvas), new PropertyMetadata((double)0, OnHChanged));
+
+        private static void OnHChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            ColorCanvas colorCanvas = d as ColorCanvas;
+            if (colorCanvas != null)
+                colorCanvas.OnHChanged((double)e.OldValue, (double)e.NewValue);
+        }
+        protected virtual void OnHChanged(double oldValue, double newValue)
+        {
+            if (!_surpressPropertyChanged)
+                UpdateSelectedColorFromHSV(H, S, V);
+        }
+        #endregion H
+
+        #region S
+        public double S
+        {
+            get { return (double)GetValue(SProperty); }
+            set { SetValue(SProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for S.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty SProperty =
+            DependencyProperty.Register("S", typeof(double), typeof(ColorCanvas),
+                new PropertyMetadata((double)0, OnSChanged));
+
+        private static void OnSChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            ColorCanvas colorCanvas = d as ColorCanvas;
+            if (colorCanvas != null)
+                colorCanvas.OnSChanged((double)e.OldValue, (double)e.NewValue);
+        }
+
+        protected virtual void OnSChanged(double oldValue, double newValue)
+        {
+            if (!_surpressPropertyChanged)
+                UpdateSelectedColorFromHSV(H, S, V);
+        }
+        #endregion S
+
+        #region V
+        public double V
+        {
+            get { return (double)GetValue(VProperty); }
+            set { SetValue(VProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for V.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty VProperty =
+            DependencyProperty.Register("V", typeof(double),
+                typeof(ColorCanvas), new PropertyMetadata((double)0, OnVChanged));
+
+        private static void OnVChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            ColorCanvas colorCanvas = d as ColorCanvas;
+            if (colorCanvas != null)
+                colorCanvas.OnVChanged((double)e.OldValue, (double)e.NewValue);
+        }
+
+        protected virtual void OnVChanged(double oldValue, double newValue)
+        {
+            if (!_surpressPropertyChanged)
+                UpdateSelectedColorFromHSV(H, S, V);
+        }
+        #endregion V
+        #endregion HSV
+
+        #region ColorSpace Display
+        /// <summary>
+        /// Defines the color space (RGB, HSV ...) in which values are displayed.
+        /// </summary>
+        public ColorSpace DisplayColorSpace
+        {
+            get { return (ColorSpace)GetValue(DisplayColorSpaceProperty); }
+            set { SetValue(DisplayColorSpaceProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for DisplayColorSpace.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty DisplayColorSpaceProperty =
+            DependencyProperty.Register("DisplayColorSpace", typeof(ColorSpace),
+                typeof(ColorCanvas), new PropertyMetadata(ColorSpace.RGB));
+        #endregion ColorSpace Display
 
         #region HexadecimalString
 
@@ -298,18 +421,9 @@
         }
 
         #endregion //UsingAlphaChannel
+        #endregion Properties
 
-        #endregion //Properties
-
-        #region Constructors
-
-        static ColorCanvas()
-        {
-            DefaultStyleKeyProperty.OverrideMetadata(typeof(ColorCanvas), new FrameworkPropertyMetadata(typeof(ColorCanvas)));
-        }
-
-        #endregion //Constructors
-
+        #region methods
         #region Base Class Overrides
 
         public override void OnApplyTemplate()
@@ -471,8 +585,27 @@
 
         #endregion //Events
 
-        #region Methods
+        /// <summary>
+        /// Updates the currently selected color in the color canvas
+        /// from the given HSV parameters.
+        /// </summary>
+        /// <param name="hue"></param>
+        /// <param name="saturation"></param>
+        /// <param name="value"></param>
+        private void UpdateSelectedColorFromHSV(double hue,
+                                                double saturation,
+                                                double value)
+        {
+            var color = HsvColor.RGBFromHSV(new HsvColor(hue, saturation, value));
 
+            UpdateRGBValues(Color.FromArgb(A, color.R, color.G, color.B));
+            UpdateSelectedColor();
+        }
+
+        /// <summary>
+        /// Updates the currently selected color of the color canvas
+        /// from the A,R,G,B parameters in the color canvas .
+        /// </summary>
         private void UpdateSelectedColor()
         {
             SelectedColor = Color.FromArgb(A, R, G, B);
@@ -485,6 +618,12 @@
                             : null;
         }
 
+        /// <summary>
+        /// Updates all color channels in all spaces (Opacity, RGB, HSV)
+        /// from the given color parameter, or does nothing if the given
+        /// color parameter 'Has No Value' or is null.
+        /// </summary>
+        /// <param name="color"></param>
         private void UpdateRGBValues(Color? color)
         {
             if ((color == null) || !color.HasValue)
@@ -496,6 +635,12 @@
             R = color.Value.R;
             G = color.Value.G;
             B = color.Value.B;
+
+            HsvColor hsv = HsvColor.RGBToHSV(color);
+
+            H = hsv.Hue;
+            S = hsv.Saturation;
+            V = hsv.Value;
 
             _surpressPropertyChanged = false;
         }
@@ -536,9 +681,9 @@
             HsvColor hsv = ColorUtilities.ConvertRgbToHsv(color.Value.R, color.Value.G, color.Value.B);
 
             if (!(color.Value.R == color.Value.G && color.Value.R == color.Value.B))
-                _spectrumSlider.Value = hsv.H;
+                _spectrumSlider.Value = hsv.Hue;
 
-            Point p = new Point(hsv.S, 1 - hsv.V);
+            Point p = new Point(hsv.Saturation, 1 - hsv.Value);
 
             _currentColorPosition = p;
 
@@ -548,12 +693,9 @@
 
         private void CalculateColor(Point p)
         {
-            HsvColor hsv = new HsvColor(360 - _spectrumSlider.Value, 1, 1)
-            {
-                S = p.X,
-                V = 1 - p.Y
-            };
-            var currentColor = ColorUtilities.ConvertHsvToRgb(hsv.H, hsv.S, hsv.V);
+            HsvColor hsv = new HsvColor(360 - _spectrumSlider.Value, p.X, 1 - p.Y);
+
+            var currentColor = ColorUtilities.ConvertHsvToRgb(hsv.Hue, hsv.Saturation, hsv.Value);
             currentColor.A = A;
             SelectedColor = currentColor;
             string newColor = ColorUtilities.GetFormatedColorString(SelectedColor, UsingAlphaChannel);
@@ -619,6 +761,6 @@
 
             return ColorConverter.ConvertFromString('#' + colorValue);
         }
-        #endregion //Methods
+        #endregion methods
     }
 }

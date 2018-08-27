@@ -105,12 +105,7 @@
 
             }
 
-            return new HsvColor
-            {
-                H = h,
-                S = s,
-                V = v / 255
-            };
+            return new HsvColor( h, s, v / 255);
         }
 
         /// <summary>

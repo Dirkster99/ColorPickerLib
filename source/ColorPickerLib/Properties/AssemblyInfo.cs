@@ -10,9 +10,9 @@ using System.Windows;
 [assembly: AssemblyTitle("ColorPickerLib")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("https://wpfcolorpickercontrol.codeplex.com/")]
-[assembly: AssemblyProduct("https://wpfcolorpickercontrol.codeplex.com/")]
-[assembly: AssemblyCopyright("Copyright © 2015")]
+[assembly: AssemblyCompany("https://github.com/Dirkster99/ColorPickerLib")]
+[assembly: AssemblyProduct("https://github.com/Dirkster99/ColorPickerLib")]
+[assembly: AssemblyCopyright("Copyright © 2015-2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -51,5 +51,5 @@ using System.Windows;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.4.0.0")]
-[assembly: AssemblyFileVersion("1.4.0.0")]
+[assembly: AssemblyVersion("1.5.0.0")]
+[assembly: AssemblyFileVersion("1.5.0.0")]

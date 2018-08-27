@@ -144,4 +144,13 @@
   <data name="STR_ALPHA_LABEL" xml:space="preserve">
     <value>Opacité</value>
   </data>
+  <data name="STR_HUE_LABEL" xml:space="preserve">
+    <value>Teinte</value>
+  </data>
+  <data name="STR_SATURATION_LABEL" xml:space="preserve">
+    <value>Saturation</value>
+  </data>
+  <data name="STR_VALUE_LABEL" xml:space="preserve">
+    <value>Valeur</value>
+  </data>
 </root>

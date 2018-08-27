@@ -106,6 +106,15 @@ namespace ColorPickerLib.Localized {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Hue.
+        /// </summary>
+        public static string STR_HUE_LABEL {
+            get {
+                return ResourceManager.GetString("STR_HUE_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Recent Colors.
         /// </summary>
         public static string STR_Recent_Colors_LABEL {
@@ -124,6 +133,15 @@ namespace ColorPickerLib.Localized {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Saturation.
+        /// </summary>
+        public static string STR_SATURATION_LABEL {
+            get {
+                return ResourceManager.GetString("STR_SATURATION_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Standard.
         /// </summary>
         public static string STR_Standard_CAPTION {
@@ -138,6 +156,15 @@ namespace ColorPickerLib.Localized {
         public static string STR_Standard_Colors_LABEL {
             get {
                 return ResourceManager.GetString("STR_Standard_Colors_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Value.
+        /// </summary>
+        public static string STR_VALUE_LABEL {
+            get {
+                return ResourceManager.GetString("STR_VALUE_LABEL", resourceCulture);
             }
         }
     }

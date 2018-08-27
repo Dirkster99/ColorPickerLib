@@ -33,8 +33,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="NumericUpDownLib, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Dirkster.NumericUpDownLib.1.1.0\lib\net4\NumericUpDownLib.dll</HintPath>
+    <Reference Include="NumericUpDownLib, Version=2.1.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dirkster.NumericUpDownLib.2.1.1\lib\net4\NumericUpDownLib.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -93,12 +93,12 @@
       <SubType>Designer</SubType>
     </Page>
     <Compile Include="Behaviours\AllowableCharactersTextBoxBehavior .cs" />
-    <Compile Include="Controls\ColorCanvas.xaml.cs" >
-      <DependentUpon>Controls\ColorCanvas.xaml</DependentUpon>
+    <Compile Include="Controls\ColorCanvas.xaml.cs">
+      <DependentUpon>ColorCanvas.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Controls\ColorSpectrumSlider.xaml.cs">
-      <DependentUpon>Controls\ColorSpectrumSlider.xaml</DependentUpon>
+      <DependentUpon>ColorSpectrumSlider.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Converters\CenterTitleConverter.cs" />
@@ -174,7 +174,7 @@
     <Compile Include="Themes\ResourceKeys.cs" />
     <Compile Include="Models\ColorItem.cs" />
     <Compile Include="Controls\ColorPicker.xaml.cs">
-      <DependentUpon>Controls\ColorPicker.xaml</DependentUpon>
+      <DependentUpon>ColorPicker.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Models\ColorSorter.cs" />
