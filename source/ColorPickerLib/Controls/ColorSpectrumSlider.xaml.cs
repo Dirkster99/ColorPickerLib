@@ -1,6 +1,7 @@
 ﻿namespace ColorPickerLib.Controls
 {
     using ColorPickerLib.Core.Utilities;
+    using ColorPickerLib.Primitives;
     using System;
     using System.Collections.Generic;
     using System.Windows;
@@ -66,7 +67,8 @@
         {
             base.OnValueChanged(oldValue, newValue);
 
-            Color color = ColorUtilities.ConvertHsvToRgb(360 - newValue, 1, 1);
+//            Color color = ColorUtilities.ConvertHsvToRgb(360 - newValue, 1, 1);
+            Color color = HsvColor.RGBFromHSV(new HsvColor(360 - newValue, 1, 1));
             SelectedColor = color;
         }
 

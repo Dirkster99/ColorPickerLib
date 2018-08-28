@@ -302,7 +302,7 @@
                                             Value="{Binding H, ValidatesOnDataErrors=True, RelativeSource={RelativeSource TemplatedParent},Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                                             HorizontalAlignment="Left" VerticalAlignment="Center"
                                             MinValue="0"
-                                            MaxValue="359"
+                                            MaxValue="360"
                                             StepSize="1"
                                             IsReadOnly="False"
                                             DisplayLength="6"

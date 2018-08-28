@@ -64,6 +64,7 @@
             return colorProperties.ToDictionary(p => p.Name, p => (Color)p.GetValue(null, null));
         }
 
+/*** Replaced with static converter code in HsvColor class
         /// <summary>
         /// Converts an RGB color to an HSV color.
         /// </summary>
@@ -192,21 +193,26 @@
 
             return Color.FromArgb(255, (byte)(Math.Round(r * 255)), (byte)(Math.Round(g * 255)), (byte)(Math.Round(b * 255)));
         }
-
+***/
         /// <summary>
-        /// Generates a list of colors with hues ranging from 0 360 and a saturation and value of 1. 
+        /// Generates a list of colors with hues ranging from 0 to 360 and
+        /// a saturation and value of 1.
         /// </summary>
         /// <returns></returns>
         public static List<Color> GenerateHsvSpectrum()
         {
             List<Color> colorsList = new List<Color>(8);
 
+            // list of colors with hues ranging from 0 to 360
             for (int i = 0; i < 29; i++)
             {
-                colorsList.Add(ColorUtilities.ConvertHsvToRgb(i * 12, 1, 1));
+//                colorsList.Add(ColorUtilities.ConvertHsvToRgb(i * 12, 1, 1));
+                  colorsList.Add(HsvColor.RGBFromHSV(new HsvColor(i * 12, 1, 1)));
             }
 
-            colorsList.Add(ColorUtilities.ConvertHsvToRgb(0, 1, 1));
+            // saturation and value of 1
+//            colorsList.Add(ColorUtilities.ConvertHsvToRgb(0, 1, 1));
+            colorsList.Add(HsvColor.RGBFromHSV(new HsvColor(0, 1, 1)));
 
             return colorsList;
         }

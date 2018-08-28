@@ -22,7 +22,7 @@
             if(hue < 0)
                 throw new ArgumentOutOfRangeException(string.Format("Hue: {0}", hue));
 
-            if (hue > 359)
+            if (hue > 360)
                 hue = ((int)hue) % 360;
 
             if (saturation < 0 || saturation > 1.0)

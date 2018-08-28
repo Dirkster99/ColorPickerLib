@@ -678,10 +678,11 @@
 
             _currentColorPosition = null;
 
-            HsvColor hsv = ColorUtilities.ConvertRgbToHsv(color.Value.R, color.Value.G, color.Value.B);
+            HsvColor hsv = HsvColor.RGBToHSV(color);
+//            HsvColor hsv = ColorUtilities.ConvertRgbToHsv(color.Value.R, color.Value.G, color.Value.B);
 
-            if (!(color.Value.R == color.Value.G && color.Value.R == color.Value.B))
-                _spectrumSlider.Value = hsv.Hue;
+//            if (!(color.Value.R == color.Value.G && color.Value.R == color.Value.B))
+            _spectrumSlider.Value = 360 - hsv.Hue;
 
             Point p = new Point(hsv.Saturation, 1 - hsv.Value);
 
@@ -695,7 +696,8 @@
         {
             HsvColor hsv = new HsvColor(360 - _spectrumSlider.Value, p.X, 1 - p.Y);
 
-            var currentColor = ColorUtilities.ConvertHsvToRgb(hsv.Hue, hsv.Saturation, hsv.Value);
+            //            var currentColor = ColorUtilities.ConvertHsvToRgb(hsv.Hue, hsv.Saturation, hsv.Value);
+            var currentColor = HsvColor.RGBFromHSV(hsv);
             currentColor.A = A;
             SelectedColor = currentColor;
             string newColor = ColorUtilities.GetFormatedColorString(SelectedColor, UsingAlphaChannel);
