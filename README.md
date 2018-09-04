@@ -21,7 +21,7 @@ A WPF/MVVM implementation of a themeable color picker control
 
 This project implements a Color Picker control using MVVM/Windows Presentation Foundation (WPF) pattern and technology. These controls  can be themed in dark and light themes and are localized.
 
-You can test these controls with the demo application provided in this repository.
+You can test these controls with the demo applications provided in this repository.
 
 # Features
 
@@ -40,42 +40,6 @@ Supports localization for:
 * Italian
 * Japanese
 * Spanish
-
-These 4 styles have to be included to avoid a transparent background in the pop-up control:
-
-```XAML
-    <!-- Popup Background -->
-    <SolidColorBrush x:Key="PopupBackgroundBrush"  Color="#FF252526" />
-    
-    <!-- Popup Border -->
-    <SolidColorBrush x:Key="PopupDarkBorderBrush" Color="#FFABADB3" />
-    
-    <!-- =============================================================================== -->
-    <!-- ColorCanvas, ColorPicker                                                        -->
-    <!-- =============================================================================== -->
-    
-    <DrawingBrush  x:Key="CheckerBrush" Viewport="0,0,10,10" ViewportUnits="Absolute" TileMode="Tile">
-        <DrawingBrush.Drawing>
-            <DrawingGroup>
-                <GeometryDrawing Brush="White">
-                    <GeometryDrawing.Geometry>
-                        <RectangleGeometry Rect="0,0 100,100" />
-                    </GeometryDrawing.Geometry>
-                </GeometryDrawing>
-                <GeometryDrawing Brush="LightGray">
-                    <GeometryDrawing.Geometry>
-                        <GeometryGroup>
-                            <RectangleGeometry Rect="0,0 50,50" />
-                            <RectangleGeometry Rect="50,50 50,50" />
-                        </GeometryGroup>
-                    </GeometryDrawing.Geometry>
-                </GeometryDrawing>
-            </DrawingGroup>
-        </DrawingBrush.Drawing>
-    </DrawingBrush>
-    
-    <SolidColorBrush x:Key="ColorPickerDarkBorderBrush" Color="Black" />
-```
 
 ## Theming
 
