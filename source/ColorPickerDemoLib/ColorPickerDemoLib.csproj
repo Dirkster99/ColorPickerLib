@@ -85,7 +85,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ColorPickerLib\ColorPickerLib.csproj">
-      <Project>{e64ce47c-10a6-490e-b1b1-84f00fd6c1d2}</Project>
+      <Project>{120b4f72-0bf6-4272-b1bf-68444131570c}</Project>
       <Name>ColorPickerLib</Name>
     </ProjectReference>
   </ItemGroup>

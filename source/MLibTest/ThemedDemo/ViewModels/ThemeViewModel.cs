@@ -1,8 +1,6 @@
 ﻿namespace ThemedDemo.ViewModels
 {
-    using MLib;
     using MLib.Interfaces;
-    using MLib.Themes;
     using Settings.Interfaces;
     using System.Collections.Generic;
     using System.Linq;
@@ -32,13 +30,7 @@
             _ListOfThemes = new Dictionary<string, ThemeDefinitionViewModel>();
 
             foreach (var item in settings.Themes.GetThemeInfos())
-            {
-                var list = new List<string>();
-                foreach (var subitem in item.ThemeSources)
-                    list.Add(subitem.ToString());
-
-                _ListOfThemes.Add(item.DisplayName, new ThemeDefinitionViewModel(new ThemeDefinition(item.DisplayName, list)));
-            }
+                _ListOfThemes.Add(item.DisplayName, new ThemeDefinitionViewModel(item));
 
             // Lets make sure there is a default
             _ListOfThemes.TryGetValue(GetService<IAppearanceManager>().GetDefaultTheme().DisplayName, out _DefaultTheme);

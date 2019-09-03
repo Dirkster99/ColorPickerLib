@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup />
+  <ItemGroup>
+    <EmbeddedResource Update="Localized\Strings.it-IT.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Controls\ColorCanvas.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Controls\ColorCanvasTextBoxStyle.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Controls\ColorPicker.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Controls\ColorSpectrumSlider.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Controls\SliderRepeatButtonStyle.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Controls\VerticalSlideThumbTemplate.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Primitives\Themes\Generic\SelectorItem.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Themes\DarkBrushs.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Themes\Generic.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Themes\Generic\Brushes.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Themes\Generic\Common.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Themes\Generic\Glyphs.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Themes\LightBrushs.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+</Project>

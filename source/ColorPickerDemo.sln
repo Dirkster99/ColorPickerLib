@@ -1,11 +1,9 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28010.0
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29209.152
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ColorPickerDemo", "ColorPickerDemo\ColorPickerDemo.csproj", "{D2AEE076-83D6-4B96-B420-B6782CAA0E44}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ColorPickerLib", "ColorPickerLib\ColorPickerLib.csproj", "{E64CE47C-10A6-490E-B1B1-84F00FD6C1D2}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MLibTest", "MLibTest", "{762EF7D1-DF7E-45C1-A5DB-A0B079A0933D}"
 EndProject
@@ -20,6 +18,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThemedDemo", "MLibTest\ThemedDemo\ThemedDemo.csproj", "{58BD0E02-6BFF-43F0-9B93-D3371E97794B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ColorPickerDemoLib", "ColorPickerDemoLib\ColorPickerDemoLib.csproj", "{6FB67EF1-8867-4C75-8C5D-3952A85C27DA}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ColorPickerLib", "ColorPickerLib\ColorPickerLib.csproj", "{120B4F72-0BF6-4272-B1BF-68444131570C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,18 +43,6 @@ Global
 		{D2AEE076-83D6-4B96-B420-B6782CAA0E44}.Release|x64.Build.0 = Release|Any CPU
 		{D2AEE076-83D6-4B96-B420-B6782CAA0E44}.Release|x86.ActiveCfg = Release|Any CPU
 		{D2AEE076-83D6-4B96-B420-B6782CAA0E44}.Release|x86.Build.0 = Release|Any CPU
-		{E64CE47C-10A6-490E-B1B1-84F00FD6C1D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E64CE47C-10A6-490E-B1B1-84F00FD6C1D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E64CE47C-10A6-490E-B1B1-84F00FD6C1D2}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{E64CE47C-10A6-490E-B1B1-84F00FD6C1D2}.Debug|x64.Build.0 = Debug|Any CPU
-		{E64CE47C-10A6-490E-B1B1-84F00FD6C1D2}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{E64CE47C-10A6-490E-B1B1-84F00FD6C1D2}.Debug|x86.Build.0 = Debug|Any CPU
-		{E64CE47C-10A6-490E-B1B1-84F00FD6C1D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E64CE47C-10A6-490E-B1B1-84F00FD6C1D2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E64CE47C-10A6-490E-B1B1-84F00FD6C1D2}.Release|x64.ActiveCfg = Release|Any CPU
-		{E64CE47C-10A6-490E-B1B1-84F00FD6C1D2}.Release|x64.Build.0 = Release|Any CPU
-		{E64CE47C-10A6-490E-B1B1-84F00FD6C1D2}.Release|x86.ActiveCfg = Release|Any CPU
-		{E64CE47C-10A6-490E-B1B1-84F00FD6C1D2}.Release|x86.Build.0 = Release|Any CPU
 		{252126D1-E1D9-49C3-910B-FCF2266265EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{252126D1-E1D9-49C3-910B-FCF2266265EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{252126D1-E1D9-49C3-910B-FCF2266265EF}.Debug|x64.ActiveCfg = Debug|x64
@@ -115,6 +103,18 @@ Global
 		{6FB67EF1-8867-4C75-8C5D-3952A85C27DA}.Release|x64.Build.0 = Release|Any CPU
 		{6FB67EF1-8867-4C75-8C5D-3952A85C27DA}.Release|x86.ActiveCfg = Release|Any CPU
 		{6FB67EF1-8867-4C75-8C5D-3952A85C27DA}.Release|x86.Build.0 = Release|Any CPU
+		{120B4F72-0BF6-4272-B1BF-68444131570C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{120B4F72-0BF6-4272-B1BF-68444131570C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{120B4F72-0BF6-4272-B1BF-68444131570C}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{120B4F72-0BF6-4272-B1BF-68444131570C}.Debug|x64.Build.0 = Debug|Any CPU
+		{120B4F72-0BF6-4272-B1BF-68444131570C}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{120B4F72-0BF6-4272-B1BF-68444131570C}.Debug|x86.Build.0 = Debug|Any CPU
+		{120B4F72-0BF6-4272-B1BF-68444131570C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{120B4F72-0BF6-4272-B1BF-68444131570C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{120B4F72-0BF6-4272-B1BF-68444131570C}.Release|x64.ActiveCfg = Release|Any CPU
+		{120B4F72-0BF6-4272-B1BF-68444131570C}.Release|x64.Build.0 = Release|Any CPU
+		{120B4F72-0BF6-4272-B1BF-68444131570C}.Release|x86.ActiveCfg = Release|Any CPU
+		{120B4F72-0BF6-4272-B1BF-68444131570C}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

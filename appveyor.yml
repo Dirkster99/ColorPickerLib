@@ -1,0 +1,32 @@
+version: 1.6.{build}
+
+branches:
+  only:
+  - master
+
+configuration: Release
+
+platform: Any CPU
+
+image: Visual Studio 2019 Preview
+
+install:
+  - cmd: choco install dotnetcore-sdk --pre
+  
+before_build:
+- cmd: nuget restore source/ColorPickerDemo.sln
+
+build:
+
+  verbosity: minimal
+
+artifacts:
+
+- path: source\ColorPickerDemo\bin\Release
+  name: ColorPickerDemo
+
+- path: source\MLibTest\ThemedDemo\bin\Release
+  name: ThemedDemo
+
+- path: source\ColorPickerLib\bin\Release
+  name: ColorPickerLib
