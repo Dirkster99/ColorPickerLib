@@ -1,101 +1,104 @@
 ﻿namespace ColorPickerLib.Controls
 {
-    using ColorPickerLib.Core.Utilities;
-    using ColorPickerLib.Primitives;
-    using System;
-    using System.Collections.Generic;
-    using System.Windows;
-    using System.Windows.Controls;
-    using System.Windows.Media;
-    using System.Windows.Shapes;
+	using ColorPickerLib.Core.Utilities;
+	using ColorPickerLib.Primitives;
+	using System;
+	using System.Collections.Generic;
+	using System.Windows;
+	using System.Windows.Controls;
+	using System.Windows.Media;
+	using System.Windows.Shapes;
 
-    [TemplatePart(Name = PART_SpectrumDisplay, Type = typeof(Rectangle))]
-    public class ColorSpectrumSlider : Slider
-    {
-        private const string PART_SpectrumDisplay = "PART_SpectrumDisplay";
+	[TemplatePart(Name = PART_SpectrumDisplay, Type = typeof(Rectangle))]
+	public class ColorSpectrumSlider : Slider
+	{
+		private const string PART_SpectrumDisplay = "PART_SpectrumDisplay";
 
-        #region Private Members
+		#region Private Members
 
-        private Rectangle _Part_SpectrumDisplay;
-        private LinearGradientBrush _pickerBrush;
+		private Rectangle _Part_SpectrumDisplay;
+		private LinearGradientBrush _pickerBrush;
 
-        #endregion //Private Members
+		#endregion Private Members
 
-        #region Constructors
-        /// <summary>
-        /// Class constructor
-        /// </summary>
-        static ColorSpectrumSlider()
-        {
-            DefaultStyleKeyProperty.OverrideMetadata(typeof(ColorSpectrumSlider), new FrameworkPropertyMetadata(typeof(ColorSpectrumSlider)));
-        }
-        #endregion Constructors
+		#region Constructors
 
-        #region Dependency Properties
+		/// <summary>
+		/// Class constructor
+		/// </summary>
+		static ColorSpectrumSlider()
+		{
+			DefaultStyleKeyProperty.OverrideMetadata(typeof(ColorSpectrumSlider), new FrameworkPropertyMetadata(typeof(ColorSpectrumSlider)));
+		}
 
-        public static readonly DependencyProperty SelectedColorProperty = DependencyProperty.Register("SelectedColor", typeof(Color), typeof(ColorSpectrumSlider), new PropertyMetadata(System.Windows.Media.Colors.Transparent));
-        public Color SelectedColor
-        {
-            get
-            {
-                return (Color)GetValue(SelectedColorProperty);
-            }
-            set
-            {
-                SetValue(SelectedColorProperty, value);
-            }
-        }
+		#endregion Constructors
 
-        #endregion //Dependency Properties
+		#region Dependency Properties
 
-        #region Base Class Overrides
+		public static readonly DependencyProperty SelectedColorProperty = DependencyProperty.Register("SelectedColor", typeof(Color), typeof(ColorSpectrumSlider), new PropertyMetadata(System.Windows.Media.Colors.Transparent));
 
-        public override void OnApplyTemplate()
-        {
-            base.OnApplyTemplate();
+		public Color SelectedColor
+		{
+			get
+			{
+				return (Color)GetValue(SelectedColorProperty);
+			}
+			set
+			{
+				SetValue(SelectedColorProperty, value);
+			}
+		}
 
-            _Part_SpectrumDisplay = (Rectangle)GetTemplateChild(PART_SpectrumDisplay);
+		#endregion Dependency Properties
 
-            if (_Part_SpectrumDisplay == null)
-                return;
+		#region Base Class Overrides
 
-            CreateSpectrum();
-            OnValueChanged(Double.NaN, Value);
-        }
+		public override void OnApplyTemplate()
+		{
+			base.OnApplyTemplate();
 
-        protected override void OnValueChanged(double oldValue, double newValue)
-        {
-            base.OnValueChanged(oldValue, newValue);
+			_Part_SpectrumDisplay = (Rectangle)GetTemplateChild(PART_SpectrumDisplay);
 
-            Color color = HsvColor.RGBFromHSV(new HsvColor(359 - newValue, 1, 1));
-            SelectedColor = color;
-        }
+			if (_Part_SpectrumDisplay == null)
+				return;
 
-        #endregion //Base Class Overrides
+			CreateSpectrum();
+			OnValueChanged(Double.NaN, Value);
+		}
 
-        #region Methods
+		protected override void OnValueChanged(double oldValue, double newValue)
+		{
+			base.OnValueChanged(oldValue, newValue);
 
-        private void CreateSpectrum()
-        {
-            _pickerBrush = new LinearGradientBrush();
-            _pickerBrush.StartPoint = new Point(0.5, 0);
-            _pickerBrush.EndPoint = new Point(0.5, 1);
-            _pickerBrush.ColorInterpolationMode = ColorInterpolationMode.SRgbLinearInterpolation;
+			Color color = HsvColor.RGBFromHSV(new HsvColor(359 - newValue, 1, 1));
+			SelectedColor = color;
+		}
 
-            List<Color> colorsList = ColorUtilities.GenerateHsvSpectrum();
+		#endregion Base Class Overrides
 
-            double stopIncrement = (double)1 / colorsList.Count;
+		#region Methods
 
-            int i;
-            for (i = 0; i < colorsList.Count; i++)
-            {
-                _pickerBrush.GradientStops.Add(new GradientStop(colorsList[i], i * stopIncrement));
-            }
+		private void CreateSpectrum()
+		{
+			_pickerBrush = new LinearGradientBrush();
+			_pickerBrush.StartPoint = new Point(0.5, 0);
+			_pickerBrush.EndPoint = new Point(0.5, 1);
+			_pickerBrush.ColorInterpolationMode = ColorInterpolationMode.SRgbLinearInterpolation;
 
-            _pickerBrush.GradientStops[i - 1].Offset = 1.0;
-            _Part_SpectrumDisplay.Fill = _pickerBrush;
-        }
+			List<Color> colorsList = ColorUtilities.GenerateHsvSpectrum();
 
-        #endregion //Methods
-    }
+			double stopIncrement = (double)1 / colorsList.Count;
+
+			int i;
+			for (i = 0; i < colorsList.Count; i++)
+			{
+				_pickerBrush.GradientStops.Add(new GradientStop(colorsList[i], i * stopIncrement));
+			}
+
+			_pickerBrush.GradientStops[i - 1].Offset = 1.0;
+			_Part_SpectrumDisplay.Fill = _pickerBrush;
+		}
+
+		#endregion Methods
+	}
 }

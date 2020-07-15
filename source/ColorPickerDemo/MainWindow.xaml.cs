@@ -1,18 +1,18 @@
 ﻿namespace ColorPickerDemo
 {
-    using ColorPickerDemo.ViewModels;
-    using System.Windows;
+	using ColorPickerDemo.ViewModels;
+	using System.Windows;
 
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
-    public partial class MainWindow : Window
-    {
-        public MainWindow()
-        {
-            InitializeComponent();
+	/// <summary>
+	/// Interaction logic for MainWindow.xaml
+	/// </summary>
+	public partial class MainWindow : Window
+	{
+		public MainWindow()
+		{
+			InitializeComponent();
 
-            this.DataContext = new AppViewModel();
-        }
-    }
+			this.DataContext = new AppViewModel();
+		}
+	}
 }

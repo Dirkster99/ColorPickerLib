@@ -1,209 +1,214 @@
 ﻿namespace ColorPickerLib.Primitives
 {
-    using System;
-    using System.Globalization;
-    using System.Windows;
-    using System.Windows.Controls;
-    using System.Windows.Data;
+	using System;
+	using System.Globalization;
+	using System.Windows;
+	using System.Windows.Controls;
+	using System.Windows.Data;
 
-    public abstract class InputBase : Control
-    {
-        #region Properties
+	public abstract class InputBase : Control
+	{
+		#region Properties
 
-        #region AllowTextInput
+		#region AllowTextInput
 
-        public static readonly DependencyProperty AllowTextInputProperty = DependencyProperty.Register("AllowTextInput", typeof(bool), typeof(InputBase), new UIPropertyMetadata(true, OnAllowTextInputChanged));
-        public bool AllowTextInput
-        {
-            get
-            {
-                return (bool)GetValue(AllowTextInputProperty);
-            }
-            set
-            {
-                SetValue(AllowTextInputProperty, value);
-            }
-        }
+		public static readonly DependencyProperty AllowTextInputProperty = DependencyProperty.Register("AllowTextInput", typeof(bool), typeof(InputBase), new UIPropertyMetadata(true, OnAllowTextInputChanged));
 
-        private static void OnAllowTextInputChanged(DependencyObject o, DependencyPropertyChangedEventArgs e)
-        {
-            InputBase inputBase = o as InputBase;
-            if (inputBase != null)
-                inputBase.OnAllowTextInputChanged((bool)e.OldValue, (bool)e.NewValue);
-        }
+		public bool AllowTextInput
+		{
+			get
+			{
+				return (bool)GetValue(AllowTextInputProperty);
+			}
+			set
+			{
+				SetValue(AllowTextInputProperty, value);
+			}
+		}
 
-        protected virtual void OnAllowTextInputChanged(bool oldValue, bool newValue)
-        {
-        }
+		private static void OnAllowTextInputChanged(DependencyObject o, DependencyPropertyChangedEventArgs e)
+		{
+			InputBase inputBase = o as InputBase;
+			if (inputBase != null)
+				inputBase.OnAllowTextInputChanged((bool)e.OldValue, (bool)e.NewValue);
+		}
 
-        #endregion //AllowTextInput
+		protected virtual void OnAllowTextInputChanged(bool oldValue, bool newValue)
+		{
+		}
 
-        #region CultureInfo
+		#endregion AllowTextInput
 
-        public static readonly DependencyProperty CultureInfoProperty = DependencyProperty.Register("CultureInfo", typeof(CultureInfo), typeof(InputBase), new UIPropertyMetadata(CultureInfo.CurrentCulture, OnCultureInfoChanged));
-        public CultureInfo CultureInfo
-        {
-            get
-            {
-                return (CultureInfo)GetValue(CultureInfoProperty);
-            }
-            set
-            {
-                SetValue(CultureInfoProperty, value);
-            }
-        }
+		#region CultureInfo
 
-        private static void OnCultureInfoChanged(DependencyObject o, DependencyPropertyChangedEventArgs e)
-        {
-            InputBase inputBase = o as InputBase;
-            if (inputBase != null)
-                inputBase.OnCultureInfoChanged((CultureInfo)e.OldValue, (CultureInfo)e.NewValue);
-        }
+		public static readonly DependencyProperty CultureInfoProperty = DependencyProperty.Register("CultureInfo", typeof(CultureInfo), typeof(InputBase), new UIPropertyMetadata(CultureInfo.CurrentCulture, OnCultureInfoChanged));
 
-        protected virtual void OnCultureInfoChanged(CultureInfo oldValue, CultureInfo newValue)
-        {
+		public CultureInfo CultureInfo
+		{
+			get
+			{
+				return (CultureInfo)GetValue(CultureInfoProperty);
+			}
+			set
+			{
+				SetValue(CultureInfoProperty, value);
+			}
+		}
 
-        }
+		private static void OnCultureInfoChanged(DependencyObject o, DependencyPropertyChangedEventArgs e)
+		{
+			InputBase inputBase = o as InputBase;
+			if (inputBase != null)
+				inputBase.OnCultureInfoChanged((CultureInfo)e.OldValue, (CultureInfo)e.NewValue);
+		}
 
-        #endregion //CultureInfo
+		protected virtual void OnCultureInfoChanged(CultureInfo oldValue, CultureInfo newValue)
+		{
+		}
 
-        #region IsReadOnly
+		#endregion CultureInfo
 
-        public static readonly DependencyProperty IsReadOnlyProperty = DependencyProperty.Register("IsReadOnly", typeof(bool), typeof(InputBase), new UIPropertyMetadata(false, OnReadOnlyChanged));
-        public bool IsReadOnly
-        {
-            get
-            {
-                return (bool)GetValue(IsReadOnlyProperty);
-            }
-            set
-            {
-                SetValue(IsReadOnlyProperty, value);
-            }
-        }
+		#region IsReadOnly
 
-        private static void OnReadOnlyChanged(DependencyObject o, DependencyPropertyChangedEventArgs e)
-        {
-            InputBase inputBase = o as InputBase;
-            if (inputBase != null)
-                inputBase.OnReadOnlyChanged((bool)e.OldValue, (bool)e.NewValue);
-        }
+		public static readonly DependencyProperty IsReadOnlyProperty = DependencyProperty.Register("IsReadOnly", typeof(bool), typeof(InputBase), new UIPropertyMetadata(false, OnReadOnlyChanged));
 
-        protected virtual void OnReadOnlyChanged(bool oldValue, bool newValue)
-        {
-        }
+		public bool IsReadOnly
+		{
+			get
+			{
+				return (bool)GetValue(IsReadOnlyProperty);
+			}
+			set
+			{
+				SetValue(IsReadOnlyProperty, value);
+			}
+		}
 
-        #endregion //IsReadOnly
+		private static void OnReadOnlyChanged(DependencyObject o, DependencyPropertyChangedEventArgs e)
+		{
+			InputBase inputBase = o as InputBase;
+			if (inputBase != null)
+				inputBase.OnReadOnlyChanged((bool)e.OldValue, (bool)e.NewValue);
+		}
 
-        #region IsUndoEnabled
+		protected virtual void OnReadOnlyChanged(bool oldValue, bool newValue)
+		{
+		}
 
-        public static readonly DependencyProperty IsUndoEnabledProperty = DependencyProperty.Register("IsUndoEnabled", typeof(bool), typeof(InputBase), new UIPropertyMetadata(true, OnIsUndoEnabledChanged));
-        public bool IsUndoEnabled
-        {
-            get
-            {
-                return (bool)GetValue(IsUndoEnabledProperty);
-            }
-            set
-            {
-                SetValue(IsUndoEnabledProperty, value);
-            }
-        }
+		#endregion IsReadOnly
 
-        private static void OnIsUndoEnabledChanged(DependencyObject o, DependencyPropertyChangedEventArgs e)
-        {
-            InputBase inputBase = o as InputBase;
-            if (inputBase != null)
-                inputBase.OnIsUndoEnabledChanged((bool)e.OldValue, (bool)e.NewValue);
-        }
+		#region IsUndoEnabled
 
-        protected virtual void OnIsUndoEnabledChanged(bool oldValue, bool newValue)
-        {
-        }
+		public static readonly DependencyProperty IsUndoEnabledProperty = DependencyProperty.Register("IsUndoEnabled", typeof(bool), typeof(InputBase), new UIPropertyMetadata(true, OnIsUndoEnabledChanged));
 
-        #endregion //IsUndoEnabled
+		public bool IsUndoEnabled
+		{
+			get
+			{
+				return (bool)GetValue(IsUndoEnabledProperty);
+			}
+			set
+			{
+				SetValue(IsUndoEnabledProperty, value);
+			}
+		}
 
-        #region Text
+		private static void OnIsUndoEnabledChanged(DependencyObject o, DependencyPropertyChangedEventArgs e)
+		{
+			InputBase inputBase = o as InputBase;
+			if (inputBase != null)
+				inputBase.OnIsUndoEnabledChanged((bool)e.OldValue, (bool)e.NewValue);
+		}
 
-        public static readonly DependencyProperty TextProperty = DependencyProperty.Register("Text", typeof(string), typeof(InputBase), new FrameworkPropertyMetadata(default(String), FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, OnTextChanged, null, false, UpdateSourceTrigger.LostFocus));
-        public string Text
-        {
-            get
-            {
-                return (string)GetValue(TextProperty);
-            }
-            set
-            {
-                SetValue(TextProperty, value);
-            }
-        }
+		protected virtual void OnIsUndoEnabledChanged(bool oldValue, bool newValue)
+		{
+		}
 
-        private static void OnTextChanged(DependencyObject o, DependencyPropertyChangedEventArgs e)
-        {
-            InputBase inputBase = o as InputBase;
-            if (inputBase != null)
-                inputBase.OnTextChanged((string)e.OldValue, (string)e.NewValue);
-        }
+		#endregion IsUndoEnabled
 
-        protected virtual void OnTextChanged(string oldValue, string newValue)
-        {
+		#region Text
 
-        }
+		public static readonly DependencyProperty TextProperty = DependencyProperty.Register("Text", typeof(string), typeof(InputBase), new FrameworkPropertyMetadata(default(String), FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, OnTextChanged, null, false, UpdateSourceTrigger.LostFocus));
 
-        #endregion //Text
+		public string Text
+		{
+			get
+			{
+				return (string)GetValue(TextProperty);
+			}
+			set
+			{
+				SetValue(TextProperty, value);
+			}
+		}
 
-        #region TextAlignment
+		private static void OnTextChanged(DependencyObject o, DependencyPropertyChangedEventArgs e)
+		{
+			InputBase inputBase = o as InputBase;
+			if (inputBase != null)
+				inputBase.OnTextChanged((string)e.OldValue, (string)e.NewValue);
+		}
 
-        public static readonly DependencyProperty TextAlignmentProperty = DependencyProperty.Register("TextAlignment", typeof(TextAlignment), typeof(InputBase), new UIPropertyMetadata(TextAlignment.Left));
-        public TextAlignment TextAlignment
-        {
-            get
-            {
-                return (TextAlignment)GetValue(TextAlignmentProperty);
-            }
-            set
-            {
-                SetValue(TextAlignmentProperty, value);
-            }
-        }
+		protected virtual void OnTextChanged(string oldValue, string newValue)
+		{
+		}
 
+		#endregion Text
 
-        #endregion //TextAlignment
+		#region TextAlignment
 
-        #region Watermark
+		public static readonly DependencyProperty TextAlignmentProperty = DependencyProperty.Register("TextAlignment", typeof(TextAlignment), typeof(InputBase), new UIPropertyMetadata(TextAlignment.Left));
 
-        public static readonly DependencyProperty WatermarkProperty = DependencyProperty.Register("Watermark", typeof(object), typeof(InputBase), new UIPropertyMetadata(null));
-        public object Watermark
-        {
-            get
-            {
-                return (object)GetValue(WatermarkProperty);
-            }
-            set
-            {
-                SetValue(WatermarkProperty, value);
-            }
-        }
+		public TextAlignment TextAlignment
+		{
+			get
+			{
+				return (TextAlignment)GetValue(TextAlignmentProperty);
+			}
+			set
+			{
+				SetValue(TextAlignmentProperty, value);
+			}
+		}
 
-        #endregion //Watermark
+		#endregion TextAlignment
 
-        #region WatermarkTemplate
+		#region Watermark
 
-        public static readonly DependencyProperty WatermarkTemplateProperty = DependencyProperty.Register("WatermarkTemplate", typeof(DataTemplate), typeof(InputBase), new UIPropertyMetadata(null));
-        public DataTemplate WatermarkTemplate
-        {
-            get
-            {
-                return (DataTemplate)GetValue(WatermarkTemplateProperty);
-            }
-            set
-            {
-                SetValue(WatermarkTemplateProperty, value);
-            }
-        }
+		public static readonly DependencyProperty WatermarkProperty = DependencyProperty.Register("Watermark", typeof(object), typeof(InputBase), new UIPropertyMetadata(null));
 
-        #endregion //WatermarkTemplate
+		public object Watermark
+		{
+			get
+			{
+				return (object)GetValue(WatermarkProperty);
+			}
+			set
+			{
+				SetValue(WatermarkProperty, value);
+			}
+		}
 
-        #endregion //Properties
-    }
+		#endregion Watermark
+
+		#region WatermarkTemplate
+
+		public static readonly DependencyProperty WatermarkTemplateProperty = DependencyProperty.Register("WatermarkTemplate", typeof(DataTemplate), typeof(InputBase), new UIPropertyMetadata(null));
+
+		public DataTemplate WatermarkTemplate
+		{
+			get
+			{
+				return (DataTemplate)GetValue(WatermarkTemplateProperty);
+			}
+			set
+			{
+				SetValue(WatermarkTemplateProperty, value);
+			}
+		}
+
+		#endregion WatermarkTemplate
+
+		#endregion Properties
+	}
 }

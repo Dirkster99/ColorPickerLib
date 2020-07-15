@@ -10,18 +10,21 @@
 	/// <summary>
 	/// This class represents a serializable dictionary implementation
 	/// of the standard generic dictionary class in .Net.
-	/// 
+	///
 	/// Source: http://www.jankowskimichal.pl/en/2010/10/serializabledictionary/
 	/// </summary>
 	[Serializable]
 	public class SerializableDictionary<TKey, TVal> : Dictionary<TKey, TVal>, IXmlSerializable, ISerializable
 	{
 		#region Private Members
+
 		private XmlSerializer _keySerializer;
 		private XmlSerializer _valueSerializer;
-		#endregion
+
+		#endregion Private Members
 
 		#region Constructors
+
 		public SerializableDictionary()
 		{
 		}
@@ -51,9 +54,10 @@
 		{
 		}
 
-		#endregion
+		#endregion Constructors
 
 		#region Private Properties
+
 		protected XmlSerializer ValueSerializer
 		{
 			get { return _valueSerializer ?? (_valueSerializer = new XmlSerializer(typeof(TVal))); }
@@ -63,9 +67,11 @@
 		{
 			get { return _keySerializer ?? (_keySerializer = new XmlSerializer(typeof(TKey))); }
 		}
-		#endregion
+
+		#endregion Private Properties
 
 		#region ISerializable Members
+
 		protected SerializableDictionary(SerializationInfo info, StreamingContext context)
 		{
 			int itemCount = info.GetInt32("itemsCount");
@@ -86,9 +92,11 @@
 				itemIdx++;
 			}
 		}
-		#endregion
+
+		#endregion ISerializable Members
 
 		#region IXmlSerializable Members
+
 		void IXmlSerializable.WriteXml(XmlWriter writer)
 		{
 			foreach (KeyValuePair<TKey, TVal> kvp in this)
@@ -143,6 +151,7 @@
 		{
 			return null;
 		}
-		#endregion
+
+		#endregion IXmlSerializable Members
 	}
 }

@@ -1,21 +1,22 @@
 ﻿namespace ColorPickerLib.Converters
 {
-    using System;
-    using System.Windows.Data;
-    public class InverseBoolConverter : IValueConverter
-    {
-        #region IValueConverter Members
+	using System;
+	using System.Windows.Data;
 
-        public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
-        {
-            return !(bool)value;
-        }
+	public class InverseBoolConverter : IValueConverter
+	{
+		#region IValueConverter Members
 
-        public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
-        {
-            throw new NotImplementedException();
-        }
+		public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+		{
+			return !(bool)value;
+		}
 
-        #endregion
-    }
+		public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+		{
+			throw new NotImplementedException();
+		}
+
+		#endregion IValueConverter Members
+	}
 }

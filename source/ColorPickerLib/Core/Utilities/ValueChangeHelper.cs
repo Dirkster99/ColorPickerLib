@@ -1,131 +1,133 @@
 ﻿namespace ColorPickerLib.Core.Utilities
 {
-    using System;
-    using System.Collections;
-    using System.Windows;
-    using System.Windows.Data;
+	using System;
+	using System.Collections;
+	using System.Windows;
+	using System.Windows.Data;
 
-    /// <summary>
-    /// This helper class will raise events when a specific
-    /// path value on one or many items changes.
-    /// </summary>
-    internal class ValueChangeHelper : DependencyObject
-    {
+	/// <summary>
+	/// This helper class will raise events when a specific
+	/// path value on one or many items changes.
+	/// </summary>
+	internal class ValueChangeHelper : DependencyObject
+	{
+		#region Value Property
 
-        #region Value Property
-        /// <summary>
-        /// This private property serves as the target of a binding that monitors the value of the binding
-        /// of each item in the source.
-        /// </summary>
-        private static readonly DependencyProperty ValueProperty = DependencyProperty.Register("Value", typeof(object), typeof(ValueChangeHelper), new UIPropertyMetadata(null, OnValueChanged));
-        private object Value
-        {
-            get
-            {
-                return (object)GetValue(ValueProperty);
-            }
-            set
-            {
-                SetValue(ValueProperty, value);
-            }
-        }
+		/// <summary>
+		/// This private property serves as the target of a binding that monitors the value of the binding
+		/// of each item in the source.
+		/// </summary>
+		private static readonly DependencyProperty ValueProperty = DependencyProperty.Register("Value", typeof(object), typeof(ValueChangeHelper), new UIPropertyMetadata(null, OnValueChanged));
 
-        private static void OnValueChanged(DependencyObject sender, DependencyPropertyChangedEventArgs args)
-        {
-            ((ValueChangeHelper)sender).RaiseValueChanged();
-        }
-        #endregion
+		private object Value
+		{
+			get
+			{
+				return (object)GetValue(ValueProperty);
+			}
+			set
+			{
+				SetValue(ValueProperty, value);
+			}
+		}
 
-        public event EventHandler ValueChanged;
+		private static void OnValueChanged(DependencyObject sender, DependencyPropertyChangedEventArgs args)
+		{
+			((ValueChangeHelper)sender).RaiseValueChanged();
+		}
 
-        #region Constructor
+		#endregion Value Property
 
-        public ValueChangeHelper(Action changeCallback)
-        {
-            if (changeCallback == null)
-                throw new ArgumentNullException("changeCallback");
+		public event EventHandler ValueChanged;
 
-            this.ValueChanged += (s, args) => changeCallback();
-        }
+		#region Constructor
 
-        #endregion
+		public ValueChangeHelper(Action changeCallback)
+		{
+			if (changeCallback == null)
+				throw new ArgumentNullException("changeCallback");
 
-        #region Methods
+			this.ValueChanged += (s, args) => changeCallback();
+		}
 
-        public void UpdateValueSource(object sourceItem, string path)
-        {
-            BindingBase binding = null;
-            if (sourceItem != null && path != null)
-            {
-                binding = new Binding(path) { Source = sourceItem };
-            }
+		#endregion Constructor
 
-            this.UpdateBinding(binding);
-        }
+		#region Methods
 
-        public void UpdateValueSource(IEnumerable sourceItems, string path)
-        {
-            BindingBase binding = null;
-            if (sourceItems != null && path != null)
-            {
-                MultiBinding multiBinding = new MultiBinding();
-                multiBinding.Converter = new BlankMultiValueConverter();
+		public void UpdateValueSource(object sourceItem, string path)
+		{
+			BindingBase binding = null;
+			if (sourceItem != null && path != null)
+			{
+				binding = new Binding(path) { Source = sourceItem };
+			}
 
-                foreach (var item in sourceItems)
-                {
-                    multiBinding.Bindings.Add(new Binding(path) { Source = item });
-                }
+			this.UpdateBinding(binding);
+		}
 
-                binding = multiBinding;
-            }
+		public void UpdateValueSource(IEnumerable sourceItems, string path)
+		{
+			BindingBase binding = null;
+			if (sourceItems != null && path != null)
+			{
+				MultiBinding multiBinding = new MultiBinding();
+				multiBinding.Converter = new BlankMultiValueConverter();
 
-            this.UpdateBinding(binding);
-        }
+				foreach (var item in sourceItems)
+				{
+					multiBinding.Bindings.Add(new Binding(path) { Source = item });
+				}
 
-        private void UpdateBinding(BindingBase binding)
-        {
-            if (binding != null)
-            {
-                BindingOperations.SetBinding(this, ValueChangeHelper.ValueProperty, binding);
-            }
-            else
-            {
-                this.ClearBinding();
-            }
-        }
+				binding = multiBinding;
+			}
 
-        private void ClearBinding()
-        {
-            BindingOperations.ClearBinding(this, ValueChangeHelper.ValueProperty);
-        }
+			this.UpdateBinding(binding);
+		}
 
-        private void RaiseValueChanged()
-        {
-            if (this.ValueChanged != null)
-            {
-                this.ValueChanged(this, EventArgs.Empty);
-            }
-        }
+		private void UpdateBinding(BindingBase binding)
+		{
+			if (binding != null)
+			{
+				BindingOperations.SetBinding(this, ValueChangeHelper.ValueProperty, binding);
+			}
+			else
+			{
+				this.ClearBinding();
+			}
+		}
 
-        #endregion
+		private void ClearBinding()
+		{
+			BindingOperations.ClearBinding(this, ValueChangeHelper.ValueProperty);
+		}
 
-        #region BlankMultiValueConverter private class
+		private void RaiseValueChanged()
+		{
+			if (this.ValueChanged != null)
+			{
+				this.ValueChanged(this, EventArgs.Empty);
+			}
+		}
 
-        private class BlankMultiValueConverter : IMultiValueConverter
-        {
-            public object Convert(object[] values, Type targetType, object parameter, System.Globalization.CultureInfo culture)
-            {
-                // We will not use the result anyway. We just want the change notification to kick in.
-                // Return a new object to have a different value.
-                return new object();
-            }
+		#endregion Methods
 
-            public object[] ConvertBack(object value, Type[] targetTypes, object parameter, System.Globalization.CultureInfo culture)
-            {
-                throw new InvalidOperationException();
-            }
-        }
+		#region BlankMultiValueConverter private class
 
-        #endregion
-    }
+		private class BlankMultiValueConverter : IMultiValueConverter
+		{
+			public object Convert(object[] values, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+			{
+				// We will not use the result anyway. We just want the change notification to kick in.
+				// Return a new object to have a different value.
+				return new object();
+			}
+
+			public object[] ConvertBack(object value, Type[] targetTypes, object parameter, System.Globalization.CultureInfo culture)
+			{
+				throw new InvalidOperationException();
+			}
+		}
+
+		#endregion BlankMultiValueConverter private class
+	}
 }
