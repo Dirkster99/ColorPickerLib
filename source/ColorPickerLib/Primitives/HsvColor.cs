@@ -23,7 +23,12 @@
                 throw new ArgumentOutOfRangeException(string.Format("Hue: {0}", hue));
 
             if (hue > 360)
+			{
                 hue = ((int)hue) % 360;
+
+                if (hue > 359)
+                    hue = 359;
+            }
 
             if (saturation < 0 || saturation > 1.0)
                 throw new ArgumentOutOfRangeException(string.Format("Saturation: {0}", saturation));
@@ -70,6 +75,9 @@
             int min = Math.Min(convColor.R, Math.Min(convColor.G, convColor.B));
 
             double hue = convColor.GetHue();
+            if (hue > 359)
+                hue = 359;
+
             double saturation = (max == 0) ? 0 : 1d - (1d * min / max);
             double value = max / 255d;
 

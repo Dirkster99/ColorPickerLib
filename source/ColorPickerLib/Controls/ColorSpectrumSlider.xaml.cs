@@ -67,8 +67,7 @@
         {
             base.OnValueChanged(oldValue, newValue);
 
-//            Color color = ColorUtilities.ConvertHsvToRgb(360 - newValue, 1, 1);
-            Color color = HsvColor.RGBFromHSV(new HsvColor(360 - newValue, 1, 1));
+            Color color = HsvColor.RGBFromHSV(new HsvColor(359 - newValue, 1, 1));
             SelectedColor = color;
         }
 

@@ -2,7 +2,6 @@
 {
     using ColorPickerLib.Core.Utilities;
     using ColorPickerLib.Primitives;
-    using System;
     using System.IO;
     using System.Windows;
     using System.Windows.Controls;
@@ -243,6 +242,7 @@
             if (colorCanvas != null)
                 colorCanvas.OnHChanged((double)e.OldValue, (double)e.NewValue);
         }
+
         protected virtual void OnHChanged(double oldValue, double newValue)
         {
             if (!_surpressPropertyChanged)
@@ -681,8 +681,8 @@
             HsvColor hsv = HsvColor.RGBToHSV(color);
 //            HsvColor hsv = ColorUtilities.ConvertRgbToHsv(color.Value.R, color.Value.G, color.Value.B);
 
-//            if (!(color.Value.R == color.Value.G && color.Value.R == color.Value.B))
-            _spectrumSlider.Value = 360 - hsv.Hue;
+            if (!(color.Value.R == color.Value.G && color.Value.R == color.Value.B))
+                _spectrumSlider.Value = 359 - hsv.Hue;
 
             Point p = new Point(hsv.Saturation, 1 - hsv.Value);
 
@@ -694,7 +694,7 @@
 
         private void CalculateColor(Point p)
         {
-            HsvColor hsv = new HsvColor(360 - _spectrumSlider.Value, p.X, 1 - p.Y);
+            HsvColor hsv = new HsvColor(359 - _spectrumSlider.Value, p.X, 1 - p.Y);
 
             //            var currentColor = ColorUtilities.ConvertHsvToRgb(hsv.Hue, hsv.Saturation, hsv.Value);
             var currentColor = HsvColor.RGBFromHSV(hsv);
