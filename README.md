@@ -34,6 +34,7 @@ This version of the control implements:
 
 Supports localization for:
 * Chinese (Simplified) and Chinese (Traditional)
+* Czech
 * Dutch
 * English
 * French

@@ -5,9 +5,9 @@
     <UseWPF>true</UseWPF>
 
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>1.6.1.0</Version>
-    <AssemblyVersion>1.6.1.0</AssemblyVersion>
-    <FileVersion>1.6.1.0</FileVersion>
+    <Version>1.6.2.0</Version>
+    <AssemblyVersion>1.6.2.0</AssemblyVersion>
+    <FileVersion>1.6.2.0</FileVersion>
     <Company>Open Source</Company>
     <Product>ColorPickerLib</Product>
     <Copyright>2015-2020</Copyright>
@@ -26,7 +26,7 @@
 
   <ItemGroup>
     <PackageReference Include="Dirkster.NumericUpDownLib" Version="2.4.2" />
-    <None Include="Resources\icon.png" Pack="true" PackagePath="\"/>
+    <None Include="Resources\icon.png" Pack="true" PackagePath="\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -100,6 +100,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="Localized\Strings.cs-CZ.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Localized\Strings.de-DE.resx">
       <LastGenOutput>Strings.de-DE.Designer.cs</LastGenOutput>
       <Generator>PublicResXFileCodeGenerator</Generator>
